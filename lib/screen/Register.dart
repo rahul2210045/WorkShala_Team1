@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:intershipapp/screen/Login.dart';
+import 'package:intershipapp/widgets/CustomTextButton.dart';
 import 'package:intershipapp/widgets/Customtext.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
@@ -246,14 +247,13 @@ class _RegisterState extends State<Register> {
           color: Colors.grey,
           fontSize: 18,
         ),
-        TextButton(
-            onPressed: () {},
-            child: CustomText(
-              text: "Sign up",
-              fontStyle: null,
-              color: Colors.purple,
-              fontSize: 18,
-            ))
+        CustomTextButton(
+          onPressed: () {},
+          buttonText: "Sign up",
+          buttonColor: Colors.white,
+          textColor: Colors.purple,
+          fontSize: 18,
+        )
       ],
     );
   }
