@@ -6,6 +6,7 @@ import 'package:workshala/uploadScreen.dart';
 import 'package:workshala/uploading.dart';
 import 'package:workshala/uploaded.dart';
 import 'package:intershipapp/screen/Login.dart';
+import 'package:intershipapp/screen/Register.dart';
 
 void main() {
   runApp(const MyApp());
@@ -23,7 +24,7 @@ class MyApp extends StatelessWidget {
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
           useMaterial3: true,
         ),
-        home: Login()
+        home: Register()
         // home: const MyHomePage(title: 'Flutter Demo Home Page'),
         );
   }
