@@ -5,6 +5,7 @@ import 'package:workshala/jobdis.dart';
 import 'package:workshala/uploadScreen.dart';
 import 'package:workshala/uploading.dart';
 import 'package:workshala/uploaded.dart';
+import 'package:intershipapp/screen/Login.dart';
 
 void main() {
   runApp(const MyApp());
@@ -15,9 +16,36 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: uploadedPage(),
+    return MaterialApp(
+        title: 'Flutter Demo',
+        debugShowCheckedModeBanner: false,
+        theme: ThemeData(
+          colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+          useMaterial3: true,
+        ),
+        home: Login()
+        // home: const MyHomePage(title: 'Flutter Demo Home Page'),
+        );
+  }
+}
+
+class MyHomePage extends StatefulWidget {
+  const MyHomePage({super.key, required this.title});
+
+  final String title;
+
+  @override
+  State<MyHomePage> createState() => _MyHomePageState();
+}
+
+class _MyHomePageState extends State<MyHomePage> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
+        title: Text(widget.title),
+      ),
     );
   }
 }

@@ -1,4 +1,4 @@
-# workshala
+# intershipapp
 
 A new Flutter project.
 
