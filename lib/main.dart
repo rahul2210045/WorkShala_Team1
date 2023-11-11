@@ -5,7 +5,9 @@ import 'package:workshala/jobdis.dart';
 import 'package:workshala/uploadScreen.dart';
 import 'package:workshala/uploading.dart';
 import 'package:workshala/uploaded.dart';
+import 'package:intershipapp/screen/Home.dart';
 import 'package:intershipapp/screen/Login.dart';
+// import 'package:intershipapp/screen/ProfileLogin.dart';
 import 'package:intershipapp/screen/Register.dart';
 
 void main() {
@@ -24,7 +26,7 @@ class MyApp extends StatelessWidget {
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
           useMaterial3: true,
         ),
-        home: Register()
+        home: Home()
         // home: const MyHomePage(title: 'Flutter Demo Home Page'),
         );
   }

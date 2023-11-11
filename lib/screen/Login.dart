@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:intershipapp/screen/Register.dart';
 import 'package:intershipapp/widgets/Customtext.dart';
 
 class Login extends StatefulWidget {
@@ -86,8 +87,8 @@ class _LoginState extends State<Login> {
               String passwrd = password.text.toString();
 
               // print(uname);
-              Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => const Login()));
+              Navigator.push(
+                  context, MaterialPageRoute(builder: (context) => Register()));
               Navigator.of(context).pop();
             },
             style: ElevatedButton.styleFrom(
@@ -122,6 +123,16 @@ class _LoginState extends State<Login> {
   Widget buildtextfiled(BuildContext context, TextEditingController controller,
       String hinttext, bool obscure) {
     return Container(
+      decoration: BoxDecoration(
+        boxShadow: [
+          BoxShadow(
+            color: Colors.grey.withOpacity(0.5),
+            spreadRadius: 2,
+            blurRadius: 5,
+            offset: const Offset(0, 3),
+          ),
+        ],
+      ),
       margin: const EdgeInsets.all(15),
       child: TextField(
         controller: controller,

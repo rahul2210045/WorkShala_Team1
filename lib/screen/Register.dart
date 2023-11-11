@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:intershipapp/screen/Home.dart';
 import 'package:intershipapp/screen/Login.dart';
 import 'package:intershipapp/widgets/CustomTextButton.dart';
 import 'package:intershipapp/widgets/Customtext.dart';
@@ -171,6 +172,16 @@ class _RegisterState extends State<Register> {
   Widget buildtextfiled(BuildContext context, TextEditingController controller,
       String hinttext, bool obscure, VoidCallback onChanged) {
     return Container(
+      decoration: BoxDecoration(
+        boxShadow: [
+          BoxShadow(
+            color: Colors.grey.withOpacity(0.5),
+            spreadRadius: 2,
+            blurRadius: 5,
+            offset: const Offset(0, 3),
+          ),
+        ],
+      ),
       margin: const EdgeInsets.all(15),
       child: TextField(
         onChanged: (_) {
