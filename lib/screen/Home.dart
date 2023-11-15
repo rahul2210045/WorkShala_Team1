@@ -15,6 +15,7 @@ class _HomeState extends State<Home> {
       appBar: AppBar(
         title: const Text('Profile'),
       ),
+      // backgroundColor: Color,
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: SingleChildScrollView(
