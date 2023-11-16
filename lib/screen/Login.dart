@@ -1,4 +1,9 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
+import 'package:get/get_connect/http/src/response/response.dart';
+import 'package:http/http.dart' as http;
+import 'package:intershipapp/screen/MainScreen.dart';
 import 'package:intershipapp/screen/Register.dart';
 import 'package:intershipapp/widgets/Customtext.dart';
 
@@ -10,12 +15,13 @@ class Login extends StatefulWidget {
 }
 
 class _LoginState extends State<Login> {
-  var emailtext = TextEditingController();
-  var password = TextEditingController();
-  var confirmpass = TextEditingController();
-  var firstname = TextEditingController();
-  var mobile = TextEditingController();
-  var Lastname = TextEditingController();
+  TextEditingController emailtext = TextEditingController();
+  TextEditingController passwords = TextEditingController();
+  TextEditingController confirmpass = TextEditingController();
+  TextEditingController firstname = TextEditingController();
+  TextEditingController mobilee = TextEditingController();
+  TextEditingController Lastname = TextEditingController();
+  final _formKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
@@ -31,7 +37,7 @@ class _LoginState extends State<Login> {
       children: [
         // Padding(padding: EdgeInsets.only(top: 100)),
         Image.asset("assests/images/Group.png"),
-        Row(
+        const Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             CustomText(
@@ -67,73 +73,84 @@ class _LoginState extends State<Login> {
   }
 
   _inputField(context) {
-    return Column(
-      // crossAxisAlignment: CrossAxisAlignment.stretch,
-      children: [
-        const Padding(padding: EdgeInsets.only(top: 50)),
-        // CustomTextFormField(),
-        // CustomTextFormField(),
+    return Form(
+      key: _formKey,
+      child: Column(
+        // crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          const Padding(padding: EdgeInsets.only(top: 50)),
+          // CustomTextFormField(),
+          // CustomTextFormField(),
 
-        buildtextfiled(context, firstname, "First Name", false),
-        buildtextfiled(context, Lastname, "Last name", false),
-        buildtextfiled(context, emailtext, "Email", false),
-        buildtextfiled(context, mobile, "Mobile", false),
-        buildtextfiled(context, password, "Password", true),
-        buildtextfiled(context, confirmpass, "Confirm Password ", true),
+          buildtextfiled(context, firstname, "First Name", false),
+          buildtextfiled(context, Lastname, "Last name", false),
+          buildtextfiled(context, emailtext, "Email", false),
+          buildtextfiled(context, mobilee, "Mobile", false),
+          buildtextfiled(context, passwords, "Password", true),
+          buildtextfiled(context, confirmpass, "Confirm Password ", true),
 
-        // const SizedBox(height: 10),
-        Container(
-          width: 400,
-          margin: const EdgeInsets.all(15),
-          child: ElevatedButton(
-            onPressed: () {
-              String uname = emailtext.text.toString();
-              String passwrd = password.text.toString();
+          // const SizedBox(height: 10),
+          // Inside your _LoginState class
+          Container(
+            width: 400,
+            margin: const EdgeInsets.all(15),
+            child: ElevatedButton(
+              onPressed: () {
+                if (_formKey.currentState?.validate() ?? false) {
+                  // Form is valid, proceed with signUp and navigation
+                  String email = emailtext.text;
+                  String password = passwords.text;
+                  String firstName = firstname.text;
+                  String lastName = Lastname.text;
+                  String mobile = mobilee.text;
+                  String confirmPassword = confirmpass.text;
 
-              // print(uname);
-              Navigator.push(
-                  context, MaterialPageRoute(builder: (context) => Register()));
-              Navigator.of(context).pop();
-            },
-            style: ElevatedButton.styleFrom(
-              // shape: const StadiumBorder(),
-              shape: const ContinuousRectangleBorder(
-                  borderRadius: BorderRadius.all(Radius.circular(10))),
+                  signUp(email, password, firstName, lastName, mobile,
+                      confirmPassword);
 
-              backgroundColor: const Color.fromRGBO(148, 108, 195, 1),
-              minimumSize: const Size(double.infinity, 50),
-              padding: const EdgeInsets.symmetric(vertical: 16),
-            ),
-            child: const Text(
-              "Sign up",
-              style: TextStyle(fontSize: 18, color: Colors.white),
-            ),
-          ),
-        ),
-        // Padding(padding: EdgeInsets.only(bottom: 20)),
-        Container(
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              const CustomText(
-                text: "If you already registered",
-                fontStyle: null,
-                color: Colors.grey,
-                fontSize: 15,
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => Register()));
+                }
+              },
+              style: ElevatedButton.styleFrom(
+                shape: const ContinuousRectangleBorder(
+                    borderRadius: BorderRadius.all(Radius.circular(10))),
+                backgroundColor: const Color.fromRGBO(148, 108, 195, 1),
+                minimumSize: const Size(double.infinity, 50),
+                padding: const EdgeInsets.symmetric(vertical: 16),
               ),
-              TextButton(
-                  onPressed: () {},
-                  child: CustomText(
-                    text: "Log in",
-                    fontStyle: null,
-                    color: Colors.purple,
-                    fontSize: 15,
-                  ))
-            ],
+              child: const Text(
+                "Sign up",
+                style: TextStyle(fontSize: 18, color: Colors.white),
+              ),
+            ),
           ),
-        ),
-        const Padding(padding: EdgeInsets.only(bottom: 20)),
-      ],
+
+          // Padding(padding: EdgeInsets.only(bottom: 20)),
+          Container(
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                const CustomText(
+                  text: "If you already registered",
+                  fontStyle: null,
+                  color: Colors.grey,
+                  fontSize: 15,
+                ),
+                TextButton(
+                    onPressed: () {},
+                    child: const CustomText(
+                      text: "Log in",
+                      fontStyle: null,
+                      color: Colors.purple,
+                      fontSize: 15,
+                    ))
+              ],
+            ),
+          ),
+          const Padding(padding: EdgeInsets.only(bottom: 20)),
+        ],
+      ),
     );
   }
 
@@ -143,7 +160,7 @@ class _LoginState extends State<Login> {
       decoration: BoxDecoration(
         boxShadow: [
           BoxShadow(
-            color: Color.fromRGBO(148, 108, 195, 0.25).withOpacity(0.2),
+            color: const Color.fromRGBO(148, 108, 195, 0.25).withOpacity(0.2),
             spreadRadius: 2,
             blurRadius: 5,
             offset: const Offset(0, 3),
@@ -151,11 +168,18 @@ class _LoginState extends State<Login> {
         ],
       ),
       margin: const EdgeInsets.all(15),
-      child: TextField(
+      child: TextFormField(
         controller: controller,
         obscureText: obscure,
         // enabled: false,
         style: const TextStyle(color: Colors.black),
+        validator: (value) {
+          if (value == null || value.isEmpty) {
+            return 'Please enter a valid value';
+          }
+          return null;
+        },
+
         decoration: InputDecoration(
             fillColor: const Color.fromRGBO(238, 238, 238, 1),
             filled: true,
@@ -174,6 +198,50 @@ class _LoginState extends State<Login> {
             // suffixText: "hbchjdbch",
 
             suffixStyle: const TextStyle(color: Colors.indigo)),
+      ),
+    );
+  }
+
+  Future<void> signUp(
+    String email,
+    String password,
+    String name,
+    String number,
+    String lastnames,
+    String confirmpassword,
+  ) async {
+    try {
+      Map<String, String> requestBody = {
+        'email': emailtext.text,
+        'password': passwords.text,
+        'name': firstname.text,
+        'number': mobilee.text,
+        'lastname': Lastname.text,
+        'confirmpassword': confirmpass.text
+      };
+
+      http.Response response = await http.post(
+        Uri.parse('https://workshala-7v7q.onrender.com/register'),
+        headers: {'Content-Type': 'application/json'},
+        body: jsonEncode(requestBody),
+      );
+
+      if (response.statusCode == 201) {
+        showSnackBar('Account created successfully');
+      } else {
+        showSnackBar('Failed with status code: ${response.statusCode}');
+        showSnackBar('Response body: ${response.body}');
+      }
+    } catch (e) {
+      showSnackBar('Error: $e');
+    }
+  }
+
+  void showSnackBar(String message) {
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        content: Text(message),
+        duration: const Duration(seconds: 3),
       ),
     );
   }

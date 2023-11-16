@@ -1,7 +1,7 @@
  import 'package:flutter/material.dart';
 
 Widget buildtextfiled(BuildContext context, TextEditingController controller,
-      String hinttext, bool obscure, Null Function() param4) {
+      String hinttext, bool obscure, Null Function() param4,String? Function(String?) validator) {
     return Container(
       decoration: BoxDecoration(
         boxShadow: [
@@ -14,7 +14,7 @@ Widget buildtextfiled(BuildContext context, TextEditingController controller,
         ],
       ),
       margin: const EdgeInsets.all(15),
-      child: TextField(
+      child: TextFormField(
         controller: controller,
         obscureText: obscure,
         // enabled: false,
@@ -37,6 +37,7 @@ Widget buildtextfiled(BuildContext context, TextEditingController controller,
             // suffixText: "hbchjdbch",
 
             suffixStyle: const TextStyle(color: Colors.indigo)),
+             validator: validator,
       ),
     );
   }

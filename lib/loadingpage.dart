@@ -1,8 +1,10 @@
 // import 'dart:html';
 
 import 'package:flutter/material.dart';
-import 'package:workshala/jobdis.dart';
-import 'package:workshala/utilities.dart';
+import 'package:intershipapp/jobdis.dart';
+import 'package:intershipapp/utilities.dart';
+// import 'package:workshala/jobdis.dart';
+// import 'package:workshala/utilities.dart';
 
 class loadingPage extends StatefulWidget {
   const loadingPage({super.key});

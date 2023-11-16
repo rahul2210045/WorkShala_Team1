@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:workshala/loadingpage.dart';
-import 'package:workshala/utilities.dart';
-import 'package:workshala/jobdis.dart';
-import 'package:workshala/loadingpage.dart';
+import 'package:intershipapp/jobdis.dart';
+import 'package:intershipapp/utilities.dart';
+// import 'package:workshala/loadingpage.dart';
+// import 'package:workshala/utilities.dart';
+// import 'package:workshala/jobdis.dart';
+// import 'package:workshala/loadingpage.dart';
 
 class uploadedPage extends StatefulWidget {
   const uploadedPage({super.key});
@@ -29,7 +31,7 @@ class uploadedScreen extends StatelessWidget {
     return Center(
         child: Column(mainAxisAlignment: MainAxisAlignment.start, children: [
       const SizedBox(
-        height: 55,
+        height: 45,
       ),
       Container(
           child: Row(
@@ -114,8 +116,8 @@ class uploadedScreen extends StatelessWidget {
               children: [
             const SizedBox(height: 33),
             resumeBox(
-                'assets/pdf.png', 60.0, 180.0, 'Rohit khatri.pdf', '540kb'),
-            const SizedBox(height: 25),
+                'assets/pdf.png', 60.0, 200.0, 'Rohit khatri.pdf', '540kb'),
+            const SizedBox(height: 15),
             const Text('         Successful',
                 style: TextStyle(
                   color: Color(0xFF0093FF),
@@ -154,7 +156,7 @@ class uploadedScreen extends StatelessWidget {
       //         ),
       //       ),
       //     ])),
-      const SizedBox(height: 75),
+      const SizedBox(height: 25),
       // applyButtonBox('Cancel', 171.0, 50.0, null, null),
       requiredBox(280.0, 45.0, '                           Discover more'),
     ]));

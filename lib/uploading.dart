@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:workshala/loadingpage.dart';
-import 'package:workshala/utilities.dart';
-import 'package:workshala/jobdis.dart';
-import 'package:workshala/loadingpage.dart';
+import 'package:intershipapp/jobdis.dart';
+import 'package:intershipapp/uploadScreen.dart';
+import 'package:intershipapp/uploaded.dart';
+import 'package:intershipapp/utilities.dart';
+// import 'package:workshala/loadingpage.dart';
+// import 'package:workshala/utilities.dart';
+// import 'package:workshala/jobdis.dart';
+// import 'package:workshala/loadingpage.dart';
 
 class uploadingPage extends StatefulWidget {
   const uploadingPage({super.key});
@@ -106,7 +110,7 @@ class uploadingScreen extends StatelessWidget {
       SizedBox(height: 33),
       Container(
           width: 324,
-          height: 162,
+          height: 102,
           decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(17),
               border: Border.all(
@@ -125,8 +129,8 @@ class uploadingScreen extends StatelessWidget {
               ),
             ),
           ])),
-      SizedBox(height: 75),
-      applyButtonBox('Cancel', 171.0, 50.0, null, null),
+      SizedBox(height: 55),
+      applyButtonBox('Cancel', 171.0, 50.0, context, uploadedPage()),
     ]));
   }
 }

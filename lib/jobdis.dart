@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:workshala/loadingpage.dart';
-import 'package:workshala/utilities.dart';
+import 'package:intershipapp/loadingpage.dart';
+import 'package:intershipapp/uploadScreen.dart';
+import 'package:intershipapp/utilities.dart';
+// import 'package:workshala/loadingpage.dart';
+// import 'package:workshala/utilities.dart';
 
 class jobDisPage extends StatefulWidget {
   const jobDisPage({super.key});
@@ -29,7 +32,7 @@ class jobDisDetail extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.start,
       children: [
         const SizedBox(
-          height: 55,
+          height: 15,
         ),
         Container(
             child: Row(
@@ -93,7 +96,7 @@ class jobDisDetail extends StatelessWidget {
                 child: Column(children: [
                   jobDisBoxUi(
                       'assets/google1.png',
-                      332.0,
+                      320.0,
                       320.0,
                       'UI/UX Designer',
                       'Google LLC',
@@ -126,32 +129,31 @@ class jobDisDetail extends StatelessWidget {
                   // ),
                 ]))),
         Container(
-            child: Padding(
-                padding: const EdgeInsets.fromLTRB(12, 14, 13, 0),
-                child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: const [
-                      // Container(
-                      // mainAxisAlignment :MainAxisAlignment.center,
-                      Text(
-                        "Job Description      ",
-                        style: TextStyle(
-                            fontSize: 16,
-                            fontWeight: FontWeight.w500,
-                            fontFamily: 'Poppins',
-                            color: Color(0xFF0A66C2)),
-                      ),
-                      Text(
-                        "Minimum Qualification",
-                        style: TextStyle(
-                            fontSize: 16,
-                            fontWeight: FontWeight.w500,
-                            fontFamily: 'Poppins',
-                            color: Colors.black),
-                      ),
-                    ]))),
+            child: const Padding(
+                padding: EdgeInsets.fromLTRB(12, 14, 13, 0),
+                child:
+                    Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+                  // Container(
+                  // mainAxisAlignment :MainAxisAlignment.center,
+                  Text(
+                    "Job Description      ",
+                    style: TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.w500,
+                        fontFamily: 'Poppins',
+                        color: Color(0xFF0A66C2)),
+                  ),
+                  Text(
+                    "Minimum Qualification",
+                    style: TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.w500,
+                        fontFamily: 'Poppins',
+                        color: Colors.black),
+                  ),
+                ]))),
         Container(
-            height: 240,
+            height: 210,
             child: Padding(
                 padding: const EdgeInsets.fromLTRB(12, 14, 13, 0),
                 child: SingleChildScrollView(
@@ -188,7 +190,7 @@ class jobDisDetail extends StatelessWidget {
                       //           shape: OvalBorder(),
                       //         ),
                       //       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 7,
                       ),
 
@@ -196,7 +198,7 @@ class jobDisDetail extends StatelessWidget {
                           child: Row(children: [
                         // Padding(padding: const EdgeInsets.all(8),
                         // color: Colors.teal[200],
-                        SizedBox(
+                        const SizedBox(
                           height: 10,
                         ),
                         Container(
@@ -207,7 +209,7 @@ class jobDisDetail extends StatelessWidget {
                             shape: OvalBorder(),
                           ),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           width: 8,
                         ),
                         const Text(
@@ -221,14 +223,14 @@ class jobDisDetail extends StatelessWidget {
                           ),
                         ),
                       ])),
-                      SizedBox(
+                      const SizedBox(
                         height: 4,
                       ),
                       Container(
                           child: Row(children: [
                         // Padding(padding: const EdgeInsets.all(8),
                         // color: Colors.teal[200],
-                        SizedBox(
+                        const SizedBox(
                           height: 20,
                         ),
                         Container(
@@ -239,7 +241,7 @@ class jobDisDetail extends StatelessWidget {
                             shape: OvalBorder(),
                           ),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           width: 8,
                         ),
                         const Text(
@@ -253,14 +255,14 @@ class jobDisDetail extends StatelessWidget {
                           ),
                         ),
                       ])),
-                      SizedBox(
+                      const SizedBox(
                         height: 4,
                       ),
                       Container(
                           child: Row(children: [
                         // Padding(padding: const EdgeInsets.all(8),
                         // color: Colors.teal[200],
-                        SizedBox(
+                        const SizedBox(
                           height: 10,
                         ),
                         Container(
@@ -271,7 +273,7 @@ class jobDisDetail extends StatelessWidget {
                             shape: OvalBorder(),
                           ),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           width: 8,
                         ),
                         const Text(
@@ -285,14 +287,14 @@ class jobDisDetail extends StatelessWidget {
                           ),
                         ),
                       ])),
-                      SizedBox(
+                      const SizedBox(
                         height: 4,
                       ),
                       Container(
                           child: Row(children: [
                         // Padding(padding: const EdgeInsets.all(8),
                         // color: Colors.teal[200],
-                        SizedBox(
+                        const SizedBox(
                           height: 10,
                         ),
                         Container(
@@ -303,7 +305,7 @@ class jobDisDetail extends StatelessWidget {
                             shape: OvalBorder(),
                           ),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           width: 8,
                         ),
                         const Text(
@@ -317,7 +319,7 @@ class jobDisDetail extends StatelessWidget {
                           ),
                         ),
                       ])),
-                      SizedBox(
+                      const SizedBox(
                         height: 10,
                       ),
 
@@ -346,7 +348,7 @@ class jobDisDetail extends StatelessWidget {
                       //           shape: OvalBorder(),
                       //         ),
                       //       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 7,
                       ),
 
@@ -354,7 +356,7 @@ class jobDisDetail extends StatelessWidget {
                           child: Row(children: [
                         // Padding(padding: const EdgeInsets.all(8),
                         // color: Colors.teal[200],
-                        SizedBox(
+                        const SizedBox(
                           height: 10,
                         ),
                         Container(
@@ -365,7 +367,7 @@ class jobDisDetail extends StatelessWidget {
                             shape: OvalBorder(),
                           ),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           width: 8,
                         ),
                         const Text(
@@ -379,14 +381,14 @@ class jobDisDetail extends StatelessWidget {
                           ),
                         ),
                       ])),
-                      SizedBox(
+                      const SizedBox(
                         height: 4,
                       ),
                       Container(
                           child: Row(children: [
                         // Padding(padding: const EdgeInsets.all(8),
                         // color: Colors.teal[200],
-                        SizedBox(
+                        const SizedBox(
                           height: 20,
                         ),
                         Container(
@@ -397,7 +399,7 @@ class jobDisDetail extends StatelessWidget {
                             shape: OvalBorder(),
                           ),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           width: 8,
                         ),
                         const Text(
@@ -411,14 +413,14 @@ class jobDisDetail extends StatelessWidget {
                           ),
                         ),
                       ])),
-                      SizedBox(
+                      const SizedBox(
                         height: 4,
                       ),
                       Container(
                           child: Row(children: [
                         // Padding(padding: const EdgeInsets.all(8),
                         // color: Colors.teal[200],
-                        SizedBox(
+                        const SizedBox(
                           height: 10,
                         ),
                         Container(
@@ -429,7 +431,7 @@ class jobDisDetail extends StatelessWidget {
                             shape: OvalBorder(),
                           ),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           width: 8,
                         ),
                         const Text(
@@ -443,14 +445,14 @@ class jobDisDetail extends StatelessWidget {
                           ),
                         ),
                       ])),
-                      SizedBox(
+                      const SizedBox(
                         height: 4,
                       ),
                       Container(
                           child: Row(children: [
                         // Padding(padding: const EdgeInsets.all(8),
                         // color: Colors.teal[200],
-                        SizedBox(
+                        const SizedBox(
                           height: 10,
                         ),
                         Container(
@@ -461,7 +463,7 @@ class jobDisDetail extends StatelessWidget {
                             shape: OvalBorder(),
                           ),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           width: 8,
                         ),
                         const Text(
@@ -475,7 +477,7 @@ class jobDisDetail extends StatelessWidget {
                           ),
                         ),
                       ])),
-                      SizedBox(
+                      const SizedBox(
                         height: 10,
                       ),
                       const Text(
@@ -489,7 +491,7 @@ class jobDisDetail extends StatelessWidget {
                           // height: 0,
                         ),
                       ),
-                      SizedBox(height: 10),
+                      const SizedBox(height: 10),
                       const Text(
                         'Required Skills:',
                         // textAlign: TextAlign.center,
@@ -523,7 +525,7 @@ class jobDisDetail extends StatelessWidget {
                                             173.16, 31.0, 'Creative Thinking'),
                                         requiredBox(97.16, 31.0, 'Figma'),
                                       ])))),
-                      SizedBox(height: 20),
+                      const SizedBox(height: 20),
                       const Text(
                         'About:',
                         // textAlign: TextAlign.center,
@@ -535,7 +537,7 @@ class jobDisDetail extends StatelessWidget {
                           // height: 0,
                         ),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 4,
                       ),
                       const Text(
@@ -561,7 +563,7 @@ class jobDisDetail extends StatelessWidget {
                       //       // ),
                       //     ])
                     ])))),
-        applyButtonBox('Apply', 320.0, 45.0, jobDisDetail(), loadingPage()),
+        applyButtonBox('Apply', 320.0, 45.0, context, uploadPage()),
       ],
     ));
   }

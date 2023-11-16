@@ -1,6 +1,10 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
 import 'package:intershipapp/screen/Home.dart';
 import 'package:intershipapp/screen/Login.dart';
+import 'package:intershipapp/screen/MainScreen.dart';
 import 'package:intershipapp/widgets/CustomTextButton.dart';
 import 'package:intershipapp/widgets/CustomTextField.dart';
 import 'package:intershipapp/widgets/Customtext.dart';
@@ -15,19 +19,23 @@ class Register extends StatefulWidget {
 
 class _RegisterState extends State<Register> {
   var emailtext = TextEditingController();
-  var password = TextEditingController();
+  var passwords = TextEditingController();
   bool rememberme = false;
+  final _formKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: ListView(
-        children: [
-          buildheading(context),
-          _inputField(context),
-          buildelevatedbutton(BuildContext),
-          buildtextbutton(BuildContext)
-        ],
+      body: Form(
+        key: _formKey,
+        child: ListView(
+          children: [
+            buildheading(context),
+            _inputField(context),
+            buildelevatedbutton(context),
+            buildtextbutton(BuildContext)
+          ],
+        ),
       ),
     );
   }
@@ -38,7 +46,7 @@ class _RegisterState extends State<Register> {
       children: [
         // Padding(padding: EdgeInsets.only(top: 100)),
         Image.asset("assests/images/Group.png"),
-        Row(
+        const Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             CustomText(
@@ -57,7 +65,7 @@ class _RegisterState extends State<Register> {
             ),
           ],
         ),
-        Row(
+        const Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             CustomText(
@@ -78,11 +86,21 @@ class _RegisterState extends State<Register> {
       // crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
         const Padding(padding: EdgeInsets.only(top: 50)),
-        buildtextfiled(context, emailtext, "Email", false, () {}),
-        buildtextfiled(context, password, "Password", true, () {
+        buildtextfiled(context, emailtext, "Email", false, () {}, (value) {
+          if (value!.isEmpty) {
+            return 'Please enter your email';
+          }
+          return null;
+        }),
+        buildtextfiled(context, passwords, "Password", true, () {
           setState(() {
             rememberme = true;
           });
+        }, (value) {
+          if (value!.isEmpty) {
+            return 'Please enter your email';
+          }
+          return null;
         }),
 
         Row(
@@ -108,14 +126,48 @@ class _RegisterState extends State<Register> {
           width: 400,
           margin: const EdgeInsets.all(15),
           child: ElevatedButton(
-            onPressed: () {
-              String uname = emailtext.text.toString();
-              String passwrd = password.text.toString();
+            onPressed: () async {
+              if (_formKey.currentState?.validate() ?? false) {
+                String email = emailtext.text;
+                String password = passwords.text;
 
-              // print(uname);
-              Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => const Login()));
-              Navigator.of(context).pop();
+                try {
+                  // Make the HTTP request to the login API endpoint
+                  http.Response response = await http.post(
+                    Uri.parse('https://workshala-7v7q.onrender.com/login'),
+                    headers: {'Content-Type': 'application/json'},
+                    body: jsonEncode({'email': email, 'password': password}),
+                  );
+
+                  if (response.statusCode == 200) {
+                    // Login successful
+                    print("login successfull");
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => MainScreen()));
+                  } else {
+                    // Login failed, show error message
+                    print(
+                        'Login failed with status code: ${response.statusCode}');
+                    print('Response body: ${response.body}');
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      SnackBar(
+                        content: Text(
+                            'Login failed. Please check your credentials.'),
+                        duration: const Duration(seconds: 3),
+                      ),
+                    );
+                  }
+                } catch (e) {
+                  // Handle other exceptions
+                  print('Error during login: $e');
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(
+                      content: Text('An error occurred. Please try again.'),
+                      duration: const Duration(seconds: 3),
+                    ),
+                  );
+                }
+              }
             },
             style: ElevatedButton.styleFrom(
               // shape: const StadiumBorder(),
@@ -137,7 +189,7 @@ class _RegisterState extends State<Register> {
           children: [
             TextButton(
                 onPressed: () {},
-                child: CustomText(
+                child: const CustomText(
                   text: "Forget Password ?",
                   fontStyle: null,
                   color: Colors.purple,
@@ -145,7 +197,7 @@ class _RegisterState extends State<Register> {
                 ))
           ],
         ),
-        Row(
+        const Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             CustomText(
@@ -171,9 +223,54 @@ class _RegisterState extends State<Register> {
     );
   }
 
-  
+  Widget buildtextfiled(
+      BuildContext context,
+      TextEditingController controller,
+      String hinttext,
+      bool obscure,
+      Null Function() param4,
+      String? Function(String?) validator) {
+    return Container(
+      decoration: BoxDecoration(
+        boxShadow: [
+          BoxShadow(
+            color: Color.fromRGBO(148, 108, 195, 0.25).withOpacity(0.2),
+            spreadRadius: 2,
+            blurRadius: 5,
+            offset: const Offset(0, 3),
+          ),
+        ],
+      ),
+      margin: const EdgeInsets.all(15),
+      child: TextFormField(
+        controller: controller,
+        obscureText: obscure,
+        // enabled: false,
+        style: const TextStyle(color: Colors.black),
+        decoration: InputDecoration(
+            fillColor: const Color.fromRGBO(238, 238, 238, 1),
+            filled: true,
+            hintText: hinttext,
+            hintStyle: const TextStyle(color: Colors.grey),
+            focusedBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(10),
+                borderSide: BorderSide.none
+                // borderSide: const BorderSide(color: Colors.blue),
+                ),
+            enabledBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(10),
+                borderSide: BorderSide.none),
+            // disabledBorder: OutlineInputBorder()
 
-  Widget buildelevatedbutton(BuildContext) {
+            // suffixText: "hbchjdbch",
+
+            suffixStyle: const TextStyle(color: Colors.indigo)),
+        validator: validator,
+      ),
+    );
+  }
+
+  Widget buildelevatedbutton(BuildContext context) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
@@ -194,7 +291,7 @@ class _RegisterState extends State<Register> {
           // ),
           child: IconButton(
             onPressed: () {},
-            icon: Icon(FontAwesomeIcons.google),
+            icon: const Icon(FontAwesomeIcons.google),
             color: Colors.red,
           ),
         ),
@@ -203,7 +300,7 @@ class _RegisterState extends State<Register> {
           // margin: const EdgeInsets.all(15),
           child: IconButton(
             onPressed: () {},
-            icon: Icon(FontAwesomeIcons.facebook),
+            icon: const Icon(FontAwesomeIcons.facebook),
             color: Colors.blue,
           ),
         ),
@@ -215,14 +312,17 @@ class _RegisterState extends State<Register> {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        CustomText(
+        const CustomText(
           text: "Don’t have an account?",
           fontStyle: null,
           color: Colors.grey,
           fontSize: 18,
         ),
         CustomTextButton(
-          onPressed: () {},
+          onPressed: () {
+            Navigator.push(
+                context, MaterialPageRoute(builder: (context) => Login()));
+          },
           buttonText: "Sign up",
           buttonColor: Colors.white,
           textColor: Colors.purple,

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:get/get.dart';
+import 'package:intershipapp/jobdis.dart';
 import 'package:intershipapp/widgets/Buildinkwell.dart';
 import 'package:intershipapp/widgets/jobcontainer.dart';
 
@@ -125,7 +127,12 @@ class _HomeState extends State<Home> {
                   ),
                   Spacer(),
                   TextButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => jobDisDetail()));
+                      },
                       child: Text(
                         "See All",
                         style: TextStyle(color: Colors.blue),

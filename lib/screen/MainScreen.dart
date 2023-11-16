@@ -133,9 +133,12 @@
 
 import 'package:flutter/material.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
+import 'package:intershipapp/jobdis.dart';
 import 'package:intershipapp/screen/Home.dart';
 import 'package:intershipapp/screen/Login.dart';
 import 'package:intershipapp/screen/Register.dart';
+import 'package:intershipapp/uploadScreen.dart';
+import 'package:intershipapp/utilities.dart';
 
 class MainScreen extends StatefulWidget {
   @override
@@ -164,8 +167,8 @@ class _MainScreenState extends State<MainScreen> {
         },
         children: <Widget>[
           Home(),
-          Login(),
-          Register(),
+          jobDisDetail(),
+          uploadScreen()
           // MORE PAGES WILL ADDED HERE
         ],
       ),

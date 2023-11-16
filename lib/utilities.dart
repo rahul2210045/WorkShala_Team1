@@ -72,46 +72,43 @@ Widget nextButtonBox(text, width, height, context, page) {
             ),
           ))));
 }
+// import 'package:flutter/material.dart';
 
-Widget applyButtonBox(text, width, height, context, page) {
+Widget applyButtonBox(String text, double width, double height, BuildContext context, Widget page) {
   return GestureDetector(
-      onTap: () {
-        Navigator.push(context, MaterialPageRoute(builder: (context) => page));
-      },
-      child: Container(
-          decoration: ShapeDecoration(
-              color: Color(0xFF946CC3),
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(16),
-              )),
-          // boxShadow: [
-          //   // BoxShadow(
-          //   //   color: Color(0xFF946CC3),
-          //   //   // blurRadius: 15.0,
-          //   //   // offset: Offset(0, 30),
-          //   // ),
-          //   //  color: color,
-          //   // borderRadius: BorderRadius.circular(20),
-          // ]),
-          height: height,
-          width: width,
-          child: Center(
-              child: Text(
-            text,
-            style: const TextStyle(
-              fontWeight: FontWeight.w600,
-              fontSize: 16,
-              fontFamily: 'Poppins',
-              color: Color.fromARGB(255, 255, 255, 255),
-              // child: Image.asset(
-              //   image,
-              //   scale: 0.9,
-              // ),
-
-              // ),)),
-            ),
-          ))));
+    onTap: () {
+      Navigator.push(context, MaterialPageRoute(builder: (context) => page));
+    },
+    child: Container(
+      decoration: BoxDecoration(
+        color: const Color(0xFF946CC3),
+        borderRadius: BorderRadius.circular(16),
+        // You can add boxShadow here if needed
+        // boxShadow: [
+        //   BoxShadow(
+        //     color: Color(0xFF946CC3),
+        //     blurRadius: 15.0,
+        //     offset: Offset(0, 30),
+        //   ),
+        // ],
+      ),
+      height: height,
+      width: width,
+      child: Center(
+        child: Text(
+          text,
+          style: const TextStyle(
+            fontWeight: FontWeight.w600,
+            fontSize: 16,
+            fontFamily: 'Poppins',
+            color: Color.fromARGB(255, 255, 255, 255),
+          ),
+        ),
+      ),
+    ),
+  );
 }
+
 
 Widget returnButton1(image, color, height, width, context, page) {
   return GestureDetector(
@@ -815,7 +812,7 @@ Widget jobDisBoxUi(
                           ],
                         ))),
                 Padding(
-                  padding: const EdgeInsets.fromLTRB(5, 25, 0, 0),
+                  padding: const EdgeInsets.fromLTRB(15, 15, 0, 0),
                   child: Text(
                     text7,
                     style: const TextStyle(

@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:workshala/loadingpage.dart';
-import 'package:workshala/utilities.dart';
-import 'package:workshala/jobdis.dart';
+import 'package:intershipapp/jobdis.dart';
+import 'package:intershipapp/uploading.dart';
+import 'package:intershipapp/utilities.dart';
+// import 'package:workshala/loadingpage.dart';
+// import 'package:workshala/utilities.dart';
+// import 'package:workshala/jobdis.dart';
 
 class uploadPage extends StatefulWidget {
   const uploadPage({super.key});
@@ -102,11 +105,11 @@ class uploadScreen extends StatelessWidget {
                     'Onsite',
                     'Posted 10 Days ago, ends in 25 Dec.'),
               ]))),
-      SizedBox(height: 55),
-      returnButton(
-          'assets/upload.png', Color(0xFF8D8D8D), 65.0, 145.0, null, null),
-      SizedBox(height: 8),
-      Text('Upload Resume/CV',
+      // const SizedBox(height: 55),
+      returnButton('assets/upload.png', const Color(0xFF8D8D8D), 65.0, 145.0,
+          null, null),
+      // const SizedBox(height: 8),
+      const Text('Upload Resume/CV',
           style: TextStyle(
             color: Color(0xFF8D8D8D),
             fontSize: 12,
@@ -114,8 +117,8 @@ class uploadScreen extends StatelessWidget {
             fontWeight: FontWeight.w400,
             height: 0.09,
           )),
-      SizedBox(height: 138),
-      applyButtonBox('Apply', 171.0, 50.0, null, null),
+      const SizedBox(height: 118),
+      applyButtonBox('Apply', 171.0, 50.0, context, uploadingPage()),
     ]));
   }
 }
