@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:intershipapp/screen/Home.dart';
 import 'package:intershipapp/screen/Login.dart';
 import 'package:intershipapp/widgets/CustomTextButton.dart';
+import 'package:intershipapp/widgets/CustomTextField.dart';
 import 'package:intershipapp/widgets/Customtext.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
@@ -32,10 +33,11 @@ class _RegisterState extends State<Register> {
   }
 
   Widget buildheading(BuildContext context) {
-    return const Column(
+    return Column(
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        Padding(padding: EdgeInsets.only(top: 100)),
+        // Padding(padding: EdgeInsets.only(top: 100)),
+        Image.asset("assests/images/Group.png"),
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
@@ -131,7 +133,7 @@ class _RegisterState extends State<Register> {
           ),
         ),
         Row(
-          mainAxisAlignment: MainAxisAlignment.end,
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
             TextButton(
                 onPressed: () {},
@@ -169,79 +171,40 @@ class _RegisterState extends State<Register> {
     );
   }
 
-  Widget buildtextfiled(BuildContext context, TextEditingController controller,
-      String hinttext, bool obscure, VoidCallback onChanged) {
-    return Container(
-      decoration: BoxDecoration(
-        boxShadow: [
-          BoxShadow(
-            color: Colors.grey.withOpacity(0.5),
-            spreadRadius: 2,
-            blurRadius: 5,
-            offset: const Offset(0, 3),
-          ),
-        ],
-      ),
-      margin: const EdgeInsets.all(15),
-      child: TextField(
-        onChanged: (_) {
-          onChanged();
-        },
-        controller: controller,
-        obscureText: obscure,
-        // enabled: false,
-        style: const TextStyle(color: Colors.black),
-        decoration: InputDecoration(
-            fillColor: const Color.fromRGBO(196, 196, 196, 0.2),
-            filled: true,
-            hintText: hinttext,
-            hintStyle: const TextStyle(color: Colors.grey),
-            focusedBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(10),
-              // borderSide: const BorderSide(color: Colors.blue),
-            ),
-            enabledBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(10),
-                borderSide: const BorderSide(color: Colors.white)),
-            suffixStyle: const TextStyle(color: Colors.indigo)),
-      ),
-    );
-  }
+  
 
   Widget buildelevatedbutton(BuildContext) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Container(
-          width: 150,
-          margin: const EdgeInsets.all(15),
-          child: ElevatedButton.icon(
+          // width: 150,
+          // margin: consts EdgeInsets.all(15),
+          // child: ElevatedButton.icon(
+          //   onPressed: () {},
+          //   style: ElevatedButton.styleFrom(
+          //     backgroundColor: Color.fromRGBO(255, 255, 255, 1),
+          //     padding: const EdgeInsets.symmetric(vertical: 16),
+          //   ),
+          //   icon: const FaIcon(FontAwesomeIcons.google, color: Colors.red),
+          //   label: const Text(
+          //     ' Google',
+          //     style: TextStyle(color: Colors.black),
+          //   ),
+          // ),
+          child: IconButton(
             onPressed: () {},
-            style: ElevatedButton.styleFrom(
-              backgroundColor: Color.fromRGBO(255, 255, 255, 1),
-              padding: const EdgeInsets.symmetric(vertical: 16),
-            ),
-            icon: const FaIcon(FontAwesomeIcons.google, color: Colors.red),
-            label: const Text(
-              ' Google',
-              style: TextStyle(color: Colors.black),
-            ),
+            icon: Icon(FontAwesomeIcons.google),
+            color: Colors.red,
           ),
         ),
         Container(
-          width: 150,
-          margin: const EdgeInsets.all(15),
-          child: ElevatedButton.icon(
+          // width: 150,
+          // margin: const EdgeInsets.all(15),
+          child: IconButton(
             onPressed: () {},
-            style: ElevatedButton.styleFrom(
-              backgroundColor: Color.fromRGBO(255, 255, 255, 1),
-              padding: const EdgeInsets.symmetric(vertical: 16),
-            ),
-            icon: const FaIcon(FontAwesomeIcons.facebook, color: Colors.blue),
-            label: const Text(
-              ' Facebook',
-              style: TextStyle(color: Colors.black),
-            ),
+            icon: Icon(FontAwesomeIcons.facebook),
+            color: Colors.blue,
           ),
         ),
       ],

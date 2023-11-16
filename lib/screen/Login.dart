@@ -26,10 +26,11 @@ class _LoginState extends State<Login> {
   }
 
   Widget buildheading(BuildContext context) {
-    return const Column(
+    return Column(
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        Padding(padding: EdgeInsets.only(top: 100)),
+        // Padding(padding: EdgeInsets.only(top: 100)),
+        Image.asset("assests/images/Group.png"),
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
@@ -70,6 +71,9 @@ class _LoginState extends State<Login> {
       // crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
         const Padding(padding: EdgeInsets.only(top: 50)),
+        // CustomTextFormField(),
+        // CustomTextFormField(),
+
         buildtextfiled(context, firstname, "First Name", false),
         buildtextfiled(context, Lastname, "Last name", false),
         buildtextfiled(context, emailtext, "Email", false),
@@ -108,11 +112,24 @@ class _LoginState extends State<Login> {
         ),
         // Padding(padding: EdgeInsets.only(bottom: 20)),
         Container(
-          child: const CustomText(
-            text: "If you already registered Log In",
-            fontStyle: null,
-            color: Colors.grey,
-            fontSize: 15,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              const CustomText(
+                text: "If you already registered",
+                fontStyle: null,
+                color: Colors.grey,
+                fontSize: 15,
+              ),
+              TextButton(
+                  onPressed: () {},
+                  child: CustomText(
+                    text: "Log in",
+                    fontStyle: null,
+                    color: Colors.purple,
+                    fontSize: 15,
+                  ))
+            ],
           ),
         ),
         const Padding(padding: EdgeInsets.only(bottom: 20)),
@@ -126,7 +143,7 @@ class _LoginState extends State<Login> {
       decoration: BoxDecoration(
         boxShadow: [
           BoxShadow(
-            color: Colors.grey.withOpacity(0.5),
+            color: Color.fromRGBO(148, 108, 195, 0.25).withOpacity(0.2),
             spreadRadius: 2,
             blurRadius: 5,
             offset: const Offset(0, 3),
@@ -140,19 +157,20 @@ class _LoginState extends State<Login> {
         // enabled: false,
         style: const TextStyle(color: Colors.black),
         decoration: InputDecoration(
-            fillColor: const Color.fromRGBO(196, 196, 196, 0.2),
+            fillColor: const Color.fromRGBO(238, 238, 238, 1),
             filled: true,
             hintText: hinttext,
             hintStyle: const TextStyle(color: Colors.grey),
             focusedBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(10),
-              // borderSide: const BorderSide(color: Colors.blue),
-            ),
+                borderRadius: BorderRadius.circular(10),
+                borderSide: BorderSide.none
+                // borderSide: const BorderSide(color: Colors.blue),
+                ),
             enabledBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(10),
-                borderSide: const BorderSide(color: Colors.white))
+                borderSide: BorderSide.none),
             // disabledBorder: OutlineInputBorder()
-            ,
+
             // suffixText: "hbchjdbch",
 
             suffixStyle: const TextStyle(color: Colors.indigo)),

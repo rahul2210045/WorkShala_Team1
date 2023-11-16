@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:intershipapp/widgets/Buildinkwell.dart';
 import 'package:intershipapp/widgets/jobcontainer.dart';
 
@@ -12,18 +13,20 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Profile'),
-      ),
       // backgroundColor: Color,
       body: Padding(
-        padding: const EdgeInsets.all(16.0),
+        padding: const EdgeInsets.all(10.0),
         child: SingleChildScrollView(
+          padding: EdgeInsets.only(top: 30),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
+
+            // Padding(padding: EdgeInsets.only(top: 30)),
+
             children: [
               Row(
                 children: [
+                  // Padding(padding: EdgeInsets.only(top: 30)),
                   Container(
                     width: 70,
                     height: 70,
@@ -136,22 +139,32 @@ class _HomeState extends State<Home> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   // crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
-                    // Padding(padding: EdgeInsets.all(9)),
+                    Padding(padding: EdgeInsets.all(9)),
                     BuildInkwll(
                       name: 'All',
                     ),
+                    Padding(padding: EdgeInsets.all(9)),
+
                     BuildInkwll(
                       name: 'Design',
                     ),
+                    Padding(padding: EdgeInsets.all(9)),
+
                     BuildInkwll(
                       name: 'Technology',
                     ),
+                    Padding(padding: EdgeInsets.all(9)),
+
                     BuildInkwll(
                       name: 'AirSpace',
                     ),
+                    Padding(padding: EdgeInsets.all(9)),
+
                     BuildInkwll(
                       name: 'Writing',
                     ),
+                    Padding(padding: EdgeInsets.all(9)),
+
                     // BuildInkwll(
                     //   name: 'All',
                     // ),
@@ -204,12 +217,12 @@ class _HomeState extends State<Home> {
     return Container(
       decoration: BoxDecoration(
         boxShadow: [
-          BoxShadow(
-            color: Colors.grey.withOpacity(0.5),
-            spreadRadius: 2,
-            blurRadius: 5,
-            offset: const Offset(0, 3),
-          ),
+          // BoxShadow(
+          //   color: Colors.grey.withOpacity(0.5),
+          //   spreadRadius: 2,
+          //   blurRadius: 5,
+          //   offset: const Offset(0, 3),
+          // ),
         ],
       ),
       margin: const EdgeInsets.all(15),
@@ -221,8 +234,11 @@ class _HomeState extends State<Home> {
         obscureText: obscure,
         // enabled: false,
         style: const TextStyle(color: Colors.black),
+
         decoration: InputDecoration(
-            fillColor: const Color.fromRGBO(196, 196, 196, 0.2),
+            prefixIcon: Icon(Icons.search),
+            suffixIcon: Icon(Icons.keyboard_option_key_sharp),
+            fillColor: const Color.fromRGBO(148, 108, 195, 0.1),
             filled: true,
             hintText: hinttext,
             hintStyle: const TextStyle(color: Colors.grey),
@@ -232,7 +248,7 @@ class _HomeState extends State<Home> {
             ),
             enabledBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(10),
-                borderSide: const BorderSide(color: Colors.white)),
+                borderSide: BorderSide.none),
             suffixStyle: const TextStyle(color: Colors.indigo)),
       ),
     );
