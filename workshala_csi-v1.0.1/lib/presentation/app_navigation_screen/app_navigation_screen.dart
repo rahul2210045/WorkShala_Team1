@@ -29,12 +29,6 @@ class AppNavigationScreen extends StatelessWidget {
                       children: [
                         _buildScreenTitle(
                           context,
-                          screenTitle: "HomePage - Container",
-                          onTapScreenTitle: () => onTapScreenTitle(
-                              context, AppRoutes.homepageContainerScreen),
-                        ),
-                        _buildScreenTitle(
-                          context,
                           screenTitle: "forgot password",
                           onTapScreenTitle: () => onTapScreenTitle(
                               context, AppRoutes.forgotPasswordScreen),
@@ -71,54 +65,9 @@ class AppNavigationScreen extends StatelessWidget {
                         ),
                         _buildScreenTitle(
                           context,
-                          screenTitle: "Categories",
-                          onTapScreenTitle: () => onTapScreenTitle(
-                              context, AppRoutes.categoriesScreen),
-                        ),
-                        _buildScreenTitle(
-                          context,
-                          screenTitle: "UPLOADING CV",
-                          onTapScreenTitle: () => onTapScreenTitle(
-                              context, AppRoutes.uploadingCvScreen),
-                        ),
-                        _buildScreenTitle(
-                          context,
-                          screenTitle: "UPLOADED CV",
-                          onTapScreenTitle: () => onTapScreenTitle(
-                              context, AppRoutes.uploadedCvScreen),
-                        ),
-                        _buildScreenTitle(
-                          context,
-                          screenTitle: "Android Large - One",
-                          onTapScreenTitle: () => onTapScreenTitle(
-                              context, AppRoutes.androidLargeOneScreen),
-                        ),
-                        _buildScreenTitle(
-                          context,
                           screenTitle: "Profile",
                           onTapScreenTitle: () => onTapScreenTitle(
                               context, AppRoutes.profileScreen),
-                        ),
-                        _buildScreenTitle(
-                          context,
-                          screenTitle: "job discruption Google - Tab Container",
-                          onTapScreenTitle: () => onTapScreenTitle(context,
-                              AppRoutes.jobDiscruptionGoogleTabContainerScreen),
-                        ),
-                        _buildScreenTitle(
-                          context,
-                          screenTitle:
-                              "job discruption googlefull - Tab Container",
-                          onTapScreenTitle: () => onTapScreenTitle(
-                              context,
-                              AppRoutes
-                                  .jobDiscruptionGooglefullTabContainerScreen),
-                        ),
-                        _buildScreenTitle(
-                          context,
-                          screenTitle: "UPLOAD CV",
-                          onTapScreenTitle: () => onTapScreenTitle(
-                              context, AppRoutes.uploadCvScreen),
                         ),
                       ],
                     ),

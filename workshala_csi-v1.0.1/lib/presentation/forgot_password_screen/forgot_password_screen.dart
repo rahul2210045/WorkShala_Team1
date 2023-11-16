@@ -31,7 +31,7 @@ class ForgotPasswordScreen extends StatelessWidget {
                           width: 298.h,
                           margin: EdgeInsets.only(left: 10.h, right: 12.h),
                           child: Text(
-                              "Please enter your e-mail address. you will receive an  e-mail along with a link which can be  used to reset your password",
+                              "Please enter your e-mail address.",
                               maxLines: 2,
                               overflow: TextOverflow.ellipsis,
                               textAlign: TextAlign.center,

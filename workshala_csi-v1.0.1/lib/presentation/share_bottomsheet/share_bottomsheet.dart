@@ -100,6 +100,6 @@ class ShareBottomsheet extends StatelessWidget {
   /// Navigates to the jobDiscruptionGooglefullTabContainerScreen when the action is triggered.
   onTapView(BuildContext context) {
     Navigator.pushNamed(
-        context, AppRoutes.jobDiscruptionGooglefullTabContainerScreen);
+        context, AppRoutes.splashScreen);
   }
 }

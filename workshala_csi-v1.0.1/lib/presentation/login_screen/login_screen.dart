@@ -27,19 +27,19 @@ class LoginScreen extends StatelessWidget {
                 child: Container(
                     width: double.maxFinite,
                     padding:
-                        EdgeInsets.symmetric(horizontal: 14.h, vertical: 19.v),
+                        EdgeInsets.symmetric(horizontal: 19.h, vertical: 19.v),
                     child: Column(children: [
                       CustomImageView(
                           imagePath: ImageConstant.imgGroupOrange300,
                           height: 135.v,
                           width: 163.h,
                           alignment: Alignment.centerRight,
-                          margin: EdgeInsets.only(right: 75.h)),
+                          margin: EdgeInsets.only(right: 78.h)),
                       SizedBox(height: 20.v),
                       Align(
                           alignment: Alignment.centerRight,
                           child: Padding(
-                              padding: EdgeInsets.only(right: 28.h),
+                              padding: EdgeInsets.only(right: 42.h),
                               child: RichText(
                                   text: TextSpan(children: [
                                     TextSpan(
@@ -55,7 +55,7 @@ class LoginScreen extends StatelessWidget {
                       Align(
                           alignment: Alignment.centerRight,
                           child: Padding(
-                              padding: EdgeInsets.only(right: 36.h),
+                              padding: EdgeInsets.only(right: 51.h),
                               child: Text("Log in to your account",
                                   style: CustomTextStyles
                                       .titleLargeInterBlack900))),
@@ -187,7 +187,7 @@ class LoginScreen extends StatelessWidget {
 
   /// Navigates to the androidLargeOneScreen when the action is triggered.
   onTapLogIn(BuildContext context) {
-    Navigator.pushNamed(context, AppRoutes.androidLargeOneScreen);
+    Navigator.pushNamed(context, AppRoutes.profileScreen);
   }
 
   /// Navigates to the forgotPasswordScreen when the action is triggered.

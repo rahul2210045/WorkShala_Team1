@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter/scheduler.dart';
 import 'package:workshala_csi/theme/theme_helper.dart';
 import 'package:workshala_csi/routes/app_routes.dart';
 

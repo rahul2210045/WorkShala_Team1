@@ -161,9 +161,9 @@ class RegisterNowScreen extends StatelessWidget {
         });
   }
 
-  /// Navigates to the categoriesScreen when the action is triggered.
+  /// Navigates to the profileScreen when the action is triggered.
   onTapSignUp(BuildContext context) {
-    Navigator.pushNamed(context, AppRoutes.categoriesScreen);
+    Navigator.pushNamed(context, AppRoutes.profileScreen);
   }
 
   /// Navigates to the loginScreen when the action is triggered.

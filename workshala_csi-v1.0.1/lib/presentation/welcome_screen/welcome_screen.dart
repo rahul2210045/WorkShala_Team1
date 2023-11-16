@@ -14,7 +14,7 @@ class WelcomeScreen extends StatelessWidget {
                 width: double.maxFinite,
                 child: Column(children: [
                   _buildTwo(context),
-                  SizedBox(height: 65.v),
+                  SizedBox(height: 60.v),
                   Text("Welcome to", style: theme.textTheme.headlineLarge),
                   SizedBox(height: 22.v),
                   RichText(

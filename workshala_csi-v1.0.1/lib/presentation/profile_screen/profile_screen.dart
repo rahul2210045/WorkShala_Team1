@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:workshala_csi/core/app_export.dart';
-import 'package:workshala_csi/presentation/homepage_page/homepage_page.dart';
 import 'package:workshala_csi/widgets/app_bar/appbar_subtitle_one.dart';
 import 'package:workshala_csi/widgets/app_bar/appbar_subtitle_two.dart';
 import 'package:workshala_csi/widgets/app_bar/appbar_title.dart';
@@ -201,8 +200,6 @@ class ProfileScreen extends StatelessWidget {
     switch (type) {
       case BottomBarEnum.Home:
         return "/";
-      case BottomBarEnum.Courses:
-        return AppRoutes.homepagePage;
       case BottomBarEnum.Jobs:
         return "/";
       case BottomBarEnum.Profile:
@@ -211,17 +208,6 @@ class ProfileScreen extends StatelessWidget {
         return "/";
     }
   }
-
-  ///Handling page based on route
-  Widget getCurrentPage(String currentRoute) {
-    switch (currentRoute) {
-      case AppRoutes.homepagePage:
-        return HomepagePage();
-      default:
-        return DefaultWidget();
-    }
-  }
-
   /// Navigates to the settingsScreen when the action is triggered.
   onTapSettings(BuildContext context) {
     Navigator.pushNamed(context, AppRoutes.settingsScreen);
