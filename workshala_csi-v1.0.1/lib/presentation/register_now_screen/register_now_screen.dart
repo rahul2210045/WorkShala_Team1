@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
 import 'package:workshala_csi/core/app_export.dart';
 import 'package:workshala_csi/widgets/custom_elevated_button.dart';
 import 'package:workshala_csi/widgets/custom_text_form_field.dart';
@@ -21,6 +22,102 @@ class RegisterNowScreen extends StatelessWidget {
 
   GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
+
+
+  Widget _buildSignUp(BuildContext context) {
+    return CustomElevatedButton(
+      height: 45.v,
+      text: "Sign Up",
+      margin: EdgeInsets.only(left: 16.h, right: 20.h),
+      buttonStyle: CustomButtonStyles.none,
+      decoration: CustomButtonStyles.gradientPrimaryToDeepPurpleFcDecoration,
+      buttonTextStyle: CustomTextStyles.titleMediumInterWhiteA700,
+      onPressed: () async {
+        if (_formKey.currentState!.validate()) {
+          final firstName = firstNameController.text;
+          final lastName = lastNameController.text;
+          final email = emailController.text;
+          final mobile = firstnameController.text;
+          final password = passwordController.text;
+          final confirmPassword = confirmpasswordController.text;
+
+          final registrationUrl =
+              'https://workshala-7v7q.onrender.com/register';
+          final response = await http.post(
+            Uri.parse(registrationUrl),
+            body: {
+              'firstName': firstName,
+              'lastName': lastName,
+              'email': email,
+              'mobile': mobile,
+              'password': password,
+              'confirmPassword': confirmPassword,
+            },
+          );
+
+          print('Response Status Code: ${response.statusCode}');
+          print('Response Body: ${response.body}');
+
+          if (response.statusCode == 200) {
+            // Registration successful, proceed with OTP and email verification
+
+            // 1. Call the OTP verification API
+            final otpVerificationUrl =
+                'https://workshala-7v7q.onrender.com/verifyOtp';
+            final otpResponse = await http.post(
+              Uri.parse(otpVerificationUrl),
+              body: {
+                'mobile': mobile, // Pass the mobile number for OTP verification
+                // Add any other required parameters for OTP verification
+              },
+            );
+
+            print('OTP Verification Status Code: ${otpResponse.statusCode}');
+            print('OTP Verification Body: ${otpResponse.body}');
+
+            // 2. Call the email verification API
+            final emailVerificationUrl =
+                'https://workshala-7v7q.onrender.com/verifyEmail';
+            final emailResponse = await http.post(
+              Uri.parse(emailVerificationUrl),
+              body: {
+                'email': email, // Pass the email for email verification
+                // Add any other required parameters for email verification
+              },
+            );
+
+            print('Email Verification Status Code: ${emailResponse.statusCode}');
+            print('Email Verification Body: ${emailResponse.body}');
+
+            // Check the status codes and response bodies for OTP and email verification
+            // If verification is successful, navigate to the profile screen
+            if (otpResponse.statusCode == 200 && emailResponse.statusCode == 200) {
+              Navigator.pushNamed(context, AppRoutes.profileScreen);
+            } else {
+              // Verification failed, show an error message
+              ScaffoldMessenger.of(context).showSnackBar(
+                SnackBar(
+                  content: Text('Verification failed. Please try again.'),
+                  duration: Duration(seconds: 3),
+                ),
+              );
+            }
+          } else {
+            // Registration failed
+            ScaffoldMessenger.of(context).showSnackBar(
+              SnackBar(
+                content: Text('Registration failed. Please try again.'),
+                duration: Duration(seconds: 3),
+              ),
+            );
+          }
+        }
+      },
+    );
+  }
+
+
+
   @override
   Widget build(BuildContext context) {
     mediaQueryData = MediaQuery.of(context);
@@ -32,7 +129,7 @@ class RegisterNowScreen extends StatelessWidget {
                 child: Container(
                     width: double.maxFinite,
                     padding:
-                        EdgeInsets.symmetric(horizontal: 16.h, vertical: 17.v),
+                    EdgeInsets.symmetric(horizontal: 16.h, vertical: 17.v),
                     child: Column(children: [
                       CustomImageView(
                           imagePath: ImageConstant.imgGroupOrange300,
@@ -147,20 +244,6 @@ class RegisterNowScreen extends StatelessWidget {
             obscureText: true));
   }
 
-  /// Section Widget
-  Widget _buildSignUp(BuildContext context) {
-    return CustomElevatedButton(
-        height: 45.v,
-        text: "Sign Up",
-        margin: EdgeInsets.only(left: 16.h, right: 20.h),
-        buttonStyle: CustomButtonStyles.none,
-        decoration: CustomButtonStyles.gradientPrimaryToDeepPurpleFcDecoration,
-        buttonTextStyle: CustomTextStyles.titleMediumInterWhiteA700,
-        onPressed: () {
-          onTapSignUp(context);
-        });
-  }
-
   /// Navigates to the profileScreen when the action is triggered.
   onTapSignUp(BuildContext context) {
     Navigator.pushNamed(context, AppRoutes.profileScreen);
@@ -170,4 +253,5 @@ class RegisterNowScreen extends StatelessWidget {
   onTapTxtIfyoualreadyregistered(BuildContext context) {
     Navigator.pushNamed(context, AppRoutes.loginScreen);
   }
+
 }

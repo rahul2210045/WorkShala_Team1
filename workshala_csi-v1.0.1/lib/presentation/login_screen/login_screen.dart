@@ -1,8 +1,14 @@
 import 'package:flutter/material.dart';
+import 'dart:convert';
+import 'package:http/http.dart' as http;
 import 'package:workshala_csi/core/app_export.dart';
 import 'package:workshala_csi/widgets/custom_checkbox_button.dart';
 import 'package:workshala_csi/widgets/custom_elevated_button.dart';
 import 'package:workshala_csi/widgets/custom_text_form_field.dart';
+import 'package:http/http.dart' as http;
+
+
+import '../../widgets/validator.dart';
 
 // ignore_for_file: must_be_immutable
 class LoginScreen extends StatelessWidget {
@@ -15,6 +21,67 @@ class LoginScreen extends StatelessWidget {
   bool rememberme = false;
 
   GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+
+  Future<void> onTapLogIn(BuildContext context) async {
+    String email = emailController.text.trim();
+    String password = passwordController.text.trim();
+
+    // Validate email and password
+    String emailValidationMessage = validateEmail(email);
+    String passwordValidationMessage = validatePassword(password);
+
+    if (emailValidationMessage.isNotEmpty || passwordValidationMessage.isNotEmpty) {
+      // Show an error message
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text(emailValidationMessage.isNotEmpty
+              ? emailValidationMessage
+              : passwordValidationMessage),
+          duration: Duration(seconds: 2),
+        ),
+      );
+      return;
+    }
+
+    // Make a POST request to your login API
+    try {
+      final response = await http.post(
+        Uri.parse('https://workshala-7v7q.onrender.com/login'),
+        body: {
+          'email': email,
+          'password': password,
+        },
+      );
+
+      if (response.statusCode == 200) {
+        // API call successful, continue with the login logic
+        Map<String, dynamic> responseData = jsonDecode(response.body);
+        // Handle the response data as needed
+        print('Login successful');
+        Navigator.pushNamed(context, AppRoutes.profileScreen);
+      } else {
+        // API call failed, show an error message
+        print('Login failed: ${response.statusCode}');
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text('Login failed. Please try again.'),
+            duration: Duration(seconds: 2),
+          ),
+        );
+      }
+    } catch (error) {
+      // Handle exceptions, e.g., network issues
+      print('Error during login: $error');
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text('An error occurred. Please try again later.'),
+          duration: Duration(seconds: 2),
+        ),
+      );
+    }
+    // Continue with the login logic
+    Navigator.pushNamed(context, AppRoutes.profileScreen);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -185,11 +252,6 @@ class LoginScreen extends StatelessWidget {
                 })));
   }
 
-  /// Navigates to the androidLargeOneScreen when the action is triggered.
-  onTapLogIn(BuildContext context) {
-    Navigator.pushNamed(context, AppRoutes.profileScreen);
-  }
-
   /// Navigates to the forgotPasswordScreen when the action is triggered.
   onTapTxtForgotThePassword(BuildContext context) {
     Navigator.pushNamed(context, AppRoutes.forgotPasswordScreen);
@@ -200,3 +262,4 @@ class LoginScreen extends StatelessWidget {
     Navigator.pushNamed(context, AppRoutes.registerNowScreen);
   }
 }
+
