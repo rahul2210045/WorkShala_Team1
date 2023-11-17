@@ -2,11 +2,9 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
-import 'package:intershipapp/screen/Home.dart';
 import 'package:intershipapp/screen/Login.dart';
 import 'package:intershipapp/screen/MainScreen.dart';
 import 'package:intershipapp/widgets/CustomTextButton.dart';
-import 'package:intershipapp/widgets/CustomTextField.dart';
 import 'package:intershipapp/widgets/Customtext.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
@@ -143,17 +141,17 @@ class _RegisterState extends State<Register> {
                     // Login successful
                     print("login successfull");
                     Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => MainScreen()));
+                        MaterialPageRoute(builder: (context) => const MainScreen()));
                   } else {
                     // Login failed, show error message
                     print(
                         'Login failed with status code: ${response.statusCode}');
                     print('Response body: ${response.body}');
                     ScaffoldMessenger.of(context).showSnackBar(
-                      SnackBar(
+                      const SnackBar(
                         content: Text(
                             'Login failed. Please check your credentials.'),
-                        duration: const Duration(seconds: 3),
+                        duration: Duration(seconds: 3),
                       ),
                     );
                   }
@@ -161,9 +159,9 @@ class _RegisterState extends State<Register> {
                   // Handle other exceptions
                   print('Error during login: $e');
                   ScaffoldMessenger.of(context).showSnackBar(
-                    SnackBar(
+                    const SnackBar(
                       content: Text('An error occurred. Please try again.'),
-                      duration: const Duration(seconds: 3),
+                      duration: Duration(seconds: 3),
                     ),
                   );
                 }
@@ -234,7 +232,7 @@ class _RegisterState extends State<Register> {
       decoration: BoxDecoration(
         boxShadow: [
           BoxShadow(
-            color: Color.fromRGBO(148, 108, 195, 0.25).withOpacity(0.2),
+            color: const Color.fromRGBO(148, 108, 195, 0.25).withOpacity(0.2),
             spreadRadius: 2,
             blurRadius: 5,
             offset: const Offset(0, 3),
@@ -321,7 +319,7 @@ class _RegisterState extends State<Register> {
         CustomTextButton(
           onPressed: () {
             Navigator.push(
-                context, MaterialPageRoute(builder: (context) => Login()));
+                context, MaterialPageRoute(builder: (context) => const Login()));
           },
           buttonText: "Sign up",
           buttonColor: Colors.white,

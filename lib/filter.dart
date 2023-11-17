@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:intershipapp/jobdis.dart';
-import 'package:intershipapp/utilities.dart';
 // import 'package:workshala/loadingpage.dart';
 // import 'package:workshala/utilities.dart';
 // import 'package:workshala/jobdis.dart';
@@ -28,9 +26,9 @@ class filterScreen extends StatelessWidget {
   const filterScreen({super.key});
   @override
   Widget build(BuildContext context) {
-    return Center(
+    return const Center(
         child: Column(mainAxisAlignment: MainAxisAlignment.start, children: [
-      const SizedBox(
+      SizedBox(
         height: 45,
       ),
     ]));

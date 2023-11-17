@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:intershipapp/loadingpage.dart';
+import 'package:intershipapp/screen/Home.dart';
 import 'package:intershipapp/uploadScreen.dart';
 import 'package:intershipapp/utilities.dart';
 // import 'package:workshala/loadingpage.dart';
@@ -32,32 +32,32 @@ class jobDisDetail extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.start,
       children: [
         const SizedBox(
-          height: 15,
+          height: 30,
         ),
         Container(
             child: Row(
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
             const SizedBox(
-              width: 16,
+              width: 30,
             ),
             returnButton(
                 'assets/vectornormal.png',
                 const Color.fromARGB(34, 104, 104, 104),
-                28.0,
-                28.0,
+                26.0,
+                26.0,
                 context,
-                const jobDisPage()),
+                const Home()),
             const SizedBox(
-              width: 20,
+              width: 115,
             ),
-            const Text(
-              'Details',
-              style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 28,
-                  color: Color.fromARGB(255, 0, 0, 0)),
-            ),
+            // const Text(
+            //   'Details',
+            //   style: TextStyle(
+            //       fontWeight: FontWeight.bold,
+            //       fontSize: 28,
+            //       color: Color.fromARGB(255, 0, 0, 0)),
+            // ),
             const SizedBox(width: 150),
             returnButton1(
                 'assets/share.png',
@@ -96,8 +96,8 @@ class jobDisDetail extends StatelessWidget {
                 child: Column(children: [
                   jobDisBoxUi(
                       'assets/google1.png',
-                      320.0,
-                      320.0,
+                      332.0,
+                      340.0,
                       'UI/UX Designer',
                       'Google LLC',
                       'California, United States',
@@ -129,33 +129,33 @@ class jobDisDetail extends StatelessWidget {
                   // ),
                 ]))),
         Container(
-            child: const Padding(
+            child: Padding(
                 padding: EdgeInsets.fromLTRB(12, 14, 13, 0),
-                child:
-                    Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-                  // Container(
-                  // mainAxisAlignment :MainAxisAlignment.center,
-                  Text(
-                    "Job Description      ",
-                    style: TextStyle(
-                        fontSize: 16,
-                        fontWeight: FontWeight.w500,
-                        fontFamily: 'Poppins',
-                        color: Color(0xFF0A66C2)),
-                  ),
-                  Text(
-                    "Minimum Qualification",
-                    style: TextStyle(
-                        fontSize: 16,
-                        fontWeight: FontWeight.w500,
-                        fontFamily: 'Poppins',
-                        color: Colors.black),
-                  ),
-                ]))),
-        Container(
+                child: TextColorChangeWithLine()
+                //     Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+                //   // Container(
+                //   // mainAxisAlignment :MainAxisAlignment.center,
+                //   Text(
+                //     "Job Description      ",
+                //     style: TextStyle(
+                //         fontSize: 16,
+                //         fontWeight: FontWeight.w500,
+                //         fontFamily: 'Poppins',
+                //         color: Color(0xFF0A66C2)),
+                //   ),
+                //   Text(
+                //     "Minimum Qualification",
+                //     style: TextStyle(
+                //         fontSize: 16,
+                //         fontWeight: FontWeight.w500,
+                //         fontFamily: 'Poppins',
+                //         color: Colors.black),
+                //   ),
+                )),
+        SizedBox(
             height: 210,
             child: Padding(
-                padding: const EdgeInsets.fromLTRB(12, 14, 13, 0),
+                padding: const EdgeInsets.fromLTRB(25, 14, 13, 0),
                 child: SingleChildScrollView(
                     // child: ConstrainedBox(
                     //     constraints: BoxConstraints(
@@ -170,7 +170,7 @@ class jobDisDetail extends StatelessWidget {
                         // textAlign: TextAlign.center,
                         style: TextStyle(
                           color: Colors.black,
-                          fontSize: 18,
+                          fontSize: 19,
                           fontFamily: 'Poppins',
                           fontWeight: FontWeight.w600,
                           // height: 0,
@@ -218,7 +218,7 @@ class jobDisDetail extends StatelessWidget {
                             color: Colors.black,
                             fontSize: 13,
                             fontFamily: 'Poppins',
-                            fontWeight: FontWeight.w400,
+                            fontWeight: FontWeight.w500,
                             height: 0,
                           ),
                         ),
@@ -250,7 +250,7 @@ class jobDisDetail extends StatelessWidget {
                             color: Colors.black,
                             fontSize: 13,
                             fontFamily: 'Poppins',
-                            fontWeight: FontWeight.w400,
+                            fontWeight: FontWeight.w500,
                             height: 0,
                           ),
                         ),
@@ -282,7 +282,7 @@ class jobDisDetail extends StatelessWidget {
                             color: Colors.black,
                             fontSize: 13,
                             fontFamily: 'Poppins',
-                            fontWeight: FontWeight.w400,
+                            fontWeight: FontWeight.w500,
                             height: 0,
                           ),
                         ),
@@ -314,13 +314,13 @@ class jobDisDetail extends StatelessWidget {
                             color: Colors.black,
                             fontSize: 13,
                             fontFamily: 'Poppins',
-                            fontWeight: FontWeight.w400,
+                            fontWeight: FontWeight.w500,
                             height: 0,
                           ),
                         ),
                       ])),
                       const SizedBox(
-                        height: 10,
+                        height: 18,
                       ),
 
                       const Text(
@@ -328,7 +328,7 @@ class jobDisDetail extends StatelessWidget {
                         // textAlign: TextAlign.center,
                         style: TextStyle(
                           color: Colors.black,
-                          fontSize: 18,
+                          fontSize: 19,
                           fontFamily: 'Poppins',
                           fontWeight: FontWeight.w600,
                           // height: 0,
@@ -349,7 +349,7 @@ class jobDisDetail extends StatelessWidget {
                       //         ),
                       //       ),
                       const SizedBox(
-                        height: 7,
+                        height: 16,
                       ),
 
                       Container(
@@ -376,7 +376,7 @@ class jobDisDetail extends StatelessWidget {
                             color: Colors.black,
                             fontSize: 13,
                             fontFamily: 'Poppins',
-                            fontWeight: FontWeight.w400,
+                            fontWeight: FontWeight.w500,
                             height: 0,
                           ),
                         ),
@@ -408,7 +408,7 @@ class jobDisDetail extends StatelessWidget {
                             color: Colors.black,
                             fontSize: 13,
                             fontFamily: 'Poppins',
-                            fontWeight: FontWeight.w400,
+                            fontWeight: FontWeight.w500,
                             height: 0,
                           ),
                         ),
@@ -440,7 +440,7 @@ class jobDisDetail extends StatelessWidget {
                             color: Colors.black,
                             fontSize: 13,
                             fontFamily: 'Poppins',
-                            fontWeight: FontWeight.w400,
+                            fontWeight: FontWeight.w500,
                             height: 0,
                           ),
                         ),
@@ -472,38 +472,38 @@ class jobDisDetail extends StatelessWidget {
                             color: Colors.black,
                             fontSize: 13,
                             fontFamily: 'Poppins',
-                            fontWeight: FontWeight.w400,
+                            fontWeight: FontWeight.w500,
                             height: 0,
                           ),
                         ),
                       ])),
                       const SizedBox(
-                        height: 10,
+                        height: 17,
                       ),
                       const Text(
                         'Perks and Benefits:',
                         // textAlign: TextAlign.center,
                         style: TextStyle(
                           color: Colors.black,
-                          fontSize: 18,
+                          fontSize: 19,
                           fontFamily: 'Poppins',
                           fontWeight: FontWeight.w600,
                           // height: 0,
                         ),
                       ),
-                      const SizedBox(height: 10),
+                      const SizedBox(height: 17),
                       const Text(
                         'Required Skills:',
                         // textAlign: TextAlign.center,
                         style: TextStyle(
                           color: Colors.black,
-                          fontSize: 18,
+                          fontSize: 19,
                           fontFamily: 'Poppins',
                           fontWeight: FontWeight.w600,
                           // height: 0,
                         ),
                       ),
-                      Container(
+                      SizedBox(
                           width: 300,
                           child: Padding(
                               padding: const EdgeInsets.fromLTRB(12, 14, 13, 0),
@@ -525,20 +525,20 @@ class jobDisDetail extends StatelessWidget {
                                             173.16, 31.0, 'Creative Thinking'),
                                         requiredBox(97.16, 31.0, 'Figma'),
                                       ])))),
-                      const SizedBox(height: 20),
+                      const SizedBox(height: 22),
                       const Text(
                         'About:',
                         // textAlign: TextAlign.center,
                         style: TextStyle(
                           color: Colors.black,
-                          fontSize: 18,
+                          fontSize: 20,
                           fontFamily: 'Poppins',
                           fontWeight: FontWeight.w600,
                           // height: 0,
                         ),
                       ),
                       const SizedBox(
-                        height: 4,
+                        height: 7,
                       ),
                       const Text(
                         'Google LLC is an American multinational technology company that focuses on search engine technology, online advertising, cloud computing.. computer software, quantum computing. e- commerce, artificial intelligence, and consumer electronics',
@@ -546,7 +546,7 @@ class jobDisDetail extends StatelessWidget {
                           color: Colors.black,
                           fontSize: 13,
                           fontFamily: 'Poppins',
-                          fontWeight: FontWeight.w400,
+                          fontWeight: FontWeight.w500,
                           height: 0,
                         ),
                       ),
@@ -563,7 +563,10 @@ class jobDisDetail extends StatelessWidget {
                       //       // ),
                       //     ])
                     ])))),
-        applyButtonBox('Apply', 320.0, 45.0, context, uploadPage()),
+        SizedBox(
+          height: 40.0,
+        ),
+        applyButtonBox('Apply', 320.0, 45.0, context, const uploadPage()),
       ],
     ));
   }

@@ -48,7 +48,7 @@ class uploadingScreen extends StatelessWidget {
               28.0,
               28.0,
               context,
-              const jobDisPage()),
+              const uploadPage()),
           const SizedBox(
             width: 20,
           ),
@@ -98,7 +98,7 @@ class uploadingScreen extends StatelessWidget {
                 jobDisBoxUi(
                     'assets/google1.png',
                     332.0,
-                    320.0,
+                    340.0,
                     'UI/UX Designer',
                     'Google LLC',
                     'California, United States',
@@ -107,10 +107,10 @@ class uploadingScreen extends StatelessWidget {
                     'Onsite',
                     'Posted 10 Days ago, ends in 25 Dec.'),
               ]))),
-      SizedBox(height: 33),
+      const SizedBox(height: 33),
       Container(
-          width: 324,
-          height: 102,
+          width: 334,
+          height: 162,
           decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(17),
               border: Border.all(
@@ -118,19 +118,87 @@ class uploadingScreen extends StatelessWidget {
                 width: 2,
               )),
           child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
+            AnimatedLoadingDots(),
+            Container(
+
+                // width: 79,
+                // height: 8,
+                // child: Row(
+                //   mainAxisSize: MainAxisSize.min,
+                //   mainAxisAlignment: MainAxisAlignment.center,
+                //   crossAxisAlignment: CrossAxisAlignment.start,
+                //   children: [
+                //     Container(
+                //       width: 8.78,
+                //       height: 8,
+                //       decoration: ShapeDecoration(
+                //         color: Color(0xFF0A66C2),
+                //         shape: OvalBorder(),
+                //       ),
+                //     ),
+                //     SizedBox(
+                //       width: 8.0,
+                //     ),
+                //     Container(
+                //       width: 8.78,
+                //       height: 8,
+                //       decoration: ShapeDecoration(
+                //         color: Color(0xFFD9D9D9),
+                //         shape: OvalBorder(),
+                //       ),
+                //     ),
+                //     SizedBox(
+                //       width: 8.0,
+                //     ),
+                //     Container(
+                //       width: 8.78,
+                //       height: 8,
+                //       decoration: ShapeDecoration(
+                //         color: Color(0xFFD9D9D9),
+                //         shape: OvalBorder(),
+                //       ),
+                //     ),
+                //     SizedBox(
+                //       width: 8.0,
+                //     ),
+                //     Container(
+                //       width: 8.78,
+                //       height: 8,
+                //       decoration: ShapeDecoration(
+                //         color: Color(0xFFD9D9D9),
+                //         shape: OvalBorder(),
+                //       ),
+                //     ),
+                //     SizedBox(
+                //       width: 8.0,
+                //     ),
+                //     Container(
+                //       width: 8.78,
+                //       height: 8,
+                //       decoration: ShapeDecoration(
+                //         color: Color(0xFFD9D9D9),
+                //         shape: OvalBorder(),
+                //       ),
+                //     ),
+                //   ],
+                // ),
+                ),
+            SizedBox(
+              height: 35.0,
+            ),
             Text(
               'Uploading...',
               style: TextStyle(
                 color: Color(0xFF0093FF),
-                fontSize: 21,
+                fontSize: 23,
                 fontFamily: 'Poppins',
                 fontWeight: FontWeight.w600,
                 height: 0.05,
               ),
             ),
           ])),
-      SizedBox(height: 55),
-      applyButtonBox('Cancel', 171.0, 50.0, context, uploadedPage()),
+      const SizedBox(height: 70),
+      applyButtonBox('Cancel', 171.0, 50.0, context, const uploadedPage()),
     ]));
   }
 }

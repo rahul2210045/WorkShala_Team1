@@ -43,8 +43,8 @@ class uploadScreen extends StatelessWidget {
           returnButton(
               'assets/vectornormal.png',
               const Color.fromARGB(34, 104, 104, 104),
-              28.0,
-              28.0,
+              26.0,
+              26.0,
               context,
               const jobDisPage()),
           const SizedBox(
@@ -54,7 +54,7 @@ class uploadScreen extends StatelessWidget {
             'Details',
             style: TextStyle(
                 fontWeight: FontWeight.bold,
-                fontSize: 28,
+                fontSize: 26,
                 color: Color.fromARGB(255, 0, 0, 0)),
           ),
           // const SizedBox(width: 150),
@@ -96,7 +96,7 @@ class uploadScreen extends StatelessWidget {
                 jobDisBoxUi(
                     'assets/google1.png',
                     332.0,
-                    320.0,
+                    340.0,
                     'UI/UX Designer',
                     'Google LLC',
                     'California, United States',
@@ -105,10 +105,10 @@ class uploadScreen extends StatelessWidget {
                     'Onsite',
                     'Posted 10 Days ago, ends in 25 Dec.'),
               ]))),
-      // const SizedBox(height: 55),
+      const SizedBox(height: 60),
       returnButton('assets/upload.png', const Color(0xFF8D8D8D), 65.0, 145.0,
           null, null),
-      // const SizedBox(height: 8),
+      const SizedBox(height: 10),
       const Text('Upload Resume/CV',
           style: TextStyle(
             color: Color(0xFF8D8D8D),
@@ -117,8 +117,8 @@ class uploadScreen extends StatelessWidget {
             fontWeight: FontWeight.w400,
             height: 0.09,
           )),
-      const SizedBox(height: 118),
-      applyButtonBox('Apply', 171.0, 50.0, context, uploadingPage()),
+      const SizedBox(height: 135),
+      applyButtonBox('Upload CV', 171.0, 50.0, context, const uploadingPage()),
     ]));
   }
 }

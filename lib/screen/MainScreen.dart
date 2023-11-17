@@ -135,12 +135,11 @@ import 'package:flutter/material.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:intershipapp/jobdis.dart';
 import 'package:intershipapp/screen/Home.dart';
-import 'package:intershipapp/screen/Login.dart';
-import 'package:intershipapp/screen/Register.dart';
 import 'package:intershipapp/uploadScreen.dart';
-import 'package:intershipapp/utilities.dart';
 
 class MainScreen extends StatefulWidget {
+  const MainScreen({super.key});
+
   @override
   _MainScreenState createState() => _MainScreenState();
 }
@@ -165,7 +164,7 @@ class _MainScreenState extends State<MainScreen> {
             _currentIndex = index;
           });
         },
-        children: <Widget>[
+        children: const <Widget>[
           Home(),
           jobDisDetail(),
           uploadScreen()
@@ -175,18 +174,18 @@ class _MainScreenState extends State<MainScreen> {
       bottomNavigationBar: CurvedNavigationBar(
         index: _currentIndex,
         height: 50,
-        items: <Widget>[
+        items: const <Widget>[
           Icon(Icons.home, size: 30),
           Icon(Icons.calendar_today, size: 30),
           Icon(Icons.person, size: 30),
         ],
         color: const Color.fromARGB(255, 215, 189, 219),
-        buttonBackgroundColor: Color.fromARGB(255, 138, 170, 225),
+        buttonBackgroundColor: const Color.fromARGB(255, 138, 170, 225),
         backgroundColor: Colors.transparent,
         onTap: (index) {
           _pageController.animateToPage(
             index,
-            duration: Duration(milliseconds: 8),
+            duration: const Duration(milliseconds: 8),
             curve: Curves.linear,
           );
         },

@@ -6,7 +6,7 @@ Widget buildtextfiled(BuildContext context, TextEditingController controller,
       decoration: BoxDecoration(
         boxShadow: [
           BoxShadow(
-            color: Color.fromRGBO(148, 108, 195, 0.25).withOpacity(0.2),
+            color: const Color.fromRGBO(148, 108, 195, 0.25).withOpacity(0.2),
             spreadRadius: 2,
             blurRadius: 5,
             offset: const Offset(0, 3),

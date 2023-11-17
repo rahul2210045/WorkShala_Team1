@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:get/get.dart';
 import 'package:intershipapp/jobdis.dart';
 import 'package:intershipapp/widgets/Buildinkwell.dart';
 import 'package:intershipapp/widgets/jobcontainer.dart';
 
 class Home extends StatefulWidget {
+  const Home({super.key});
+
   @override
   State<Home> createState() => _HomeState();
 }
@@ -19,7 +19,7 @@ class _HomeState extends State<Home> {
       body: Padding(
         padding: const EdgeInsets.all(10.0),
         child: SingleChildScrollView(
-          padding: EdgeInsets.only(top: 30),
+          padding: const EdgeInsets.only(top: 30),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
 
@@ -86,25 +86,27 @@ class _HomeState extends State<Home> {
               //   child: Text('See All'),
               // ),
               // SizedBox(width: 900.0),
-              SingleChildScrollView(
+              const SingleChildScrollView(
                 scrollDirection: Axis.horizontal,
                 child: Row(children: [
-                  CustomBox(
-                      companyLogo: "",
-                      companyName: "",
-                      personName: "kjhgfd",
-                      placeName: "kjhgfd",
-                      moneyName: "lkjhgfd",
-                      isOnline: true,
-                      onFavIconPressed: () {}),
-                  CustomBox(
-                      companyLogo: "",
-                      companyName: "",
-                      personName: "kjhgfd",
-                      placeName: "kjhgfd",
-                      moneyName: "lkjhgfd",
-                      isOnline: true,
-                      onFavIconPressed: () {})
+                  // CustomBox(
+                  //     companyLogo: "",
+                  //     companyName: "",
+                  //     personName: "kjhgfd",
+                  //     placeName: "kjhgfd",
+                  //     moneyName: "lkjhgfd",
+                  //     isOnline: true,
+                  //     // onFavIconPressed: () {},
+                  //     ),
+                  // CustomBox(
+                  //     companyLogo: "",
+                  //     companyName: "",
+                  //     personName: "kjhgfd",
+                  //     placeName: "kjhgfd",
+                  //     moneyName: "lkjhgfd",
+                  //     isOnline: true,
+                  //     // onFavIconPressed: () {}
+                  //     )
                 ]),
               ),
               // SizedBox(width: 16.0),
@@ -125,21 +127,21 @@ class _HomeState extends State<Home> {
                     style:
                         TextStyle(fontWeight: FontWeight.bold, fontSize: 18.0),
                   ),
-                  Spacer(),
+                  const Spacer(),
                   TextButton(
                       onPressed: () {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => jobDisDetail()));
+                                builder: (context) => const jobDisPage()));
                       },
-                      child: Text(
+                      child: const Text(
                         "See All",
                         style: TextStyle(color: Colors.blue),
                       )),
                 ],
               ),
-              SingleChildScrollView(
+              const SingleChildScrollView(
                 scrollDirection: Axis.horizontal,
                 child: Row(
                   // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -184,6 +186,30 @@ class _HomeState extends State<Home> {
                   ],
                 ),
               ),
+              SingleChildScrollView(
+                scrollDirection: Axis.horizontal,
+                child: Row(children: [
+                  CustomBox(),
+                  // CustomBox(
+                  //     companyLogo: "",
+                  //     companyName: "",
+                  //     personName: "kjhgfd",
+                  //     placeName: "kjhgfd",
+                  //     moneyName: "lkjhgfd",
+                  //     isOnline: true,
+                  //     // onFavIconPressed: () {},
+                  //     ),
+                  // CustomBox(
+                  //     companyLogo: "",
+                  //     companyName: "",
+                  //     personName: "kjhgfd",
+                  //     placeName: "kjhgfd",
+                  //     moneyName: "lkjhgfd",
+                  //     isOnline: true,
+                  //     // onFavIconPressed: () {}
+                  //     )
+                ]),
+              ),
             ],
           ),
         ),
@@ -222,7 +248,7 @@ class _HomeState extends State<Home> {
   Widget buildtextfiled(BuildContext context, TextEditingController controller,
       String hinttext, bool obscure, VoidCallback onChanged) {
     return Container(
-      decoration: BoxDecoration(
+      decoration: const BoxDecoration(
         boxShadow: [
           // BoxShadow(
           //   color: Colors.grey.withOpacity(0.5),
@@ -243,8 +269,8 @@ class _HomeState extends State<Home> {
         style: const TextStyle(color: Colors.black),
 
         decoration: InputDecoration(
-            prefixIcon: Icon(Icons.search),
-            suffixIcon: Icon(Icons.keyboard_option_key_sharp),
+            prefixIcon: const Icon(Icons.search),
+            suffixIcon: const Icon(Icons.keyboard_option_key_sharp),
             fillColor: const Color.fromRGBO(148, 108, 195, 0.1),
             filled: true,
             hintText: hinttext,

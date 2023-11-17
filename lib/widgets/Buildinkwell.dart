@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 class BuildInkwll extends StatefulWidget {
     final String name;
 
-BuildInkwll({
+const BuildInkwll({super.key, 
   required this.name
 });
   @override

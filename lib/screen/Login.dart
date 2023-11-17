@@ -1,9 +1,8 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
-import 'package:get/get_connect/http/src/response/response.dart';
 import 'package:http/http.dart' as http;
-import 'package:intershipapp/screen/MainScreen.dart';
+import 'package:intershipapp/loadingpage.dart';
 import 'package:intershipapp/screen/Register.dart';
 import 'package:intershipapp/widgets/Customtext.dart';
 
@@ -109,7 +108,7 @@ class _LoginState extends State<Login> {
                       confirmPassword);
 
                   Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => Register()));
+                      MaterialPageRoute(builder: (context) => const loadingPage()));
                 }
               },
               style: ElevatedButton.styleFrom(

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:intershipapp/jobdis.dart';
+import 'package:intershipapp/uploading.dart';
 import 'package:intershipapp/utilities.dart';
 // import 'package:workshala/loadingpage.dart';
 // import 'package:workshala/utilities.dart';
@@ -43,10 +44,10 @@ class uploadedScreen extends StatelessWidget {
           returnButton(
               'assets/vectornormal.png',
               const Color.fromARGB(34, 104, 104, 104),
-              17.0,
-              17.0,
+              26.0,
+              26.0,
               context,
-              const jobDisPage()),
+              const uploadingPage()),
           const SizedBox(
             width: 18,
           ),
@@ -54,7 +55,7 @@ class uploadedScreen extends StatelessWidget {
             'Details',
             style: TextStyle(
                 fontWeight: FontWeight.w700,
-                fontSize: 16,
+                fontSize: 26,
                 fontFamily: 'Raleway',
                 color: Color.fromARGB(255, 0, 0, 0)),
           ),
@@ -100,7 +101,7 @@ class uploadedScreen extends StatelessWidget {
                 jobDisBoxUi(
                     'assets/google1.png',
                     332.0,
-                    320.0,
+                    340.0,
                     'UI/UX Designer',
                     'Google LLC',
                     'California, United States',
@@ -117,7 +118,7 @@ class uploadedScreen extends StatelessWidget {
             const SizedBox(height: 33),
             resumeBox(
                 'assets/pdf.png', 60.0, 200.0, 'Rohit khatri.pdf', '540kb'),
-            const SizedBox(height: 15),
+            const SizedBox(height: 22),
             const Text('         Successful',
                 style: TextStyle(
                   color: Color(0xFF0093FF),
@@ -130,9 +131,9 @@ class uploadedScreen extends StatelessWidget {
                 '   You have successfully applied to this internship.\nyou can see the status in the “applications” section.',
                 style: TextStyle(
                   color: Colors.black,
-                  fontSize: 9,
+                  fontSize: 11,
                   fontFamily: 'Poppins',
-                  fontWeight: FontWeight.w400,
+                  fontWeight: FontWeight.w500,
                 ))
           ])),
       // Container(
@@ -156,9 +157,9 @@ class uploadedScreen extends StatelessWidget {
       //         ),
       //       ),
       //     ])),
-      const SizedBox(height: 25),
+      const SizedBox(height: 90),
       // applyButtonBox('Cancel', 171.0, 50.0, null, null),
-      requiredBox(280.0, 45.0, '                           Discover more'),
+      requiredBox(280.0, 45.0, 'Discover more'),
     ]));
   }
 }

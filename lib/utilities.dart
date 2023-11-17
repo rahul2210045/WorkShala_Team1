@@ -5,7 +5,7 @@ Widget returnButton(image, color, height, width, context, page) {
     onTap: () {
       Navigator.push(context, MaterialPageRoute(builder: (context) => page));
     },
-    child: Container(
+    child: SizedBox(
       // decoration: BoxDecoration(
       // borderRadius: BorderRadius.circular(5),
       // boxShadow: const [
@@ -44,7 +44,7 @@ Widget nextButtonBox(text, width, height, context, page) {
       child: Container(
           decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(10),
-              boxShadow: [
+              boxShadow: const [
                 BoxShadow(
                   color: Color(0xFF946CC3),
                   // blurRadius: 15.0,
@@ -120,7 +120,7 @@ Widget returnButton1(image, color, height, width, context, page) {
           builder: (BuildContext context) {
             return Container(
                 height: 300,
-                color: Color.fromARGB(255, 255, 255, 255),
+                color: const Color.fromARGB(255, 255, 255, 255),
                 child: Column(
                     // children:[Padding(
                     // mainAxisAlignment: MainAxisAlignment.center,
@@ -144,7 +144,7 @@ Widget returnButton1(image, color, height, width, context, page) {
                                       width: 101,
                                       height: 12,
                                       decoration: ShapeDecoration(
-                                        color: Color(0xFF8F8F8F),
+                                        color: const Color(0xFF8F8F8F),
                                         shape: RoundedRectangleBorder(
                                           borderRadius:
                                               BorderRadius.circular(20),
@@ -161,11 +161,11 @@ Widget returnButton1(image, color, height, width, context, page) {
                                     )
                               ])),
                       Container(
-                        child: Padding(
-                          padding: const EdgeInsets.fromLTRB(20, 20, 10, 10),
+                        child: const Padding(
+                          padding: EdgeInsets.fromLTRB(20, 20, 10, 10),
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.center,
-                            children: const [
+                            children: [
                               Text(
                                 'Refer',
                                 style: TextStyle(
@@ -240,7 +240,7 @@ Widget returnButton1(image, color, height, width, context, page) {
           },
         );
       },
-      child: Container(
+      child: SizedBox(
         // decoration: BoxDecoration(
         // borderRadius: BorderRadius.circular(5),
         // boxShadow: const [
@@ -273,7 +273,7 @@ Widget returnButton1(image, color, height, width, context, page) {
 Widget resumeBox(image, height, width, text1, text2) {
   return Padding(
     padding: const EdgeInsets.fromLTRB(0, 0, 0, 0),
-    child: Container(
+    child: SizedBox(
       height: height,
       width: width,
       // decoration: BoxDecoration(
@@ -296,7 +296,7 @@ Widget resumeBox(image, height, width, text1, text2) {
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  SizedBox(height: 5),
+                  const SizedBox(height: 5),
                   Text(
                     'Resume-$text1',
                     style: const TextStyle(
@@ -305,7 +305,7 @@ Widget resumeBox(image, height, width, text1, text2) {
                         fontFamily: 'Poppins',
                         color: Colors.black),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 20,
                   ),
                   Text(
@@ -408,7 +408,7 @@ class _SelectableBoxState extends State<SelectableBox> {
           decoration: BoxDecoration(
             color: isSelected ? Colors.transparent : Colors.white,
             borderRadius: BorderRadius.circular(10),
-            boxShadow: [
+            boxShadow: const [
               BoxShadow(
                 color: Color(0x59946CC3),
                 blurRadius: 10,
@@ -447,7 +447,7 @@ class _SelectableBoxState extends State<SelectableBox> {
 Widget perkBox(image, height, width, text) {
   return Padding(
     padding: const EdgeInsets.fromLTRB(12, 0, 12, 0),
-    child: Container(
+    child: SizedBox(
       height: height,
       width: width,
       // decoration: BoxDecoration(
@@ -487,14 +487,14 @@ Widget requiredBox(width, height, text) {
       width: width,
       decoration: ShapeDecoration(
           shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(12),
+              borderRadius: BorderRadius.circular(22),
               // border: Border.all(
               side: const BorderSide(
-                width: 1, color: const Color(0xFF946CC3),
+                width: 2, color: Color(0xFF946CC3),
                 // width: 1,
               ))),
       child: Row(
-        mainAxisAlignment: MainAxisAlignment.start,
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
           // Image.asset(
           //   image,
@@ -507,7 +507,7 @@ Widget requiredBox(width, height, text) {
               textAlign: TextAlign.center,
               style: const TextStyle(
                   fontSize: 14,
-                  fontWeight: FontWeight.w400,
+                  fontWeight: FontWeight.w500,
                   fontFamily: 'poppins',
                   color: Color(0xFF946CC3)),
             ),
@@ -521,7 +521,7 @@ Widget requiredBox(width, height, text) {
 Widget optionBox1(image, height, width, text) {
   return Padding(
     padding: const EdgeInsets.fromLTRB(0, 0, 0, 0),
-    child: Container(
+    child: SizedBox(
       height: height,
       width: width,
       // decoration: BoxDecoration(
@@ -648,7 +648,7 @@ Widget textBox(height, width, width2, text1, text2) {
   return Padding(
       padding: const EdgeInsets.fromLTRB(16, 10, 10, 0),
       child: Row(children: [
-        Container(
+        SizedBox(
           height: height,
           width: width,
           // decoration: BoxDecoration(
@@ -677,7 +677,7 @@ Widget textBox(height, width, width2, text1, text2) {
 Widget shareBox(image, height, width, text) {
   return Padding(
     padding: const EdgeInsets.fromLTRB(12, 10, 12, 10),
-    child: Container(
+    child: SizedBox(
       height: height,
       width: width,
       // decoration: BoxDecoration(
@@ -714,7 +714,7 @@ Widget content_JobDis(BuildContext context) {
       padding: const EdgeInsets.all(8),
       itemCount: entries.length,
       itemBuilder: (BuildContext context, int index) {
-        return Container(
+        return SizedBox(
           height: 50,
           // color: Colors.amber[colorCodes[index]],
           child: Center(child: Text('Entry ${entries[index]}')),
@@ -742,7 +742,7 @@ Widget jobDisBoxUi(
     // return Container(
     decoration: BoxDecoration(
       borderRadius: BorderRadius.circular(41),
-      color: Color(0x19946CC3),
+      color: const Color(0x19946CC3),
     ),
     height: height,
     width: width,
@@ -789,9 +789,11 @@ Widget jobDisBoxUi(
                         fontFamily: 'Poppins',
                         color: Color(0xFF0A66C2)),
                   ),
+                  // Divider(),
                 ),
+                Divider(),
                 Padding(
-                  padding: const EdgeInsets.fromLTRB(0, 25, 0, 0),
+                  padding: const EdgeInsets.fromLTRB(0, 8, 0, 0),
                   child: Text(
                     text3,
                     style: const TextStyle(
@@ -904,7 +906,7 @@ Widget jobDisBoxUi(
                   child: Text(
                     text7,
                     style: const TextStyle(
-                        fontSize: 11,
+                        fontSize: 12,
                         fontWeight: FontWeight.w500,
                         color: Color.fromARGB(255, 35, 35, 35)),
                   ),
@@ -1153,4 +1155,209 @@ Widget jobDisBoxUi(
     //           ],
     //         ))),
   );
+}
+
+// import 'package:flutter/material.dart';
+
+// import 'package:flutter/material.dart';
+
+class AnimatedLoadingDots extends StatefulWidget {
+  @override
+  _AnimatedLoadingDotsState createState() => _AnimatedLoadingDotsState();
+}
+
+class _AnimatedLoadingDotsState extends State<AnimatedLoadingDots>
+    with SingleTickerProviderStateMixin {
+  late AnimationController _controller;
+  late Animation<Color?> _animation;
+
+  @override
+  void initState() {
+    super.initState();
+    _controller = AnimationController(
+      vsync: this,
+      duration: Duration(seconds: 2),
+    );
+
+    _animation = TweenSequence<Color?>(
+      <TweenSequenceItem<Color?>>[
+        TweenSequenceItem<Color?>(
+          tween: ColorTween(
+            begin: Colors.white,
+            end: Colors.blue,
+          ),
+          weight: 1,
+        ),
+      ],
+    ).animate(_controller);
+
+    _controller.repeat(reverse: true);
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        for (int i = 0; i < 5; i++)
+          Padding(
+            padding: EdgeInsets.symmetric(horizontal: 4.0),
+            child: AnimatedBuilder(
+              animation: _animation,
+              builder: (context, child) {
+                return Container(
+                  width: 8.0,
+                  height: 8.0,
+                  decoration: BoxDecoration(
+                    color: _animation.value,
+                    shape: BoxShape.circle,
+                  ),
+                );
+              },
+            ),
+          ),
+      ],
+    );
+  }
+}
+
+// import 'package:flutter/material.dart';
+
+// class TextColorChangeOnTap extends StatefulWidget {
+//   @override
+//   _TextColorChangeOnTapState createState() => _TextColorChangeOnTapState();
+// }
+
+// class _TextColorChangeOnTapState extends State<TextColorChangeOnTap> {
+//   Color jobDescColor = Color(0xFF0A66C2); // Initial color for Job Description
+//   Color minQualColor = Colors.black; // Initial color for Minimum Qualification
+
+//   void _changeColors(bool isJobDescTapped) {
+//     setState(() {
+//       if (isJobDescTapped) {
+//         jobDescColor = Color(0xFF0A66C2);
+//         minQualColor = Colors.black;
+//       } else {
+//         jobDescColor = Colors.black;
+//         minQualColor = Color(0xFF0A66C2);
+//       }
+//     });
+//   }
+
+//   @override
+//   Widget build(BuildContext context) {
+//     return Row(
+//       mainAxisAlignment: MainAxisAlignment.center,
+//       children: [
+//         GestureDetector(
+//           onTap: () {
+//             _changeColors(true);
+//           },
+//           child: Text(
+//             "Job Description      ",
+//             style: TextStyle(
+//               fontSize: 16,
+//               fontWeight: FontWeight.w500,
+//               fontFamily: 'Poppins',
+//               color: jobDescColor,
+//             ),
+//           ),
+//         ),
+//         GestureDetector(
+//           onTap: () {
+//             _changeColors(false);
+//           },
+//           child: Text(
+//             "Minimum Qualification",
+//             style: TextStyle(
+//               fontSize: 16,
+//               fontWeight: FontWeight.w500,
+//               fontFamily: 'Poppins',
+//               color: minQualColor,
+//             ),
+//           ),
+//         ),
+//       ],
+//     );
+//   }
+// }
+
+// import 'package:flutter/material.dart';
+
+class TextColorChangeWithLine extends StatefulWidget {
+  @override
+  _TextColorChangeWithLineState createState() =>
+      _TextColorChangeWithLineState();
+}
+
+class _TextColorChangeWithLineState extends State<TextColorChangeWithLine> {
+  Color jobDescColor = Color(0xFF0A66C2); // Initial color for Job Description
+  Color minQualColor = Colors.black; // Initial color for Minimum Qualification
+
+  void _changeColors(bool isJobDescTapped) {
+    setState(() {
+      if (isJobDescTapped) {
+        jobDescColor = Color(0xFF0A66C2);
+        minQualColor = Colors.black;
+      } else {
+        jobDescColor = Colors.black;
+        minQualColor = Color(0xFF0A66C2);
+      }
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            GestureDetector(
+              onTap: () {
+                _changeColors(true);
+              },
+              child: Text(
+                "Job Description      ",
+                style: TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.w500,
+                  fontFamily: 'Poppins',
+                  color: jobDescColor,
+                ),
+              ),
+            ),
+            GestureDetector(
+              onTap: () {
+                _changeColors(false);
+              },
+              child: Text(
+                "Minimum Qualification",
+                style: TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.w500,
+                  fontFamily: 'Poppins',
+                  color: minQualColor,
+                ),
+              ),
+            ),
+          ],
+        ),
+        Container(
+          height: 1, // Height of the line
+          width: 330, // Width of the line
+          color: jobDescColor == Color(0xFF0A66C2)
+              ? Color(0xFF0A66C2)
+              : Color(0xFFD9D9D9), // Use the same color as the selected text
+          margin: EdgeInsets.symmetric(vertical: 5), // Adjust margin as needed
+        ),
+      ],
+    );
+  }
 }

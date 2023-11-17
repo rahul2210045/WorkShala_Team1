@@ -3,6 +3,8 @@
 import 'package:flutter/material.dart';
 import 'package:intershipapp/jobdis.dart';
 import 'package:intershipapp/utilities.dart';
+import 'package:intershipapp/screen/MainScreen.dart';
+import 'package:intershipapp/screen/Home.dart';
 // import 'package:workshala/jobdis.dart';
 // import 'package:workshala/utilities.dart';
 
@@ -37,7 +39,7 @@ class bottomDrawer extends StatelessWidget {
   Widget build(BuildContext context) {
     return Center(
         child: Column(mainAxisAlignment: MainAxisAlignment.start, children: [
-      SizedBox(
+      const SizedBox(
         height: 25,
       ),
       Container(
@@ -58,7 +60,7 @@ class bottomDrawer extends StatelessWidget {
           // return Container(
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(45),
-            color: Color.fromARGB(255, 255, 255, 255),
+            color: const Color.fromARGB(255, 255, 255, 255),
           ),
           height: 648,
           child: Column(
@@ -73,7 +75,7 @@ class bottomDrawer extends StatelessWidget {
                   padding: const EdgeInsets.fromLTRB(0, 5, 0, 0),
                   height: 20,
                   // width: ,
-                  child: Row(
+                  child: const Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     // crossAxisAlignment: CrossAxisAlignment.center,
                     // mainAxisSize: MainAxisSize.min,
@@ -109,7 +111,7 @@ class bottomDrawer extends StatelessWidget {
                     ),
                     returnButton(
                         'assets/return.png',
-                        Color.fromARGB(32, 229, 4, 4),
+                        const Color.fromARGB(32, 229, 4, 4),
                         28.0,
                         28.0,
                         context,
@@ -127,10 +129,10 @@ class bottomDrawer extends StatelessWidget {
                   ],
                 )),
                 Container(
-                  child: Padding(
-                    padding: const EdgeInsets.fromLTRB(30, 30, 10, 0),
+                  child: const Padding(
+                    padding: EdgeInsets.fromLTRB(30, 30, 10, 0),
                     child: Row(
-                      children: const [
+                      children: [
                         Text(
                           'Choose 3-5 catogries and we`ll optimize the \nvacancies for you.',
                           style: TextStyle(
@@ -147,20 +149,19 @@ class bottomDrawer extends StatelessWidget {
                 const SizedBox(
                   height: 20,
                 ),
-                Container(
+                SizedBox(
                     height: 464,
                     child: SingleChildScrollView(
                       child: Column(
                         children: [
                           Container(
-                              child: Padding(
-                                  padding:
-                                      const EdgeInsets.fromLTRB(15, 0, 15, 0),
+                              child: const Padding(
+                                  padding: EdgeInsets.fromLTRB(15, 0, 15, 0),
                                   child: Row(
                                     mainAxisAlignment:
                                         MainAxisAlignment.spaceEvenly,
                                     children: [
-                                      const SizedBox(
+                                      SizedBox(
                                         width: 8,
                                       ),
                                       SelectableBox(
@@ -179,14 +180,13 @@ class bottomDrawer extends StatelessWidget {
                             height: 20,
                           ),
                           Container(
-                              child: Padding(
-                                  padding:
-                                      const EdgeInsets.fromLTRB(15, 0, 15, 0),
+                              child: const Padding(
+                                  padding: EdgeInsets.fromLTRB(15, 0, 15, 0),
                                   child: Row(
                                     mainAxisAlignment:
                                         MainAxisAlignment.spaceEvenly,
                                     children: [
-                                      const SizedBox(
+                                      SizedBox(
                                         width: 8,
                                       ),
                                       SelectableBox(
@@ -208,14 +208,13 @@ class bottomDrawer extends StatelessWidget {
                             height: 20,
                           ),
                           Container(
-                              child: Padding(
-                                  padding:
-                                      const EdgeInsets.fromLTRB(15, 0, 15, 0),
+                              child: const Padding(
+                                  padding: EdgeInsets.fromLTRB(15, 0, 15, 0),
                                   child: Row(
                                     mainAxisAlignment:
                                         MainAxisAlignment.spaceEvenly,
                                     children: [
-                                      const SizedBox(
+                                      SizedBox(
                                         width: 8,
                                       ),
                                       SelectableBox(
@@ -237,14 +236,13 @@ class bottomDrawer extends StatelessWidget {
                             height: 20,
                           ),
                           Container(
-                              child: Padding(
-                                  padding:
-                                      const EdgeInsets.fromLTRB(15, 0, 15, 0),
+                              child: const Padding(
+                                  padding: EdgeInsets.fromLTRB(15, 0, 15, 0),
                                   child: Row(
                                     mainAxisAlignment:
                                         MainAxisAlignment.spaceEvenly,
                                     children: [
-                                      const SizedBox(
+                                      SizedBox(
                                         width: 8,
                                       ),
                                       SelectableBox(
@@ -287,7 +285,7 @@ class bottomDrawer extends StatelessWidget {
                 //           ],
                 //         )))
               ])),
-      SizedBox(height: 20),
+      const SizedBox(height: 20),
       Container(
           child: Padding(
               padding: const EdgeInsets.fromLTRB(15, 0, 15, 0),
@@ -297,11 +295,11 @@ class bottomDrawer extends StatelessWidget {
                   const SizedBox(
                     width: 13,
                   ),
-                  nextButtonBox('Skip', 141.0, 45.0, context, loadingPage()),
+                  nextButtonBox('Skip', 141.0, 45.0, context, const Home()),
                   const SizedBox(
                     width: 20,
                   ),
-                  nextButtonBox('Next', 141.0, 45.0, context, jobDisPage()),
+                  nextButtonBox('Next', 141.0, 45.0, context, const Home()),
                 ],
               )))
     ]));
