@@ -46,7 +46,7 @@ Widget nextButtonBox(text, width, height, context, page) {
               borderRadius: BorderRadius.circular(10),
               boxShadow: [
                 BoxShadow(
-                  color: Colors.purple.shade700,
+                  color: Color(0xFF946CC3),
                   // blurRadius: 15.0,
                   // offset: Offset(0, 30),
                 ),
@@ -74,7 +74,8 @@ Widget nextButtonBox(text, width, height, context, page) {
 }
 // import 'package:flutter/material.dart';
 
-Widget applyButtonBox(String text, double width, double height, BuildContext context, Widget page) {
+Widget applyButtonBox(String text, double width, double height,
+    BuildContext context, Widget page) {
   return GestureDetector(
     onTap: () {
       Navigator.push(context, MaterialPageRoute(builder: (context) => page));
@@ -108,7 +109,6 @@ Widget applyButtonBox(String text, double width, double height, BuildContext con
     ),
   );
 }
-
 
 Widget returnButton1(image, color, height, width, context, page) {
   return GestureDetector(
@@ -324,36 +324,124 @@ Widget resumeBox(image, height, width, text1, text2) {
   );
 }
 
-Widget optionBox(image, height, width, text) {
-  return Padding(
-    padding: const EdgeInsets.fromLTRB(12, 0, 12, 0),
-    child: Container(
-      height: height,
-      width: width,
-      // decoration: BoxDecoration(
-      //     // borderRadius: BorderRadius.circular(20),
-      //     border: Border.all(
-      //   color: Colors.black,
-      //   width: 2,
-      // )),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Image.asset(
-            image,
-            scale: 1.1,
+// Widget optionBox(image, height, width, text) {
+//   return Padding(
+//     padding: const EdgeInsets.fromLTRB(12, 0, 12, 0),
+//     child: Container(
+//       height: height,
+//       width: width,
+//       decoration: ShapeDecoration(
+//         // borderRadius: BorderRadius.circular(20),
+//         // border: Border.all(
+//         color: Colors.white,
+//         shape: RoundedRectangleBorder(
+//           borderRadius: BorderRadius.circular(10),
+//         ),
+//         shadows: [
+//           BoxShadow(
+//             color: Color(0x59946CC3),
+//             blurRadius: 10,
+//             offset: Offset(-3, 4),
+//             spreadRadius: 0,
+//           )
+//         ],
+//         // width: 2,
+//       ),
+//       child: Column(
+//         mainAxisAlignment: MainAxisAlignment.center,
+//         children: [
+//           Image.asset(
+//             image,
+//             scale: 1.1,
+//           ),
+//           Padding(
+//             padding: const EdgeInsets.fromLTRB(5, 3, 0, 0),
+//             child: Text(
+//               text,
+//               style: const TextStyle(
+//                   fontSize: 12,
+//                   fontFamily: 'Inter',
+//                   fontWeight: FontWeight.w400,
+//                   letterSpacing: -0.30),
+//             ),
+//           ),
+//         ],
+//       ),
+//     ),
+//   );
+// }
+
+class SelectableBox extends StatefulWidget {
+  final String image;
+  final double height;
+  final double width;
+  final String text;
+
+  const SelectableBox({
+    Key? key,
+    required this.image,
+    required this.height,
+    required this.width,
+    required this.text,
+  }) : super(key: key);
+
+  @override
+  _SelectableBoxState createState() => _SelectableBoxState();
+}
+
+class _SelectableBoxState extends State<SelectableBox> {
+  bool isSelected = false;
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: () {
+        setState(() {
+          isSelected = !isSelected;
+        });
+      },
+      child: Padding(
+        padding: const EdgeInsets.fromLTRB(12, 0, 12, 0),
+        child: Container(
+          height: widget.height,
+          width: widget.width,
+          decoration: BoxDecoration(
+            color: isSelected ? Colors.transparent : Colors.white,
+            borderRadius: BorderRadius.circular(10),
+            boxShadow: [
+              BoxShadow(
+                color: Color(0x59946CC3),
+                blurRadius: 10,
+                offset: Offset(-3, 4),
+                spreadRadius: 0,
+              ),
+            ],
           ),
-          Padding(
-            padding: const EdgeInsets.fromLTRB(5, 3, 0, 0),
-            child: Text(
-              text,
-              style: const TextStyle(fontSize: 15, fontWeight: FontWeight.w500),
-            ),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Image.asset(
+                widget.image,
+                scale: 1.1,
+              ),
+              Padding(
+                padding: const EdgeInsets.fromLTRB(5, 3, 0, 0),
+                child: Text(
+                  widget.text,
+                  style: const TextStyle(
+                    fontSize: 12,
+                    fontFamily: 'Inter',
+                    fontWeight: FontWeight.w400,
+                    letterSpacing: -0.30,
+                  ),
+                ),
+              ),
+            ],
           ),
-        ],
+        ),
       ),
-    ),
-  );
+    );
+  }
 }
 
 Widget perkBox(image, height, width, text) {
