@@ -23,8 +23,12 @@ class _FilterScreenPageState extends State<FilterScreenPage> {
     'Working hours': ['Full-time', 'Part-time'],
     'Field of Work': ['Art&Design', 'Meta'],
     'Country': ['USA', 'India', 'Canada'],
-    'Skills': ['UI/UX Design', 'Web Development', 'Mobile App Development'],
+    'Skills': ['UI/UX Design', 'Web\nDevelopment', 'Mobile App\n Development'],
     'Experience': ['1 year', '2 years', '3+ years'],
+    'Type': ['High', 'Medium', 'Low'],
+    'Location': ['High', 'Medium', 'Low'],
+    'Coampany': ['High', 'Medium', 'Low'],
+    'Gender': ['High', 'Medium', 'Low'],
   };
 
   // Selected options for additional sections
@@ -35,37 +39,69 @@ class _FilterScreenPageState extends State<FilterScreenPage> {
     'Country': '',
     'Skills': '',
     'Experience': '',
+    'Type': '',
+    'Location': '',
+    'Coampany': '',
+    'Gender': '',
   };
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Filter'),
+        title: Container(
+            child: Row(children: [
+          Image.asset(
+            'assets/cross.png',
+            scale: 1.0,
+            // width: 130.0,
+          ),
+          const Text(
+            '   Filter',
+            textAlign: TextAlign.center,
+            style: TextStyle(
+              color: Colors.black,
+              fontSize: 22,
+              fontFamily: 'Mulish',
+              fontWeight: FontWeight.w700,
+            ),
+          )
+        ])),
         actions: [
           TextButton(
-            onPressed: () {
-              // Implement logic to clear filters
-              setState(() {
-                selectedGender = '';
-                selectedLocation = '';
-                selectedType = '';
-                selectedOptions.forEach((key, value) {
-                  selectedOptions[key] = '';
+              onPressed: () {
+                // Implement logic to clear filters
+                setState(() {
+                  selectedGender = '';
+                  selectedLocation = '';
+                  // selectedType = '';
+
+                  
+                  selectedOptions.forEach((key, value) {
+                    selectedOptions[key] = '';
+                  });
                 });
-              });
-            },
-            child: Text('Clear Filter'),
-          ),
+              },
+              child: Text(
+                'Clear Filter',
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  color: Color(0xFF246BFD),
+                  fontSize: 16,
+                  fontFamily: 'Mulish',
+                  fontWeight: FontWeight.w600,
+                ),
+              )),
         ],
       ),
       body: Row(
         children: [
           // Left Side: Navigation Options
           Container(
-            width: MediaQuery.of(context).size.width / 2,
+            width: MediaQuery.of(context).size.width / 2.3,
             padding: EdgeInsets.all(16),
-            color: Colors.white, // Change the color as needed
+            color: Color.fromARGB(
+                255, 243, 229, 245), // Change the color as needed
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -84,7 +120,7 @@ class _FilterScreenPageState extends State<FilterScreenPage> {
           Container(
             width: MediaQuery.of(context).size.width / 2,
             padding: EdgeInsets.all(16),
-            color: Colors.blue, // Change the color as needed
+            // color: Colors.blue, // Change the color as needed
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -131,8 +167,9 @@ class _FilterScreenPageState extends State<FilterScreenPage> {
         child: Text(
           title,
           style: TextStyle(
-            color:
-                title == selectedNavigationOption ? Colors.red : Colors.black,
+            color: title == selectedNavigationOption
+                ? Color(0xFF946CC3)
+                : Colors.black,
           ),
         ),
       ),
@@ -201,7 +238,7 @@ class _FilterScreenPageState extends State<FilterScreenPage> {
           child: Text(
             option,
             style: TextStyle(
-              color: value ? Colors.red : Colors.black,
+              color: value ? Color(0xFF946CC3) : Colors.black,
             ),
           ),
         ),

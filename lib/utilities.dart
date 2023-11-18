@@ -36,9 +36,10 @@ Widget returnButton(image, color, height, width, context, page) {
   );
 }
 
-Widget nextButtonBox(text, width, height, context, page) {
+Widget nextButtonBox(text, width, height, context, page, onClick) {
   return GestureDetector(
       onTap: () {
+        onClick;
         Navigator.push(context, MaterialPageRoute(builder: (context) => page));
       },
       child: Container(
