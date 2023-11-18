@@ -2,8 +2,30 @@ import 'package:flutter/material.dart';
 import 'package:intershipapp/screen/Register.dart';
 import 'package:intershipapp/screen/Settings.dart';
 import 'package:http/http.dart' as http;
+import 'package:intershipapp/secureStorage.dart';
 
-class ProfilePage extends StatelessWidget {
+class ProfilePage extends StatefulWidget {
+  const ProfilePage({super.key});
+
+  @override
+  _ProfilePageState createState() => _ProfilePageState();
+}
+
+class _ProfilePageState extends State<ProfilePage> {
+  Map<String, dynamic> userData = new Map();
+  final SecureStorage _secureStorage = SecureStorage();
+
+  @override
+  void initState() {
+    super.initState();
+    fetchSecureStorageData();
+  }
+
+  Future<void> fetchSecureStorageData() async {
+    userData = await _secureStorage.getUserData() ?? {};
+    setState(() {});
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -15,7 +37,7 @@ class ProfilePage extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const Row(
+            Row(
               children: [
                 CircleAvatar(
                   radius: 50,
@@ -28,7 +50,7 @@ class ProfilePage extends StatelessWidget {
                 Column(
                   children: [
                     Text(
-                      'Rahul Yadav',
+                      userData['name'] ?? '',
                       style: TextStyle(
                         fontSize: 24,
                         fontWeight: FontWeight.bold,
@@ -48,7 +70,7 @@ class ProfilePage extends StatelessWidget {
                 border: Border.all(color: Colors.grey),
                 borderRadius: BorderRadius.circular(10),
               ),
-              child: const Row(
+              child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Column(
@@ -66,7 +88,7 @@ class ProfilePage extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text('Courses'),
-                      Text('3 Active'),
+                      Text('${userData['skills'] ?? ''}'),
                     ],
                   ),
                 ],
