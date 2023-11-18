@@ -215,7 +215,7 @@ class CustomDetail extends StatelessWidget {
                 itemCount: companyData?.length ?? 0,
                 itemBuilder: (context, index) {
                   if (companyData == null) {
-                    return Container(); // or any other placeholder widget
+                    return Container(); 
                   }
                   return Container(
                     padding: const EdgeInsets.all(10.0),
@@ -368,4 +368,6 @@ class CustomDetail extends StatelessWidget {
         });
   }
 }
+  
+
   

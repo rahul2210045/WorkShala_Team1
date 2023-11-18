@@ -20,6 +20,10 @@ import 'package:intershipapp/screen/NewPassword.dart';
 import 'package:intershipapp/screen/Profile.dart';
 import 'package:intershipapp/screen/Settings.dart';
 import 'package:intershipapp/splashscreen.dart';
+import 'package:intershipapp/uploadScreen.dart';
+import 'package:intershipapp/uploaded.dart';
+import 'package:intershipapp/uploading.dart';
+import 'package:intershipapp/widgets/courseRec.dart';
 // import 'package:intershipapp/screen/ProfileLogin.dart';
 import 'package:intershipapp/widgets/jobcontainer.dart';
 
@@ -41,7 +45,7 @@ class MyApp extends StatelessWidget {
             seedColor: const Color.fromARGB(255, 255, 255, 255)),
         useMaterial3: true,
       ),
-      home: Home(),
+      home: SplashScreen(),
       // home: const MyHomePage(title: 'Flutter Demo Home Page'),
     );
   }

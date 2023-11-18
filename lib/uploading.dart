@@ -30,10 +30,12 @@ class uploadingScreen extends StatelessWidget {
   const uploadingScreen({super.key});
   @override
   Widget build(BuildContext context) {
+    final screenHeight = MediaQuery.of(context).size.height;
+    final screenWidth = MediaQuery.of(context).size.width;
     return Center(
         child: Column(mainAxisAlignment: MainAxisAlignment.start, children: [
-      const SizedBox(
-        height: 55,
+      SizedBox(
+        height: screenHeight * 0.039,
       ),
       Container(
           child: Row(
@@ -59,43 +61,14 @@ class uploadingScreen extends StatelessWidget {
                 fontSize: 28,
                 color: Color.fromARGB(255, 0, 0, 0)),
           ),
-          // const SizedBox(width: 150),
-          // returnButton1(
-          //     'assets/share.png',
-          //     const Color.fromARGB(34, 104, 104, 104),
-          //     28.0,
-          //     28.0,
-          //     context,
-          //     const jobDisPage()),
         ],
       )),
-      // Container(
-      //     child: Padding(
-      //         padding: const EdgeInsets.fromLTRB(0, 25, 15, 0),
-      //         child: Column(
-      //           mainAxisAlignment: MainAxisAlignment.start,
-      //           children: [
-      //             const SizedBox(
-      //               width: 16,
-      //             ),
-      //             showBox('assets/details.png', 118.0, 134.0,
-      //                 'Interaction Designer', 'Dribbble'),
-      //             textBox(30.0, 350.0, 250.0, 'Salary', '-'),
-      //             textBox(30.0, 350.0, 220.0, 'Type', 'Part-Time'),
-      //             textBox(30.0, 350.0, 220.0, 'Location', 'WFH'),
-      //             textBox(30.0, 350.0, 200.0, 'Duration', '3 Months'),
-      //             Container(
-      //                 decoration: BoxDecoration(
-      //                     // borderRadius: BorderRadius.circular(20),
-      //                     border: Border.all(
-      //               color: const Color.fromARGB(151, 12, 12, 12),
-      //               width: 1,
-      //             ))),
       Container(
           child: Padding(
               padding: const EdgeInsets.fromLTRB(12, 14, 13, 0),
               child: Column(children: [
                 jobDisBoxUi(
+                    context,
                     'assets/google1.png',
                     332.0,
                     340.0,
@@ -110,7 +83,7 @@ class uploadingScreen extends StatelessWidget {
       const SizedBox(height: 33),
       Container(
           width: 334,
-          height: 162,
+          height: screenHeight * 0.2,
           decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(17),
               border: Border.all(
@@ -119,72 +92,9 @@ class uploadingScreen extends StatelessWidget {
               )),
           child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
             AnimatedLoadingDots(),
-            Container(
-
-                // width: 79,
-                // height: 8,
-                // child: Row(
-                //   mainAxisSize: MainAxisSize.min,
-                //   mainAxisAlignment: MainAxisAlignment.center,
-                //   crossAxisAlignment: CrossAxisAlignment.start,
-                //   children: [
-                //     Container(
-                //       width: 8.78,
-                //       height: 8,
-                //       decoration: ShapeDecoration(
-                //         color: Color(0xFF0A66C2),
-                //         shape: OvalBorder(),
-                //       ),
-                //     ),
-                //     SizedBox(
-                //       width: 8.0,
-                //     ),
-                //     Container(
-                //       width: 8.78,
-                //       height: 8,
-                //       decoration: ShapeDecoration(
-                //         color: Color(0xFFD9D9D9),
-                //         shape: OvalBorder(),
-                //       ),
-                //     ),
-                //     SizedBox(
-                //       width: 8.0,
-                //     ),
-                //     Container(
-                //       width: 8.78,
-                //       height: 8,
-                //       decoration: ShapeDecoration(
-                //         color: Color(0xFFD9D9D9),
-                //         shape: OvalBorder(),
-                //       ),
-                //     ),
-                //     SizedBox(
-                //       width: 8.0,
-                //     ),
-                //     Container(
-                //       width: 8.78,
-                //       height: 8,
-                //       decoration: ShapeDecoration(
-                //         color: Color(0xFFD9D9D9),
-                //         shape: OvalBorder(),
-                //       ),
-                //     ),
-                //     SizedBox(
-                //       width: 8.0,
-                //     ),
-                //     Container(
-                //       width: 8.78,
-                //       height: 8,
-                //       decoration: ShapeDecoration(
-                //         color: Color(0xFFD9D9D9),
-                //         shape: OvalBorder(),
-                //       ),
-                //     ),
-                //   ],
-                // ),
-                ),
+            Container(),
             SizedBox(
-              height: 35.0,
+              height: screenHeight * 0.042,
             ),
             Text(
               'Uploading...',
@@ -197,7 +107,9 @@ class uploadingScreen extends StatelessWidget {
               ),
             ),
           ])),
-      const SizedBox(height: 70),
+      SizedBox(
+        height: screenHeight * 0.08,
+      ),
       applyButtonBox('Cancel', 171.0, 50.0, context, const uploadedPage()),
     ]));
   }

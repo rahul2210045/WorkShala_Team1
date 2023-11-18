@@ -6,32 +6,12 @@ Widget returnButton(image, color, height, width, context, page) {
       Navigator.push(context, MaterialPageRoute(builder: (context) => page));
     },
     child: SizedBox(
-      // decoration: BoxDecoration(
-      // borderRadius: BorderRadius.circular(5),
-      // boxShadow: const [
-      //   BoxShadow(
-      //     color: Colors.black54,
-      //     // blurRadius: 15.0,
-      //     offset: Offset(0, 30),
-      //   ),
-      // color: color,
-      // borderRadius: BorderRadius.circular(20),
-      // ),
-
-      // ],
       height: height,
       width: width,
-      // child: Center(child: Text(text,style: const TextStyle(
-      //   fontWeight: FontWeight.w900,
-      //   fontSize: 22,
-
-      //   color: Colors.black,
       child: Image.asset(
         image,
         scale: 0.9,
       ),
-
-      // ),)),
     ),
   );
 }
@@ -48,11 +28,7 @@ Widget nextButtonBox(text, width, height, context, page, onClick) {
               boxShadow: const [
                 BoxShadow(
                   color: Color(0xFF946CC3),
-                  // blurRadius: 15.0,
-                  // offset: Offset(0, 30),
                 ),
-                //  color: color,
-                // borderRadius: BorderRadius.circular(20),
               ]),
           height: height,
           width: width,
@@ -62,18 +38,10 @@ Widget nextButtonBox(text, width, height, context, page, onClick) {
             style: const TextStyle(
               fontWeight: FontWeight.w600,
               fontSize: 20,
-
               color: Color.fromARGB(255, 255, 255, 255),
-              // child: Image.asset(
-              //   image,
-              //   scale: 0.9,
-              // ),
-
-              // ),)),
             ),
           ))));
 }
-// import 'package:flutter/material.dart';
 
 Widget applyButtonBox(String text, double width, double height,
     BuildContext context, Widget page) {
@@ -85,14 +53,6 @@ Widget applyButtonBox(String text, double width, double height,
       decoration: BoxDecoration(
         color: const Color(0xFF946CC3),
         borderRadius: BorderRadius.circular(16),
-        // You can add boxShadow here if needed
-        // boxShadow: [
-        //   BoxShadow(
-        //     color: Color(0xFF946CC3),
-        //     blurRadius: 15.0,
-        //     offset: Offset(0, 30),
-        //   ),
-        // ],
       ),
       height: height,
       width: width,
@@ -122,152 +82,107 @@ Widget returnButton1(image, color, height, width, context, page) {
             return Container(
                 height: 300,
                 color: const Color.fromARGB(255, 255, 255, 255),
-                child: Column(
-                    // children:[Padding(
-                    // mainAxisAlignment: MainAxisAlignment.center,
-                    //   // mainAxisSize: MainAxisSize.min,
-                    //   padding: EdgeInsets.all(1.0),
-                    children: [
-                      // const Text('drawer closing button'),
-                      // MainAxisAlignment
-                      Container(
-                          padding: const EdgeInsets.fromLTRB(0, 5, 0, 0),
-                          height: 15,
-                          // width: 81,
-                          child: Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              // crossAxisAlignment: CrossAxisAlignment.center,
-                              // mainAxisSize: MainAxisSize.min,
-                              children: [
-                                ElevatedButton(
-                                    onPressed: () => Navigator.pop(context),
-                                    child: Container(
-                                      width: 101,
-                                      height: 12,
-                                      decoration: ShapeDecoration(
-                                        color: const Color(0xFF8F8F8F),
-                                        shape: RoundedRectangleBorder(
-                                          borderRadius:
-                                              BorderRadius.circular(20),
-                                        ),
-                                      ),
-                                    )
-                                    // child: const Text(''),
-                                    //   style: const ButtonStyle(
-                                    //     backgroundColor:
-                                    //         MaterialStatePropertyAll<Color>(
-                                    //             Color.fromARGB(198, 240, 231, 231)),
-                                    //   ),
-                                    // ),
-                                    )
-                              ])),
-                      Container(
-                        child: const Padding(
-                          padding: EdgeInsets.fromLTRB(20, 20, 10, 10),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Text(
-                                'Refer',
-                                style: TextStyle(
-                                    fontWeight: FontWeight.w600,
-                                    fontSize: 22,
-                                    fontStyle: FontStyle.normal,
-                                    color: Colors.black),
-                              )
-                            ],
-                          ),
-                        ),
+                child: Column(children: [
+                  Container(
+                      padding: const EdgeInsets.fromLTRB(0, 5, 0, 0),
+                      height: 15,
+                      child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            ElevatedButton(
+                                onPressed: () => Navigator.pop(context),
+                                child: Container(
+                                  width: 101,
+                                  height: 12,
+                                  decoration: ShapeDecoration(
+                                    color: const Color(0xFF8F8F8F),
+                                    shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(20),
+                                    ),
+                                  ),
+                                ))
+                          ])),
+                  Container(
+                    child: const Padding(
+                      padding: EdgeInsets.fromLTRB(20, 20, 10, 10),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            'Refer',
+                            style: TextStyle(
+                                fontWeight: FontWeight.w600,
+                                fontSize: 22,
+                                fontStyle: FontStyle.normal,
+                                color: Colors.black),
+                          )
+                        ],
                       ),
-                      Container(
-                          child: Padding(
-                              padding: const EdgeInsets.fromLTRB(15, 10, 15, 5),
-                              child: Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceEvenly,
-                                children: [
-                                  const SizedBox(
-                                    width: 2,
-                                  ),
-                                  optionBox1('assets/instagram.png', 80.0, 80.0,
-                                      'Instagram'),
-                                  const SizedBox(
-                                    width: 2,
-                                  ),
-                                  optionBox1('assets/instagram.png', 80.0, 80.0,
-                                      'Instagram'),
-                                  const SizedBox(
-                                    width: 2,
-                                  ),
-                                  optionBox1('assets/instagram.png', 80.0, 80.0,
-                                      'Instagram'),
-                                  const SizedBox(
-                                    width: 2,
-                                  ),
-                                  optionBox1('assets/instagram.png', 80.0, 80.0,
-                                      'Instagram'),
-                                ],
-                              ))),
-                      Container(
-                          child: Padding(
-                              padding: const EdgeInsets.fromLTRB(15, 10, 15, 5),
-                              child: Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceEvenly,
-                                children: [
-                                  const SizedBox(
-                                    width: 2,
-                                  ),
-                                  optionBox1('assets/instagram.png', 80.0, 80.0,
-                                      'Instagram'),
-                                  const SizedBox(
-                                    width: 2,
-                                  ),
-                                  optionBox1('assets/instagram.png', 80.0, 80.0,
-                                      'Instagram'),
-                                  const SizedBox(
-                                    width: 2,
-                                  ),
-                                  optionBox1('assets/instagram.png', 80.0, 80.0,
-                                      'Instagram'),
-                                  const SizedBox(
-                                    width: 2,
-                                  ),
-                                  optionBox1('assets/instagram.png', 80.0, 80.0,
-                                      'Instagram'),
-                                ],
-                              ))),
-                    ]));
+                    ),
+                  ),
+                  Container(
+                      child: Padding(
+                          padding: const EdgeInsets.fromLTRB(15, 10, 15, 5),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: [
+                              const SizedBox(
+                                width: 2,
+                              ),
+                              optionBox1(
+                                  'assets/instagram.png', 80.0, 80.0, ''),
+                              const SizedBox(
+                                width: 2,
+                              ),
+                              optionBox1(
+                                  'assets/instagram.png', 80.0, 80.0, ''),
+                              const SizedBox(
+                                width: 2,
+                              ),
+                              optionBox1(
+                                  'assets/instagram.png', 80.0, 80.0, ''),
+                              const SizedBox(
+                                width: 2,
+                              ),
+                            ],
+                          ))),
+                  Container(
+                      child: Padding(
+                          padding: const EdgeInsets.fromLTRB(15, 10, 15, 5),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: [
+                              const SizedBox(
+                                width: 2,
+                              ),
+                              optionBox1(
+                                  'assets/instagram.png', 80.0, 80.0, ''),
+                              const SizedBox(
+                                width: 2,
+                              ),
+                              optionBox1(
+                                  'assets/instagram.png', 80.0, 80.0, ''),
+                              const SizedBox(
+                                width: 2,
+                              ),
+                              optionBox1(
+                                  'assets/instagram.png', 80.0, 80.0, ''),
+                              const SizedBox(
+                                width: 2,
+                              ),
+                            ],
+                          ))),
+                ]));
           },
         );
       },
       child: SizedBox(
-        // decoration: BoxDecoration(
-        // borderRadius: BorderRadius.circular(5),
-        // boxShadow: const [
-        //   BoxShadow(
-        //     color: Colors.black54,
-        //     // blurRadius: 15.0,
-        //     offset: Offset(0, 30),
-        //   ),
-        // ],
-        // color: color,
-        // borderRadius: BorderRadius.circular(20),
-        // ),
-
         height: height,
         width: width,
-        // child: Center(child: Text(text,style: const TextStyle(
-        //   fontWeight: FontWeight.w900,
-        //   fontSize: 22,
-
-        //   color: Colors.black,
         child: Image.asset(
           image,
           scale: 0.5,
         ),
-
-        // ),)),
       ));
 }
 
@@ -277,15 +192,8 @@ Widget resumeBox(image, height, width, text1, text2) {
     child: SizedBox(
       height: height,
       width: width,
-      // decoration: BoxDecoration(
-      //     // borderRadius: BorderRadius.circular(20),
-      //     border: Border.all(
-      //   color: Colors.black,
-      //   width: 2,
-      // )),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.start,
-        // crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Image.asset(
             image,
@@ -324,53 +232,6 @@ Widget resumeBox(image, height, width, text1, text2) {
     ),
   );
 }
-
-// Widget optionBox(image, height, width, text) {
-//   return Padding(
-//     padding: const EdgeInsets.fromLTRB(12, 0, 12, 0),
-//     child: Container(
-//       height: height,
-//       width: width,
-//       decoration: ShapeDecoration(
-//         // borderRadius: BorderRadius.circular(20),
-//         // border: Border.all(
-//         color: Colors.white,
-//         shape: RoundedRectangleBorder(
-//           borderRadius: BorderRadius.circular(10),
-//         ),
-//         shadows: [
-//           BoxShadow(
-//             color: Color(0x59946CC3),
-//             blurRadius: 10,
-//             offset: Offset(-3, 4),
-//             spreadRadius: 0,
-//           )
-//         ],
-//         // width: 2,
-//       ),
-//       child: Column(
-//         mainAxisAlignment: MainAxisAlignment.center,
-//         children: [
-//           Image.asset(
-//             image,
-//             scale: 1.1,
-//           ),
-//           Padding(
-//             padding: const EdgeInsets.fromLTRB(5, 3, 0, 0),
-//             child: Text(
-//               text,
-//               style: const TextStyle(
-//                   fontSize: 12,
-//                   fontFamily: 'Inter',
-//                   fontWeight: FontWeight.w400,
-//                   letterSpacing: -0.30),
-//             ),
-//           ),
-//         ],
-//       ),
-//     ),
-//   );
-// }
 
 class SelectableBox extends StatefulWidget {
   final String image;
@@ -451,12 +312,6 @@ Widget perkBox(image, height, width, text) {
     child: SizedBox(
       height: height,
       width: width,
-      // decoration: BoxDecoration(
-      //     // borderRadius: BorderRadius.circular(20),
-      //     border: Border.all(
-      //   color: Colors.black,
-      //   width: 2,
-      // )),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
@@ -489,18 +344,13 @@ Widget requiredBox(width, height, text) {
       decoration: ShapeDecoration(
           shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(22),
-              // border: Border.all(
               side: const BorderSide(
-                width: 2, color: Color(0xFF946CC3),
-                // width: 1,
+                width: 2,
+                color: Color(0xFF946CC3),
               ))),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          // Image.asset(
-          //   image,
-          //   scale: 1.1,
-          // ),
           Padding(
             padding: const EdgeInsets.fromLTRB(5, 3, 0, 0),
             child: Text(
@@ -525,18 +375,12 @@ Widget optionBox1(image, height, width, text) {
     child: SizedBox(
       height: height,
       width: width,
-      // decoration: BoxDecoration(
-      //     // borderRadius: BorderRadius.circular(20),
-      //     border: Border.all(
-      //   color: Colors.black,
-      //   width: 2,
-      // )),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Image.asset(
             image,
-            scale: 1.5,
+            scale: 1.1,
           ),
           Padding(
             padding: const EdgeInsets.fromLTRB(5, 0, 0, 0),
@@ -562,15 +406,7 @@ Widget nextButton(
     child: Container(
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(5),
-        // boxShadow: const [
-        //   BoxShadow(
-        //     color: Colors.black54,
-        //     // blurRadius: 15.0,
-        //     offset: Offset(0, 30),
-        //   ),
-        // ],
         color: Colors.deepPurpleAccent,
-        // borderRadius: BorderRadius.circular(20),
       ),
       height: 373,
       width: 56,
@@ -580,9 +416,7 @@ Widget nextButton(
         style: TextStyle(
           fontWeight: FontWeight.w900,
           fontSize: 22,
-
           color: Colors.black,
-          // child:Image.asset(image ,scale: 3.5,),
         ),
       )),
     ),
@@ -596,13 +430,7 @@ Widget showBox(image, height, width, text1, text2) {
         Container(
           height: height,
           width: width,
-          decoration: const BoxDecoration(
-              // borderRadius: BorderRadius.circular(20),
-              //     border: Border.all(
-              //   // color: Colors.black,
-              //   width: 2,
-              // )),
-              ),
+          decoration: const BoxDecoration(),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
@@ -611,12 +439,6 @@ Widget showBox(image, height, width, text1, text2) {
                 scale: 0.2,
                 width: 130.0,
               ),
-              // Padding(
-              //   padding: const EdgeInsets.fromLTRB(5, 0, 0, 0),
-              //   child: Text(text ,style: const TextStyle(
-              //     fontSize: 15,fontWeight: FontWeight.w500
-              //   ),),
-              // ),
             ],
           ),
         ),
@@ -652,12 +474,6 @@ Widget textBox(height, width, width2, text1, text2) {
         SizedBox(
           height: height,
           width: width,
-          // decoration: BoxDecoration(
-          //     // borderRadius: BorderRadius.circular(20),
-          //     border: Border.all(
-          //   color: Colors.black,
-          //   width: 2,
-          // )),
           child: Row(children: [
             Text(
               text1,
@@ -681,12 +497,6 @@ Widget shareBox(image, height, width, text) {
     child: SizedBox(
       height: height,
       width: width,
-      // decoration: BoxDecoration(
-      //     // borderRadius: BorderRadius.circular(20),
-      //     border: Border.all(
-      //   color: Colors.black,
-      //   width: 2,
-      // )),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
@@ -717,450 +527,159 @@ Widget content_JobDis(BuildContext context) {
       itemBuilder: (BuildContext context, int index) {
         return SizedBox(
           height: 50,
-          // color: Colors.amber[colorCodes[index]],
           child: Center(child: Text('Entry ${entries[index]}')),
         );
       });
 }
 
 Widget jobDisBoxUi(
-    image, height, width, text1, text2, text3, text4, text5, text6, text7) {
+  context,
+  image,
+  double height,
+  double width,
+  text1,
+  text2,
+  text3,
+  text4,
+  text5,
+  text6,
+  text7,
+) {
+  final Size screenSize = MediaQuery.of(context).size;
+
   return Container(
-    //   child: ElevatedButton(
-    // child: const Text('show Drawer'),
-    // onPressed: () {
-    // showModalBottomSheet<void>(
-    // showBottomSheet<void>(
-    // context: context,
-
-    // isScrollControlled: true,
-    // isDismissible: true,
-
-    // shape: const RoundedRectangleBorder(
-    //     borderRadius:
-    //         BorderRadius.vertical(top: Radius.circular(40))),
-    // builder: (BuildContext context) {
-    // return Container(
     decoration: BoxDecoration(
-      borderRadius: BorderRadius.circular(41),
+      borderRadius: BorderRadius.circular(45),
       color: const Color(0x19946CC3),
     ),
-    height: height,
-    width: width,
-    child: Column(
-        // children:[Padding(
-        // mainAxisAlignment: MainAxisAlignment.center,
-        //   // mainAxisSize: MainAxisSize.min,
-        //   padding: EdgeInsets.all(1.0),
+    height: height * screenSize.height * 0.0014,
+    width: width * screenSize.width * 0.00257,
+    child: Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          // const Text('drawer closing button'),
-          // MainAxisAlignment
-          Container(
-            padding: const EdgeInsets.fromLTRB(0, 12, 0, 0),
-            height: 320,
-            // width: ,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-
-              // crossAxisAlignment: CrossAxisAlignment.center,
-              // mainAxisSize: MainAxisSize.min,
-              children: [
-                Image.asset(
-                  image,
-                  scale: 0.9,
+          Image.asset(
+            image,
+            scale: 0.9,
+          ),
+          SizedBox(height: 7),
+          Text(
+            text1,
+            style: TextStyle(
+              fontSize: 20 * screenSize.width * 0.0027,
+              fontWeight: FontWeight.w600,
+              fontFamily: 'Poppins',
+              color: const Color.fromARGB(252, 0, 0, 0),
+            ),
+          ),
+          Text(
+            text2,
+            style: TextStyle(
+              fontSize: 14 * screenSize.width * 0.0028,
+              fontWeight: FontWeight.w600,
+              fontFamily: 'Poppins',
+              color: const Color(0xFF0A66C2),
+            ),
+          ),
+          Divider(),
+          SizedBox(
+            height: 4 * screenSize.height * 0.0018,
+          ),
+          Text(
+            text3,
+            style: TextStyle(
+              fontSize: 14 * screenSize.width * 0.0028,
+              fontWeight: FontWeight.w600,
+              fontFamily: 'Poppins',
+              color: const Color(0xD6595961),
+            ),
+          ),
+          SizedBox(
+            height: 4 * screenSize.height * 0.0018,
+          ),
+          Text(
+            text4,
+            style: TextStyle(
+              fontSize: 15 * screenSize.width * 0.0027,
+              fontWeight: FontWeight.w400,
+              fontFamily: 'Poppins',
+              color: const Color(0xFF946CC3),
+            ),
+          ),
+          SizedBox(
+            height: 15 * screenSize.height * 0.0018,
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              Container(
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(10),
+                  boxShadow: const [
+                    BoxShadow(
+                      color: Color(0x63946CC3),
+                    ),
+                  ],
                 ),
-                Padding(
-                  padding: const EdgeInsets.fromLTRB(0, 7, 0, 0),
+                height: 27 * screenSize.height * 0.0014,
+                width: 90 * screenSize.width * 0.0026,
+                child: Center(
                   child: Text(
-                    text1,
-                    style: const TextStyle(
-                        fontSize: 20,
-                        fontWeight: FontWeight.w600,
-                        fontFamily: 'Poppins',
-                        color: Color.fromARGB(252, 0, 0, 0)),
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.fromLTRB(0, 3, 0, 0),
-                  child: Text(
-                    text2,
-                    style: const TextStyle(
-                        fontSize: 14,
-                        fontWeight: FontWeight.w600,
-                        fontFamily: 'Poppins',
-                        color: Color(0xFF0A66C2)),
-                  ),
-                  // Divider(),
-                ),
-                Divider(),
-                Padding(
-                  padding: const EdgeInsets.fromLTRB(0, 8, 0, 0),
-                  child: Text(
-                    text3,
-                    style: const TextStyle(
-                        fontSize: 14,
-                        fontWeight: FontWeight.w600,
-                        fontFamily: 'Poppins',
-                        color: Color(0xD6595961)),
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.fromLTRB(0, 9, 0, 0),
-                  child: Text(
-                    text4,
-                    style: const TextStyle(
-                      fontSize: 15,
-                      fontWeight: FontWeight.w400,
+                    text5,
+                    style: TextStyle(
+                      fontWeight: FontWeight.w600,
+                      fontSize: 12 * screenSize.width * 0.0028,
                       fontFamily: 'Poppins',
-                      color: Color(0xFF946CC3),
+                      color: const Color(0xFF946CC3),
                     ),
                   ),
                 ),
-                Container(
-                    child: Padding(
-                        padding: const EdgeInsets.fromLTRB(0, 16, 0, 0),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          children: [
-                            // const SizedBox(
-                            //   width: 12,
-                            // ),
-                            Container(
-                                decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(10),
-                                    boxShadow: const [
-                                      BoxShadow(
-                                        color: Color(0x63946CC3),
-                                        // blurRadius: 15.0,
-                                        // offset: Offset(0, 30),
-                                      ),
-                                      //  color: color,
-                                      // borderRadius: BorderRadius.circular(20),
-                                    ]),
-                                height: 27,
-                                width: 90,
-                                child: Center(
-                                    child: Text(
-                                  text5,
-                                  style: const TextStyle(
-                                    fontWeight: FontWeight.w600,
-                                    fontSize: 12,
-                                    fontFamily: 'Poppins',
-                                    color: Color(0xFF946CC3),
-                                    // child: Image.asset(
-                                    //   image,
-                                    //   scale: 0.9,
-                                    // ),
-
-                                    // ),)),
-                                  ),
-                                ))),
-                            Container(
-                                decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(10),
-                                    boxShadow: const [
-                                      BoxShadow(
-                                        color: Color(0x63946CC3),
-                                        // blurRadius: 15.0,
-                                        // offset: Offset(0, 30),
-                                      ),
-                                      //  color: color,
-                                      // borderRadius: BorderRadius.circular(20),
-                                    ]),
-                                height: 25,
-                                width: 90,
-                                child: Center(
-                                    child: Text(
-                                  text6,
-                                  style: const TextStyle(
-                                    fontWeight: FontWeight.w600,
-                                    fontSize: 12,
-                                    fontFamily: 'Poppins',
-                                    color: Color(0xFF946CC3),
-                                    // child: Image.asset(
-                                    //   image,
-                                    //   scale: 0.9,
-                                    // ),
-
-                                    // ),)),
-                                  ),
-                                ))),
-                            // Padding(
-                            //   padding: const EdgeInsets.fromLTRB(5, 9, 0, 0),
-                            //   child: Text(
-                            //     text7,
-                            //     style: const TextStyle(
-                            //         fontSize: 8,
-                            //         fontWeight: FontWeight.w400,
-                            //         color: Color.fromARGB(255, 35, 35, 35)),
-                            //   ),
-                            // ),
-                            // // nextButtonBox('Skip', 141.0, 45.0, context, loadingPage()),
-                            // const SizedBox(
-                            //   width: 20,
-                            // ),
-                            // nextButtonBox('Next', 141.0, 45.0, context, jobDisPage()),
-                          ],
-                        ))),
-                Padding(
-                  padding: const EdgeInsets.fromLTRB(15, 15, 0, 0),
+              ),
+              Container(
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(10),
+                  boxShadow: const [
+                    BoxShadow(
+                      color: Color(0x63946CC3),
+                    ),
+                  ],
+                ),
+                height: 27 * screenSize.height * 0.0014,
+                width: 90 * screenSize.width * 0.0026,
+                child: Center(
                   child: Text(
-                    text7,
-                    style: const TextStyle(
-                        fontSize: 12,
-                        fontWeight: FontWeight.w500,
-                        color: Color.fromARGB(255, 35, 35, 35)),
+                    text6,
+                    style: TextStyle(
+                      fontWeight: FontWeight.w600,
+                      fontSize: 12 * screenSize.width * 0.0028,
+                      fontFamily: 'Poppins',
+                      color: const Color(0xFF946CC3),
+                    ),
                   ),
                 ),
-                // nextButtonBox('Skip', 141.0, 45.0, context, loadingPage()),
-                const SizedBox(
-                  width: 20,
-                ),
-                //   // ElevatedButton(
-                //   //   onPressed: () => Navigator.pop(context),
-                //   //   child: const Text(''),
-                //   //   style: const ButtonStyle(
-                //   //     backgroundColor:
-                //   //         MaterialStatePropertyAll<Color>(
-                //   //             Color.fromARGB(198, 240, 231, 231)),
-                //   //   ),
-                //   // ),
-                //   // returnButton(Color.fromARGB(255, 83, 81, 81), 23.0,
-                //   //     23.0, context, const loadingPage()),
-                //   // child:
-              ],
-
-              // returnButton(const Color(0xff13b3d7), 23.0, 23.0,
-              //       context, const loadingPage()),
-            ),
-            // child:Row()
+              ),
+            ],
           ),
-          // Container(
-          //     child: Padding(
-          //         padding: const EdgeInsets.fromLTRB(15, 0, 15, 0),
-          //         child: Row(
-          //           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          //           children: [
-          //             const SizedBox(
-          //               width: 13,
-          //             ),
-          //             Container(
-          //                 decoration: BoxDecoration(
-          //                     borderRadius: BorderRadius.circular(10),
-          //                     boxShadow: [
-          //                       BoxShadow(
-          //                         color: Colors.purple.shade200,
-          //                         // blurRadius: 15.0,
-          //                         // offset: Offset(0, 30),
-          //                       ),
-          //                       //  color: color,
-          //                       // borderRadius: BorderRadius.circular(20),
-          //                     ]),
-          //                 height: 50,
-          //                 width: 50,
-          //                 child: Center(
-          //                     child: Text(
-          //                   text5,
-          //                   style: const TextStyle(
-          //                     fontWeight: FontWeight.w300,
-          //                     fontSize: 10,
-
-          //                     color: Color.fromARGB(255, 186, 104, 200),
-          //                     // child: Image.asset(
-          //                     //   image,
-          //                     //   scale: 0.9,
-          //                     // ),
-
-          //                     // ),)),
-          //                   ),
-          //                 ))),
-          //             Container(
-          //                 decoration: BoxDecoration(
-          //                     borderRadius: BorderRadius.circular(10),
-          //                     boxShadow: [
-          //                       BoxShadow(
-          //                         color: Colors.purple.shade200,
-          //                         // blurRadius: 15.0,
-          //                         // offset: Offset(0, 30),
-          //                       ),
-          //                       //  color: color,
-          //                       // borderRadius: BorderRadius.circular(20),
-          //                     ]),
-          //                 height: 50,
-          //                 width: 50,
-          //                 child: Center(
-          //                     child: Text(
-          //                   text6,
-          //                   style: const TextStyle(
-          //                     fontWeight: FontWeight.w300,
-          //                     fontSize: 10,
-
-          //                     color: Color.fromARGB(255, 186, 104, 200),
-          //                     // child: Image.asset(
-          //                     //   image,
-          //                     //   scale: 0.9,
-          //                     // ),
-
-          //                     // ),)),
-          //                   ),
-          //                 ))),
-          //             // Padding(
-          //             //   padding: const EdgeInsets.fromLTRB(5, 9, 0, 0),
-          //             //   child: Text(
-          //             //     text7,
-          //             //     style: const TextStyle(
-          //             //         fontSize: 8,
-          //             //         fontWeight: FontWeight.w400,
-          //             //         color: Color.fromARGB(255, 35, 35, 35)),
-          //             //   ),
-          //             // ),
-          //             // // nextButtonBox('Skip', 141.0, 45.0, context, loadingPage()),
-          //             // const SizedBox(
-          //             //   width: 20,
-          //             // ),
-          //             // nextButtonBox('Next', 141.0, 45.0, context, jobDisPage()),
-          //           ],
-          //         ))),
-          // Padding(
-          //   padding: const EdgeInsets.fromLTRB(5, 9, 0, 0),
-          //   child: Text(
-          //     text7,
-          //     style: const TextStyle(
-          //         fontSize: 8,
-          //         fontWeight: FontWeight.w400,
-          //         color: Color.fromARGB(255, 35, 35, 35)),
-          //   ),
-          // ),
-          // // nextButtonBox('Skip', 141.0, 45.0, context, loadingPage()),
-          // const SizedBox(
-          //   width: 20,
-          // ),
-        ]),
-    // const SizedBox(
-    //   height: 20,
-    // ),
-    // Container(
-    //     child: Row(
-    //   mainAxisAlignment: MainAxisAlignment.start,
-    //   children: [
-    //     const SizedBox(
-    //       width: 20,
-    //     ),
-    //     returnButton('assets/return.png', Color.fromARGB(32, 229, 4, 4),
-    //         28.0, 28.0, context, const loadingPage()),
-    //     const SizedBox(
-    //       width: 18,
-    //     ),
-    //     const Text(
-    //       'Catogries',
-    //       style: TextStyle(
-    //           fontWeight: FontWeight.bold,
-    //           fontSize: 28,
-    //           color: Color.fromARGB(255, 0, 0, 0)),
-    //     )
-    //   ],
-    // )),
-    // Container(
-    //   child: Padding(
-    //     padding: const EdgeInsets.fromLTRB(20, 30, 10, 0),
-    //     child: Row(
-    //       children: const [
-    //         Text(
-    //           'Choose 3-5 catogries and we`ll optimize \nthe vacancies for you.',
-    //           style: TextStyle(
-    //               fontWeight: FontWeight.w500,
-    //               fontSize: 18.1,
-    //               fontStyle: FontStyle.normal,
-    //               color: Colors.black),
-    //         )
-    //       ],
-    //     ),
-    //   ),
-    // ),
-    // const SizedBox(
-    //   height: 20,
-    // ),
-    // Container(
-    //     child: Padding(
-    //         padding: const EdgeInsets.fromLTRB(15, 0, 15, 0),
-    //         child: Row(
-    //           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-    //           children: [
-    //             const SizedBox(
-    //               width: 13,
-    //             ),
-    //             optionBox('assets/crypto (1).png', 105.0, 134.0, 'Crypto'),
-    //             optionBox('assets/bank.png', 105.0, 134.0, 'Banking'),
-    //           ],
-    //         ))),
-    // const SizedBox(
-    //   height: 20,
-    // ),
-    // Container(
-    //     child: Padding(
-    //         padding: const EdgeInsets.fromLTRB(15, 0, 15, 0),
-    //         child: Row(
-    //           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-    //           children: [
-    //             const SizedBox(
-    //               width: 13,
-    //             ),
-    //             optionBox(
-    //                 'assets/programming2.png', 105.0, 134.0, 'Programming'),
-    //             // const SizedBox(
-    //             //   width: 0,
-    //             // ),
-    //             optionBox(
-    //                 'assets/food.png', 105.0, 134.0, 'Food & restaurent'),
-    //           ],
-    //         ))),
-    // const SizedBox(
-    //   height: 20,
-    // ),
-    // Container(
-    //     child: Padding(
-    //         padding: const EdgeInsets.fromLTRB(15, 0, 15, 0),
-    //         child: Row(
-    //           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-    //           children: [
-    //             const SizedBox(
-    //               width: 13,
-    //             ),
-    //             optionBox(
-    //                 'assets/human.png', 105.0, 134.0, 'Human Reasorce'),
-    //             // const SizedBox(
-    //             //   width: 20,
-    //             // ),
-    //             optionBox(
-    //                 'assets/content.png', 105.0, 134.0, 'Conten writting'),
-    //           ],
-    //         ))),
-    // const SizedBox(
-    //   height: 20,
-    // ),
-    // Container(
-    //     child: Padding(
-    //         padding: const EdgeInsets.fromLTRB(15, 0, 15, 0),
-    //         child: Row(
-    //           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-    //           children: [
-    //             const SizedBox(
-    //               width: 13,
-    //             ),
-    //             optionBox('assets/art.png', 105.0, 134.0, 'Art & Design'),
-    //             // const SizedBox(
-    //             //   width: 20,
-    //             // ),
-    //             optionBox(
-    //                 'assets/custom.png', 105.0, 134.0, 'Customer Service'),
-    //           ],
-    //         ))),
+          Padding(
+            padding: const EdgeInsets.fromLTRB(15, 37, 0, 0),
+            child: Text(
+              text7,
+              style: TextStyle(
+                fontSize: 12 * screenSize.width * 0.0028,
+                fontWeight: FontWeight.w500,
+                color: const Color.fromARGB(255, 35, 35, 35),
+              ),
+            ),
+          ),
+          const SizedBox(
+            width: 20,
+          ),
+        ],
+      ),
+    ),
   );
 }
-
-// import 'package:flutter/material.dart';
-
-// import 'package:flutter/material.dart';
 
 class AnimatedLoadingDots extends StatefulWidget {
   @override
@@ -1228,69 +747,6 @@ class _AnimatedLoadingDotsState extends State<AnimatedLoadingDots>
   }
 }
 
-// import 'package:flutter/material.dart';
-
-// class TextColorChangeOnTap extends StatefulWidget {
-//   @override
-//   _TextColorChangeOnTapState createState() => _TextColorChangeOnTapState();
-// }
-
-// class _TextColorChangeOnTapState extends State<TextColorChangeOnTap> {
-//   Color jobDescColor = Color(0xFF0A66C2); // Initial color for Job Description
-//   Color minQualColor = Colors.black; // Initial color for Minimum Qualification
-
-//   void _changeColors(bool isJobDescTapped) {
-//     setState(() {
-//       if (isJobDescTapped) {
-//         jobDescColor = Color(0xFF0A66C2);
-//         minQualColor = Colors.black;
-//       } else {
-//         jobDescColor = Colors.black;
-//         minQualColor = Color(0xFF0A66C2);
-//       }
-//     });
-//   }
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return Row(
-//       mainAxisAlignment: MainAxisAlignment.center,
-//       children: [
-//         GestureDetector(
-//           onTap: () {
-//             _changeColors(true);
-//           },
-//           child: Text(
-//             "Job Description      ",
-//             style: TextStyle(
-//               fontSize: 16,
-//               fontWeight: FontWeight.w500,
-//               fontFamily: 'Poppins',
-//               color: jobDescColor,
-//             ),
-//           ),
-//         ),
-//         GestureDetector(
-//           onTap: () {
-//             _changeColors(false);
-//           },
-//           child: Text(
-//             "Minimum Qualification",
-//             style: TextStyle(
-//               fontSize: 16,
-//               fontWeight: FontWeight.w500,
-//               fontFamily: 'Poppins',
-//               color: minQualColor,
-//             ),
-//           ),
-//         ),
-//       ],
-//     );
-//   }
-// }
-
-// import 'package:flutter/material.dart';
-
 class TextColorChangeWithLine extends StatefulWidget {
   @override
   _TextColorChangeWithLineState createState() =>
@@ -1298,8 +754,8 @@ class TextColorChangeWithLine extends StatefulWidget {
 }
 
 class _TextColorChangeWithLineState extends State<TextColorChangeWithLine> {
-  Color jobDescColor = Color(0xFF0A66C2); // Initial color for Job Description
-  Color minQualColor = Colors.black; // Initial color for Minimum Qualification
+  Color jobDescColor = Color(0xFF0A66C2);
+  Color minQualColor = Colors.black;
 
   void _changeColors(bool isJobDescTapped) {
     setState(() {
@@ -1351,12 +807,12 @@ class _TextColorChangeWithLineState extends State<TextColorChangeWithLine> {
           ],
         ),
         Container(
-          height: 1, // Height of the line
-          width: 330, // Width of the line
+          height: 1,
+          width: 330,
           color: jobDescColor == Color(0xFF0A66C2)
               ? Color(0xFF0A66C2)
-              : Color(0xFFD9D9D9), // Use the same color as the selected text
-          margin: EdgeInsets.symmetric(vertical: 5), // Adjust margin as needed
+              : Color(0xFFD9D9D9),
+          margin: EdgeInsets.symmetric(vertical: 5),
         ),
       ],
     );

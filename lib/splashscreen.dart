@@ -3,19 +3,19 @@ import 'dart:async';
 import 'package:intershipapp/welcome.dart';
 
 import 'package:flutter/material.dart';
+
 // import 'welcome_screeen.dart';
 class SplashScreen extends StatefulWidget {
   const SplashScreen({Key? key})
       : super(
-    key: key,
-  );
+          key: key,
+        );
 
   @override
   State<SplashScreen> createState() => _SplashScreenState();
 }
 
 class _SplashScreenState extends State<SplashScreen> {
-
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -31,10 +31,18 @@ class _SplashScreenState extends State<SplashScreen> {
                 text: TextSpan(
                   children: [
                     TextSpan(
-                      text: "WORK", style: TextStyle(color: Color(0xff946CC3),fontSize: 42, fontFamily: 'Azonix'),
+                      text: "WORK",
+                      style: TextStyle(
+                          color: Color(0xff946CC3),
+                          fontSize: 42,
+                          fontFamily: 'Azonix'),
                     ),
                     TextSpan(
-                      text: "SHALA", style: TextStyle(color: Color(0xff000000), fontSize: 42, fontFamily: 'Azonix'),
+                      text: "SHALA",
+                      style: TextStyle(
+                          color: Color(0xff000000),
+                          fontSize: 42,
+                          fontFamily: 'Azonix'),
                     ),
                   ],
                 ),
@@ -45,20 +53,17 @@ class _SplashScreenState extends State<SplashScreen> {
         ),
       ),
     );
-
-
   }
+
   @override
   void initState() {
     super.initState();
     Timer(Duration(seconds: 3), () {
-      Navigator.pushReplacement(context,
+      Navigator.pushReplacement(
+          context,
           MaterialPageRoute(
             builder: (context) => WelcomeScreen(),
-          )
-      );
+          ));
     });
   }
-
-
 }

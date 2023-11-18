@@ -29,10 +29,12 @@ class uploadedScreen extends StatelessWidget {
   const uploadedScreen({super.key});
   @override
   Widget build(BuildContext context) {
+    final screenHeight = MediaQuery.of(context).size.height;
+    final screenWidth = MediaQuery.of(context).size.width;
     return Center(
         child: Column(mainAxisAlignment: MainAxisAlignment.start, children: [
-      const SizedBox(
-        height: 45,
+      SizedBox(
+        height: screenHeight * 0.045,
       ),
       Container(
           child: Row(
@@ -59,46 +61,15 @@ class uploadedScreen extends StatelessWidget {
                 fontFamily: 'Raleway',
                 color: Color.fromARGB(255, 0, 0, 0)),
           ),
-          // const SizedBox(width: 150),
-          // returnButton1(
-          //     'assets/share.png',
-          //     const Color.fromARGB(34, 104, 104, 104),
-          //     28.0,
-          //     28.0,
-          //     context,
-          //     const jobDisPage()),
         ],
       )),
-      // Container(
-      //     child: Padding(
-      //         padding: const EdgeInsets.fromLTRB(0, 25, 15, 0),
-      //         child: Column(
-      //           mainAxisAlignment: MainAxisAlignment.start,
-      //           children: [
-      //             const SizedBox(
-      //               width: 16,
-      //             ),
-      //             showBox('assets/details.png', 118.0, 134.0,
-      //                 'Interaction Designer', 'Dribbble'),
-      //             textBox(30.0, 350.0, 250.0, 'Salary', '-'),
-      //             textBox(30.0, 350.0, 220.0, 'Type', 'Part-Time'),
-      //             textBox(30.0, 350.0, 220.0, 'Location', 'WFH'),
-      //             textBox(30.0, 350.0, 200.0, 'Duration', '3 Months'),
-      //             Container(
-      //                 decoration: BoxDecoration(
-      //                     // borderRadius: BorderRadius.circular(20),
-      //                     border: Border.all(
-      //               color: const Color.fromARGB(151, 12, 12, 12),
-      //               width: 1,
-      //
-
-      //           ))),
 
       Container(
           child: Padding(
               padding: const EdgeInsets.fromLTRB(12, 14, 13, 0),
               child: Column(children: [
                 jobDisBoxUi(
+                    context,
                     'assets/google1.png',
                     332.0,
                     340.0,
@@ -115,10 +86,14 @@ class uploadedScreen extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-            const SizedBox(height: 33),
+            SizedBox(
+              height: screenHeight * 0.036,
+            ),
             resumeBox(
                 'assets/pdf.png', 60.0, 200.0, 'Rohit khatri.pdf', '540kb'),
-            const SizedBox(height: 22),
+            SizedBox(
+              height: screenHeight * 0.016,
+            ),
             const Text('         Successful',
                 style: TextStyle(
                   color: Color(0xFF0093FF),
@@ -126,7 +101,9 @@ class uploadedScreen extends StatelessWidget {
                   fontFamily: 'Poppins',
                   fontWeight: FontWeight.w600,
                 )),
-            const SizedBox(height: 14),
+            SizedBox(
+              height: screenHeight * 0.016,
+            ),
             const Text(
                 '   You have successfully applied to this internship.\nyou can see the status in the “applications” section.',
                 style: TextStyle(
@@ -136,28 +113,10 @@ class uploadedScreen extends StatelessWidget {
                   fontWeight: FontWeight.w500,
                 ))
           ])),
-      // Container(
-      //     width: 324,
-      //     height: 162,
-      //     decoration: BoxDecoration(
-      //         borderRadius: BorderRadius.circular(17),
-      //         border: Border.all(
-      //           color: const Color(0xFF0A66C2),
-      //           width: 2,
-      //         )),
-      //     child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
-      //       Text(
-      //         'Uploading...',
-      //         style: TextStyle(
-      //           color: Color(0xFF0093FF),
-      //           fontSize: 21,
-      //           fontFamily: 'Poppins',
-      //           fontWeight: FontWeight.w600,
-      //           height: 0.05,
-      //         ),
-      //       ),
-      //     ])),
-      const SizedBox(height: 90),
+
+      SizedBox(
+        height: screenHeight * 0.095,
+      ),
       // applyButtonBox('Cancel', 171.0, 50.0, null, null),
       requiredBox(280.0, 45.0, 'Discover more'),
     ]));
