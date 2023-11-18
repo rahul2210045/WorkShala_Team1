@@ -330,22 +330,9 @@ class bottomDrawer extends StatelessWidget {
                   const SizedBox(
                     width: 13,
                   ),
-                  nextButtonBox('Skip', 141.0, 45.0, context, Home()),
-                  const SizedBox(
-                    width: 20,
-                  ),
-                  ElevatedButton(
-                    onPressed: () {
-                      // Make the API request when the "Next" button is clicked
-                      makeApiRequest(['IT', 'Marketing', 'Finance']);
-                      // Navigate to the next screen or perform other actions
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => MainScreen()));
-                    },
-                    child: const Text('Next'),
-                  ),
+                  nextButtonBox('Skip', 141.0, 45.0, context, Home(), () => {}),
+                  nextButtonBox('Next', 141.0, 45.0, context, MainScreen(),
+                      makeApiRequest(['IT', 'Marketing', 'Finance'])),
                 ],
               )))
     ]));
