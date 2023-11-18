@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:intershipapp/jobdis.dart';
+import 'package:intershipapp/secureStorage.dart';
 import 'package:intershipapp/widgets/Buildinkwell.dart';
 import 'package:intershipapp/widgets/jobcontainer.dart';
 
@@ -14,6 +15,21 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
   TextEditingController searchbar = TextEditingController();
+
+  Map<String, dynamic> userData = new Map();
+  final SecureStorage _secureStorage = SecureStorage();
+
+  @override
+  void initState() {
+    super.initState();
+    fetchSecureStorageData();
+  }
+
+  Future<void> fetchSecureStorageData() async {
+    userData = await _secureStorage.getUserData() ?? {};
+    setState(() {});
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -44,15 +60,15 @@ class _HomeState extends State<Home> {
                     ),
                   ),
                   const SizedBox(width: 16.0),
-                  const Column(
+                  Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        "Rahul Yadav",
+                        userData['name'] ?? '',
                         style: TextStyle(
                             fontWeight: FontWeight.bold, fontSize: 18.0),
                       ),
-                      Text('Hello'),
+                      Text(userData['email'] ?? ''),
                     ],
                   ),
                   const Spacer(),

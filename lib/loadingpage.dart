@@ -1,7 +1,11 @@
 // import 'dart:html';
 
+import 'dart:convert';
+import 'package:http/http.dart' as http;
+
 import 'package:flutter/material.dart';
 import 'package:intershipapp/jobdis.dart';
+import 'package:intershipapp/secureStorage.dart';
 import 'package:intershipapp/utilities.dart';
 import 'package:intershipapp/screen/MainScreen.dart';
 import 'package:intershipapp/screen/Home.dart';
@@ -33,8 +37,39 @@ class _loadingPageState extends State<loadingPage> {
   }
 }
 
+final SecureStorage _secureStorage = SecureStorage();
+
 class bottomDrawer extends StatelessWidget {
   const bottomDrawer({super.key});
+
+  Future<void> makeApiRequest(List<String> selectedSkills) async {
+    String? accessToken = await _secureStorage.getToken();
+    final apiUrl = 'https://workshala-7v7q.onrender.com/welcome';
+    final apiToken = 'Bearer $accessToken';
+
+    final requestBody = jsonEncode({
+      "workStatus": "Experienced",
+      "skills": selectedSkills,
+    });
+
+    final response = await http.post(
+      Uri.parse(apiUrl),
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': apiToken,
+      },
+      body: requestBody,
+    );
+
+    if (response.statusCode == 200) {
+      // API call was successful, handle the response accordingly
+      print('API Response: ${response.body}');
+    } else {
+      // API call failed, handle the error
+      print('API Error: ${response.statusCode}');
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Center(
@@ -299,7 +334,18 @@ class bottomDrawer extends StatelessWidget {
                   const SizedBox(
                     width: 20,
                   ),
-                  nextButtonBox('Next', 141.0, 45.0, context, Home()),
+                  ElevatedButton(
+                    onPressed: () {
+                      // Make the API request when the "Next" button is clicked
+                      makeApiRequest(['IT', 'Marketing', 'Finance']);
+                      // Navigate to the next screen or perform other actions
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => MainScreen()));
+                    },
+                    child: const Text('Next'),
+                  ),
                 ],
               )))
     ]));
