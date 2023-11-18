@@ -295,11 +295,11 @@ class bottomDrawer extends StatelessWidget {
                   const SizedBox(
                     width: 13,
                   ),
-                  nextButtonBox('Skip', 141.0, 45.0, context, const Home()),
+                  nextButtonBox('Skip', 141.0, 45.0, context, Home()),
                   const SizedBox(
                     width: 20,
                   ),
-                  nextButtonBox('Next', 141.0, 45.0, context, const Home()),
+                  nextButtonBox('Next', 141.0, 45.0, context, Home()),
                 ],
               )))
     ]));

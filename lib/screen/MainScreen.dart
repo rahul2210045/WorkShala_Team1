@@ -164,7 +164,7 @@ class _MainScreenState extends State<MainScreen> {
             _currentIndex = index;
           });
         },
-        children: const <Widget>[
+        children: <Widget>[
           Home(),
           jobDisDetail(),
           uploadScreen()
