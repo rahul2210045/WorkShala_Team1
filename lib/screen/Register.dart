@@ -2,6 +2,8 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import 'package:intershipapp/screen/ForgetPassword.dart';
+import 'package:intershipapp/screen/Home.dart';
 import 'package:intershipapp/screen/Login.dart';
 import 'package:intershipapp/screen/MainScreen.dart';
 import 'package:intershipapp/widgets/CustomTextButton.dart';
@@ -186,7 +188,10 @@ class _RegisterState extends State<Register> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             TextButton(
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => Forgetpass()));
+                },
                 child: const CustomText(
                   text: "Forget Password ?",
                   fontStyle: null,
@@ -195,17 +200,17 @@ class _RegisterState extends State<Register> {
                 ))
           ],
         ),
-        const Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            CustomText(
-              text: "continue with",
-              fontStyle: null,
-              color: Colors.black,
-              fontSize: 20,
-            )
-          ],
-        ),
+        // const Row(
+        //   mainAxisAlignment: MainAxisAlignment.center,
+        //   children: [
+        //     CustomText(
+        //       text: "continue with",
+        //       fontStyle: null,
+        //       color: Colors.black,
+        //       fontSize: 20,
+        //     )
+        //   ],
+        // ),
 
         // Padding(padding: EdgeInsets.only(bottom: 20)),
         // Container(
@@ -273,35 +278,35 @@ class _RegisterState extends State<Register> {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Container(
-          // width: 150,
-          // margin: consts EdgeInsets.all(15),
-          // child: ElevatedButton.icon(
-          //   onPressed: () {},
-          //   style: ElevatedButton.styleFrom(
-          //     backgroundColor: Color.fromRGBO(255, 255, 255, 1),
-          //     padding: const EdgeInsets.symmetric(vertical: 16),
-          //   ),
-          //   icon: const FaIcon(FontAwesomeIcons.google, color: Colors.red),
-          //   label: const Text(
-          //     ' Google',
-          //     style: TextStyle(color: Colors.black),
-          //   ),
-          // ),
-          child: IconButton(
-            onPressed: () {},
-            icon: const Icon(FontAwesomeIcons.google),
-            color: Colors.red,
-          ),
-        ),
-        Container(
-          // width: 150,
-          // margin: const EdgeInsets.all(15),
-          child: IconButton(
-            onPressed: () {},
-            icon: const Icon(FontAwesomeIcons.facebook),
-            color: Colors.blue,
-          ),
-        ),
+            // width: 150,
+            // margin: consts EdgeInsets.all(15),
+            // child: ElevatedButton.icon(
+            //   onPressed: () {},
+            //   style: ElevatedButton.styleFrom(
+            //     backgroundColor: Color.fromRGBO(255, 255, 255, 1),
+            //     padding: const EdgeInsets.symmetric(vertical: 16),
+            //   ),
+            //   icon: const FaIcon(FontAwesomeIcons.google, color: Colors.red),
+            //   label: const Text(
+            //     ' Google',
+            //     style: TextStyle(color: Colors.black),
+            //   ),
+            // ),
+            // child: IconButton(
+            //   onPressed: () {},
+            //   icon: const Icon(FontAwesomeIcons.google),
+            //   color: Colors.red,
+            // ),
+            ),
+        // Container(
+        //   // width: 150,
+        //   // margin: const EdgeInsets.all(15),
+        //   child: IconButton(
+        //     onPressed: () {},
+        //     icon: const Icon(FontAwesomeIcons.facebook),
+        //     color: Colors.blue,
+        //   ),
+        // ),
       ],
     );
   }
