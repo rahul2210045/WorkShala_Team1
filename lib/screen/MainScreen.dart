@@ -31,7 +31,6 @@ class _MainScreenState extends State<MainScreen> {
 
   Future<void> fetchProfileData() async {
     try {
-      // Assuming you have a valid token stored in a variable named 'accessToken'
       String? accessToken = await _secureStorage.getToken();
 
       http.Response response = await http.get(
@@ -47,6 +46,8 @@ class _MainScreenState extends State<MainScreen> {
         // Parse and handle the profile data here
         Map<String, dynamic> profileData = jsonDecode(response.body);
         print("response ${profileData}");
+        await _secureStorage.setUserData(profileData);
+
         // Use profileData as needed
       } else {
         // Handle errors
