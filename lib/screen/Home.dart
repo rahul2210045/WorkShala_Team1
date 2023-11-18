@@ -55,9 +55,9 @@ class _HomeState extends State<Home> {
                       border: Border.all(color: Colors.grey),
                     ),
                     child: const CircleAvatar(
-                      backgroundImage:
-                          NetworkImage('https://example.com/profile.jpg'),
-                    ),
+                        // child: ,
+                        backgroundImage:
+                            AssetImage('assests/images/profiel.png')),
                   ),
                   const SizedBox(width: 16.0),
                   Column(

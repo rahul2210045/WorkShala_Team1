@@ -32,128 +32,130 @@ class _ProfilePageState extends State<ProfilePage> {
       appBar: AppBar(
         title: const Text("Profile"),
       ),
-      body: Container(
-        padding: const EdgeInsets.all(16),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Row(
-              children: [
-                CircleAvatar(
-                  radius: 50,
-                  // Add your user's profile image here
-                  backgroundImage: NetworkImage(
-                    'https://example.com/path-to-your-profile-image.jpg',
-                  ),
-                ),
-                SizedBox(height: 16),
-                Column(
-                  children: [
-                    Text(
-                      userData['name'] ?? '',
-                      style: TextStyle(
-                        fontSize: 24,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    const Text('India'),
-                    const Text('Since 2022'),
-                  ],
-                ),
-              ],
-            ),
-            const SizedBox(height: 16),
-            // Wallet and Courses Container
-            Container(
-              padding: const EdgeInsets.all(16),
-              decoration: BoxDecoration(
-                border: Border.all(color: Colors.grey),
-                borderRadius: BorderRadius.circular(10),
-              ),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      body: ListView(children: [
+        Container(
+          padding: const EdgeInsets.all(16),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Row(
                 children: [
+                  const CircleAvatar(
+                      radius: 50,
+                      // Add your user's profile image here
+                      backgroundImage:
+                          AssetImage('assests/images/profiel.png')),
+                  const SizedBox(height: 16),
                   Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text('Wallet'),
-                      Text('\$45.78'),
-                    ],
-                  ),
-                  VerticalDivider(
-                    color: Colors.grey,
-                    width: 1,
-                  ),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text('Courses'),
-                      Text('${userData['skills'] ?? ''}'),
+                      Text(
+                        userData['name'] ?? '',
+                        style: const TextStyle(
+                          fontSize: 24,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      Text(userData['email'] ?? ''),
+                      const Text('Since 2022'),
                     ],
                   ),
                 ],
               ),
-            ),
-            const SizedBox(height: 16),
-            ListTile(
-              leading: const Icon(
-                Icons.favorite,
-                color: Colors.red,
+              const SizedBox(height: 16),
+              // Wallet and Courses Container
+              Container(
+                padding: const EdgeInsets.all(16),
+                decoration: BoxDecoration(
+                  border: Border.all(color: Colors.grey),
+                  borderRadius: BorderRadius.circular(10),
+                ),
+                child: Row(
+                  // mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    // const Column(
+                    //   crossAxisAlignment: CrossAxisAlignment.start,
+                    //   children: [
+                    //   ],
+                    // ),
+                    const VerticalDivider(
+                      color: Colors.grey,
+                      width: 1,
+                    ),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        const Text('Courses'),
+                        Text('${userData['skills'] ?? ''}'),
+                      ],
+                    ),
+                  ],
+                ),
               ),
-              title: const Text('Your Favourite'),
-              onTap: () {
-                // Handle Payment action
-              },
-            ),
-            ListTile(
-              leading: const Icon(Icons.payment),
-              title: const Text('Payment'),
-              onTap: () {
-                // Handle Payment action
-              },
-            ),
-            ListTile(
-              leading: const Icon(Icons.people),
-              title: const Text('Tell Your Friends'),
-              onTap: () {
-                // Handle Tell Your Friends action
-              },
-            ),
-            ListTile(
-              leading: const Icon(Icons.local_offer),
-              title: const Text('Promotions'),
-              onTap: () {
-                // Handle Promotions action
-              },
-            ),
-            ListTile(
-              leading: const Icon(Icons.settings),
-              title: const Text('Settings'),
-              onTap: () {
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => SettingsPage()));
-                // Handle Settings action
-              },
-            ),
-            ListTile(
-              leading: const Icon(Icons.exit_to_app),
-              title: const Text('Log Out'),
-              onTap: () {
-                Navigator.pop(context,
-                    MaterialPageRoute(builder: (context) => Register()));
-                // Handle Log Out action
-              },
-            ),
-          ],
+              const SizedBox(height: 16),
+              ListTile(
+                leading: const Icon(
+                  Icons.favorite,
+                  color: Colors.red,
+                ),
+                title: const Text('Your Favourite'),
+                onTap: () {
+                  // Handle Payment action
+                },
+              ),
+              ListTile(
+                leading: const Icon(Icons.payment),
+                title: const Text('Payment'),
+                onTap: () {
+                  // Handle Payment action
+                },
+              ),
+              ListTile(
+                leading: const Icon(Icons.people),
+                title: const Text('Tell Your Friends'),
+                onTap: () {
+                  // Handle Tell Your Friends action
+                },
+              ),
+              ListTile(
+                leading: const Icon(Icons.local_offer),
+                title: const Text('Promotions'),
+                onTap: () {
+                  // Handle Promotions action
+                },
+              ),
+              ListTile(
+                leading: const Icon(Icons.settings),
+                title: const Text('Settings'),
+                onTap: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const SettingsPage()));
+                  // Handle Settings action
+                },
+              ),
+              ListTile(
+                leading: const Icon(Icons.exit_to_app),
+                title: const Text('Log Out'),
+                onTap: () {
+                  Navigator.pop(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const Register()));
+                  // Handle Log Out action
+                },
+              ),
+            ],
+          ),
         ),
-      ),
+      ]),
     );
   }
 }
 
 void main() {
   runApp(
-    MaterialApp(
+    const MaterialApp(
       home: ProfilePage(),
     ),
   );
