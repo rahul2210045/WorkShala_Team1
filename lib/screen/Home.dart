@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:intershipapp/jobdis.dart';
+import 'package:intershipapp/screen/FilterpageScreen.dart';
 import 'package:intershipapp/secureStorage.dart';
 import 'package:intershipapp/widgets/Buildinkwell.dart';
 import 'package:intershipapp/widgets/courseRec.dart';
@@ -77,6 +78,29 @@ class _HomeState extends State<Home> {
               const SizedBox(height: 16.0),
               buildtextfiled(context, searchbar, "search", false, () {}),
               const SizedBox(height: 16.0),
+              Container(
+                child: GestureDetector(
+                    onTap: () {
+                      // Navigate to the second screen on tap
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => FilterScreenPage()),
+                      );
+                    },
+                    child: Row(children: [
+                      Spacer(),
+                      const Text(
+                        'Filter   ',
+                        style: TextStyle(
+                            fontWeight: FontWeight.w500, fontSize: 16.0),
+                      ),
+                      Image.asset(
+                        'assets/filter.png',
+                        height: 20,
+                      ),
+                    ])),
+              ),
               Image.asset(
                 'assests/images/Frame 16.png',
                 height: 200,

@@ -150,9 +150,6 @@ class _CourseBoxState extends State<CourseBox> {
   }
 }
 
-
-
-
 class CustomBox extends StatefulWidget {
   // const CustomBox({super.key});
   @override
@@ -215,7 +212,7 @@ class CustomDetail extends StatelessWidget {
                 itemCount: companyData?.length ?? 0,
                 itemBuilder: (context, index) {
                   if (companyData == null) {
-                    return Container(); 
+                    return Container();
                   }
                   return Container(
                     padding: const EdgeInsets.all(10.0),
@@ -346,18 +343,27 @@ class CustomDetail extends StatelessWidget {
                             SizedBox(
                               width: 195.0,
                             ),
-                            Text(
-                              'View Details',
-                              textAlign: TextAlign.center,
-                              style: TextStyle(
-                                color: Color(0xFF246BFD),
-                                fontSize: 13,
-                                fontFamily: 'Inter',
-                                fontWeight: FontWeight.w400,
-                                // height: 0,
-                                // letterSpacing: -0.30,
+                            Container(
+                                child: GestureDetector(
+                              onTap: () {
+                                // Navigate to the next screen on tap
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => const jobDisPage()),
+                                );
+                              },
+                              child: Text(
+                                'View Details',
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                  color: Color(0xFF246BFD),
+                                  fontSize: 13,
+                                  fontFamily: 'Inter',
+                                  fontWeight: FontWeight.w400,
+                                ),
                               ),
-                            )
+                            ))
                           ],
                         ),
                       ],
@@ -368,6 +374,3 @@ class CustomDetail extends StatelessWidget {
         });
   }
 }
-  
-
-  

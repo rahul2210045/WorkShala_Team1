@@ -54,6 +54,8 @@ class CrustomDetail extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final screenHeight = MediaQuery.of(context).size.height;
+    final screenWidth = MediaQuery.of(context).size.width;
     return FutureBuilder<List<dynamic>?>(
         future: fetchData(),
         builder: (context, snapshot) {
@@ -73,7 +75,7 @@ class CrustomDetail extends StatelessWidget {
                   return Container(
                     padding: const EdgeInsets.all(10.0),
                     margin: const EdgeInsets.all(9),
-                    height: 230,
+                    height: screenHeight * 0.39,
                     decoration: BoxDecoration(
                       border: Border.all(color: Colors.grey),
                       borderRadius: BorderRadius.circular(40),
@@ -91,7 +93,6 @@ class CrustomDetail extends StatelessWidget {
                                     border: Border.all(width: 1),
                                     borderRadius: BorderRadius.circular(9),
                                   ),
-                                
                                 ),
                                 const SizedBox(width: 8.0),
                                 Container(
@@ -106,12 +107,14 @@ class CrustomDetail extends StatelessWidget {
                                             fontSize: 12,
                                             color: Colors.black),
                                       ),
+                                      SizedBox(height: screenHeight * 0.011),
                                       Text(
-                                        'level: ${courses[index]['Level']}',
+                                        'Level: ${courses[index]['Level']}',
                                         style: const TextStyle(
-                                            fontWeight: FontWeight.w500,
-                                            fontSize: 12,
-                                            color: Colors.black),
+                                          fontWeight: FontWeight.w500,
+                                          fontSize: 13,
+                                          color: Color(0xFF246BFD),
+                                        ),
                                       ),
                                     ],
                                   ),
@@ -119,9 +122,7 @@ class CrustomDetail extends StatelessWidget {
                               ],
                             ),
                             GestureDetector(
-                              onTap: () {
-                               
-                              },
+                              onTap: () {},
                               child: Container(
                                 padding: const EdgeInsets.all(10.0),
                                 decoration: BoxDecoration(
@@ -136,7 +137,6 @@ class CrustomDetail extends StatelessWidget {
                               ),
                             ),
                             const SizedBox(height: 8.0),
-                        
                           ],
                         ),
                         const SizedBox(height: 8.0),
@@ -181,17 +181,27 @@ class CrustomDetail extends StatelessWidget {
                             SizedBox(
                               width: 195.0,
                             ),
-                            Text(
-                              'View Details',
-                              textAlign: TextAlign.center,
-                              style: TextStyle(
-                                color: Color(0xFF246BFD),
-                                fontSize: 13,
-                                fontFamily: 'Inter',
-                                fontWeight: FontWeight.w400,
-                  
+                            Container(
+                                child: GestureDetector(
+                              onTap: () {
+                                // Navigate to the next screen on tap
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => jobDisPage()),
+                                );
+                              },
+                              child: Text(
+                                'View Details',
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                  color: Color(0xFF246BFD),
+                                  fontSize: 13,
+                                  fontFamily: 'Inter',
+                                  fontWeight: FontWeight.w400,
+                                ),
                               ),
-                            )
+                            ))
                           ],
                         ),
                       ],
