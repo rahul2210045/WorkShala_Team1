@@ -75,6 +75,8 @@ class _FilterScreenPageState extends State<FilterScreenPage> {
                   selectedGender = '';
                   selectedLocation = '';
                   // selectedType = '';
+
+                  
                   selectedOptions.forEach((key, value) {
                     selectedOptions[key] = '';
                   });
