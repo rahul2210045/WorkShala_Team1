@@ -330,7 +330,8 @@ class bottomDrawer extends StatelessWidget {
                   const SizedBox(
                     width: 13,
                   ),
-                  nextButtonBox('Skip', 141.0, 45.0, context, Home(), () => {}),
+                  nextButtonBox(
+                      'Skip', 141.0, 45.0, context, MainScreen(), () => {}),
                   nextButtonBox('Next', 141.0, 45.0, context, MainScreen(),
                       makeApiRequest(['IT', 'Marketing', 'Finance'])),
                 ],
