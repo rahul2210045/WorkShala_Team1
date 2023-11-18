@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:intershipapp/screen/Register.dart';
 import 'package:intershipapp/screen/Settings.dart';
+import 'package:http/http.dart' as http;
 
 class ProfilePage extends StatelessWidget {
   @override
@@ -27,7 +28,7 @@ class ProfilePage extends StatelessWidget {
                 Column(
                   children: [
                     Text(
-                      'Vidita Singh',
+                      'Rahul Yadav',
                       style: TextStyle(
                         fontSize: 24,
                         fontWeight: FontWeight.bold,

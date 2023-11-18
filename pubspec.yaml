@@ -40,6 +40,7 @@ dependencies:
   http: ^1.1.0
   get: ^4.6.6
   snackbar: ^1.0.2
+  flutter_secure_storage: ^5.1.0
 
 dev_dependencies:
   flutter_test:

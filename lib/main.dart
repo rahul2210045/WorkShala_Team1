@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:intershipapp/filter.dart';
+import 'package:intershipapp/screen/FilterpageScreen.dart';
 import 'package:intershipapp/screen/Home.dart';
 import 'package:intershipapp/screen/Login.dart';
 import 'package:intershipapp/screen/Register.dart';
@@ -38,7 +40,7 @@ class MyApp extends StatelessWidget {
             seedColor: const Color.fromARGB(255, 255, 255, 255)),
         useMaterial3: true,
       ),
-      home: Home(),
+      home: Register(),
       // home: const MyHomePage(title: 'Flutter Demo Home Page'),
     );
   }

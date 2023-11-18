@@ -2,10 +2,12 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import 'package:intershipapp/loadingpage.dart';
 import 'package:intershipapp/screen/ForgetPassword.dart';
 import 'package:intershipapp/screen/Home.dart';
 import 'package:intershipapp/screen/Login.dart';
 import 'package:intershipapp/screen/MainScreen.dart';
+import 'package:intershipapp/secureStorage.dart';
 import 'package:intershipapp/widgets/CustomTextButton.dart';
 import 'package:intershipapp/widgets/Customtext.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -22,6 +24,7 @@ class _RegisterState extends State<Register> {
   var passwords = TextEditingController();
   bool rememberme = false;
   final _formKey = GlobalKey<FormState>();
+  final SecureStorage _secureStorage = SecureStorage();
 
   @override
   Widget build(BuildContext context) {
@@ -141,9 +144,14 @@ class _RegisterState extends State<Register> {
 
                   if (response.statusCode == 200) {
                     // Login successful
+                    final Map<String, dynamic> data = jsonDecode(response.body);
+                    await _secureStorage.setToken(data['accessToken']);
+
                     print("login successfull");
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => const MainScreen()));
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const MainScreen()));
                   } else {
                     // Login failed, show error message
                     print(
@@ -323,8 +331,8 @@ class _RegisterState extends State<Register> {
         ),
         CustomTextButton(
           onPressed: () {
-            Navigator.push(
-                context, MaterialPageRoute(builder: (context) => const Login()));
+            Navigator.push(context,
+                MaterialPageRoute(builder: (context) => const Login()));
           },
           buttonText: "Sign up",
           buttonColor: Colors.white,

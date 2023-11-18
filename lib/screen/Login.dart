@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:intershipapp/loadingpage.dart';
 import 'package:intershipapp/screen/Register.dart';
+import 'package:intershipapp/secureStorage.dart';
 import 'package:intershipapp/widgets/Customtext.dart';
 
 class Login extends StatefulWidget {
@@ -21,6 +22,7 @@ class _LoginState extends State<Login> {
   TextEditingController mobilee = TextEditingController();
   TextEditingController Lastname = TextEditingController();
   final _formKey = GlobalKey<FormState>();
+  final SecureStorage _secureStorage = SecureStorage();
 
   @override
   Widget build(BuildContext context) {
@@ -107,8 +109,10 @@ class _LoginState extends State<Login> {
                   signUp(email, password, firstName, lastName, mobile,
                       confirmPassword);
 
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => const loadingPage()));
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const loadingPage()));
                 }
               },
               style: ElevatedButton.styleFrom(
@@ -137,7 +141,10 @@ class _LoginState extends State<Login> {
                   fontSize: 15,
                 ),
                 TextButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) => Register()));
+                    },
                     child: const CustomText(
                       text: "Log in",
                       fontStyle: null,
@@ -210,6 +217,9 @@ class _LoginState extends State<Login> {
     String confirmpassword,
   ) async {
     try {
+      // Assuming you have a valid token stored in a variable named 'accessToken'
+      String accessToken = "";
+
       Map<String, String> requestBody = {
         'email': emailtext.text,
         'password': passwords.text,
@@ -221,11 +231,18 @@ class _LoginState extends State<Login> {
 
       http.Response response = await http.post(
         Uri.parse('https://workshala-7v7q.onrender.com/register'),
-        headers: {'Content-Type': 'application/json'},
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization':
+              'Bearer $accessToken', // Include the token in the headers
+        },
         body: jsonEncode(requestBody),
       );
 
       if (response.statusCode == 201) {
+        final Map<String, dynamic> data = jsonDecode(response.body);
+        await _secureStorage.setToken(data['accessToken']);
+        print(response.body);
         showSnackBar('Account created successfully');
       } else {
         showSnackBar('Failed with status code: ${response.statusCode}');

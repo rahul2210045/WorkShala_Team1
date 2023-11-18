@@ -48,7 +48,7 @@ class _HomeState extends State<Home> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        "geeer",
+                        "Rahul Yadav",
                         style: TextStyle(
                             fontWeight: FontWeight.bold, fontSize: 18.0),
                       ),
@@ -100,13 +100,13 @@ class _HomeState extends State<Home> {
                       isOnline: true,
                       onFavIconPressed: () {}),
                   CourseBox(
-                  companyLogo: "",
-                  companyName: "",
-                  personName: "kjhgfd",
-                  placeName: "kjhgfd",
-                  moneyName: "lkjhgfd",
-                  isOnline: true,
-                  onFavIconPressed: () {})
+                      companyLogo: "",
+                      companyName: "",
+                      personName: "kjhgfd",
+                      placeName: "kjhgfd",
+                      moneyName: "lkjhgfd",
+                      isOnline: true,
+                      onFavIconPressed: () {})
                 ]),
               ),
               // SizedBox(width: 16.0),
