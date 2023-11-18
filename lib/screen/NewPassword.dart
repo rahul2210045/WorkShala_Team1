@@ -4,9 +4,8 @@ import 'package:http/http.dart' as http;
 import 'package:intershipapp/screen/Register.dart';
 
 class NewPassword extends StatefulWidget {
-  final String tokencode;
-
-  const NewPassword({Key? key, required this.tokencode}) : super(key: key);
+  const NewPassword({Key? key, required this.token}) : super(key: key);
+  final String token;
 
   @override
   State<NewPassword> createState() => _NewPasswordState();
@@ -17,16 +16,18 @@ class _NewPasswordState extends State<NewPassword> {
   TextEditingController newPasswordController = TextEditingController();
 
   Future<void> setNewPassword(
-      String email, String newPassword, String s) async {
+      String email, String newPassword, String token) async {
     try {
       final response = await http.post(
         Uri.parse('https://workshala-7v7q.onrender.com/setNewPassword'),
         headers: {
-          'Authorization':
-              widget.tokencode, // Use the reset password token here
+          'Authorization': 'Bearer $token', // Add your access token here
           'Content-Type': 'application/json',
         },
-        body: jsonEncode({'email': email, 'newPassword': newPassword}),
+        body: jsonEncode({
+          'email': email,
+          'newPassword': newPassword,
+        }),
       );
 
       if (response.statusCode == 200) {
@@ -67,10 +68,12 @@ class _NewPasswordState extends State<NewPassword> {
           buildTextField(
               context, newPasswordController, "Enter new Password", true),
           ElevatedButton(
-            onPressed: () async {
+            onPressed: () {
               // Call the setNewPassword function with the entered email and new password
-              await setNewPassword(emailController.text,
-                  newPasswordController.text, widget.tokencode);
+              setNewPassword(
+                  emailController.text, newPasswordController.text, widget.token
+                  // .body.text,
+                  );
             },
             style: ElevatedButton.styleFrom(
               shape: const ContinuousRectangleBorder(

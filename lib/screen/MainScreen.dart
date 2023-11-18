@@ -1,140 +1,14 @@
-// import 'package:flutter/material.dart';
-// import 'package:curved_navigation_bar/curved_navigation_bar.dart';
-// import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-// import 'package:intershipapp/screen/Home.dart';
-// // import 'package:todoapp/Screens/WeekTask.dart';
-// // import 'package:todoapp/Screens/focus.dart';
-// // import 'package:todoapp/Screens/home.dart';
-
-// // import 'package:todoapp/Screens/profile.dart';
-
-// class Main_Screen extends StatefulWidget {
-//   const Main_Screen({super.key});
-
-//   @override
-//   State<Main_Screen> createState() => _Main_ScreenState();
-// }
-
-// class _Main_ScreenState extends State<Main_Screen> {
-//   int _index = 0;
-//   final screens = [
-//     // const Home(),
-//     Home()
-//     // const WeekTask(),
-//     // const InFocus(),
-//     // const Profile()
-//   ];
-//   final navigationKey = GlobalKey<CurvedNavigationBarState>();
-//   Shader _headerGradient(BuildContext context) {
-//     return const LinearGradient(
-//       colors: <Color>[
-//         Color.fromARGB(255, 250, 140, 119),
-//         Color.fromARGB(255, 243, 48, 96),
-//       ],
-//     ).createShader(
-//         Rect.fromLTWH(0, 0, MediaQuery.of(context).size.width, 70.0));
-//   }
-
-//   @override
-//   Widget build(BuildContext context) {
-//     final items = <Widget>[
-//       const Icon(FontAwesomeIcons.houseChimneyWindow, size: 25),
-//       const Icon(FontAwesomeIcons.calendarDays, size: 25),
-//       const SizedBox(
-//         width: 20,
-//       ),
-//       const Icon(FontAwesomeIcons.solidClock, size: 25),
-//       const Icon(FontAwesomeIcons.userLarge, size: 25),
-//     ];
-//     final height = MediaQuery.of(context).size.height;
-//     if (_index < 0) {
-//       _index = 0;
-//     } else if (_index >= screens.length) {
-//       _index = screens.length - 1;
-//     }
-//     return Container(
-//         color: const Color.fromARGB(255, 54, 54, 54),
-//         child: SafeArea(
-//             top: false,
-//             child: ClipRect(
-//                 child: Scaffold(
-//                     backgroundColor: const Color.fromARGB(255, 19, 19, 21),
-//                     extendBody: true,
-//                     extendBodyBehindAppBar: true,
-//                     body: screens[_index],
-//                     floatingActionButton: Container(
-//                       decoration: const BoxDecoration(
-//                           shape: BoxShape.circle,
-//                           boxShadow: [
-//                             BoxShadow(color: Colors.transparent),
-//                             BoxShadow(
-//                                 color: Color.fromARGB(10, 0, 0, 0),
-//                                 offset: Offset(0, 0),
-//                                 blurRadius: 6,
-//                                 spreadRadius: 0),
-//                             BoxShadow(
-//                                 color: Color.fromARGB(31, 239, 35, 85),
-//                                 offset: Offset(0, 2),
-//                                 blurRadius: 6,
-//                                 spreadRadius: 0),
-//                             BoxShadow(
-//                                 color: Color.fromARGB(51, 239, 35, 85),
-//                                 offset: Offset(0, 16),
-//                                 blurRadius: 24,
-//                                 spreadRadius: 0)
-//                           ],
-//                           gradient: LinearGradient(
-//                             begin: Alignment.topCenter,
-//                             colors: <Color>[
-//                               Color.fromARGB(255, 250, 140, 119),
-//                               Color.fromARGB(255, 243, 48, 96),
-//                             ],
-//                           )),
-//                       height: 65,
-//                       width: 65,
-//                       // child: FloatingActionButton(
-//                       //   onPressed: () {
-//                       //     Navigator.pushNamed(context, 'createtask');
-//                       //   },
-//                       //   // backgroundColor: const Color.fromARGB(255, 77, 78, 237),
-//                       //   elevation: 0,
-//                       //   backgroundColor: Colors.transparent,
-//                       //   child: const Icon(
-//                       //     Icons.add,
-//                       //     size: 35,
-//                       //   ),
-//                       // ),
-//                     ),
-//                     floatingActionButtonLocation: FloatingActionButtonLocation
-//                         .centerDocked, // Adjust the location as needed
-//                     bottomNavigationBar: Theme(
-//                         data: Theme.of(context).copyWith(
-//                             iconTheme: const IconThemeData(
-//                                 color: Color.fromARGB(255, 245, 69, 101))),
-//                         child: CurvedNavigationBar(
-//                           key: navigationKey,
-//                           color: const Color.fromARGB(255, 255, 255, 255),
-//                           buttonBackgroundColor:
-//                               const Color.fromARGB(244, 244, 244, 244),
-//                           backgroundColor: Colors.transparent,
-//                           items: items,
-//                           animationCurve: Curves.easeInOut,
-//                           animationDuration: const Duration(milliseconds: 300),
-//                           height: 60,
-//                           index: _index,
-//                           onTap: (value) {
-//                             setState(() {
-//                               _index = value;
-//                             });
-//                           },
-//                         ))))));
-//   }
-// }
+// Import necessary packages and screens
+import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
+import 'package:http/http.dart' as http;
 import 'package:intershipapp/jobdis.dart';
 import 'package:intershipapp/screen/Home.dart';
+import 'package:intershipapp/screen/Profile.dart';
+import 'package:intershipapp/screen/Settings.dart';
+import 'package:intershipapp/secureStorage.dart';
 import 'package:intershipapp/uploadScreen.dart';
 
 class MainScreen extends StatefulWidget {
@@ -147,11 +21,42 @@ class MainScreen extends StatefulWidget {
 class _MainScreenState extends State<MainScreen> {
   int _currentIndex = 0;
   late PageController _pageController;
+  final SecureStorage _secureStorage = SecureStorage();
 
   @override
   void initState() {
     super.initState();
     _pageController = PageController(initialPage: _currentIndex);
+  }
+
+  Future<void> fetchProfileData() async {
+    try {
+      // Assuming you have a valid token stored in a variable named 'accessToken'
+      String? accessToken = await _secureStorage.getToken();
+
+      http.Response response = await http.get(
+        Uri.parse('https://workshala-7v7q.onrender.com/profile'),
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization':
+              'Bearer $accessToken', // Include the token in the headers
+        },
+      );
+
+      if (response.statusCode == 200) {
+        // Parse and handle the profile data here
+        Map<String, dynamic> profileData = jsonDecode(response.body);
+        print("response ${profileData}");
+        // Use profileData as needed
+      } else {
+        // Handle errors
+        print('Failed with status code: ${response.statusCode}');
+        print('Response body: ${response.body}');
+      }
+    } catch (e) {
+      // Handle exceptions
+      print('Error: $e');
+    }
   }
 
   @override
@@ -163,12 +68,20 @@ class _MainScreenState extends State<MainScreen> {
           setState(() {
             _currentIndex = index;
           });
+
+          // Fetch profile data when navigating to the ProfilePage
+          if (index == 2) {
+            fetchProfileData();
+          }
         },
         children: <Widget>[
           Home(),
-          jobDisDetail(),
-          uploadScreen()
-          // MORE PAGES WILL ADDED HERE
+          jobDisPage(),
+          ProfilePage(),
+          // SettingsPage()
+          // jobDisDetail(),
+          // uploadScreen()
+          // MORE PAGES WILL BE ADDED HERE
         ],
       ),
       bottomNavigationBar: CurvedNavigationBar(
@@ -176,8 +89,9 @@ class _MainScreenState extends State<MainScreen> {
         height: 50,
         items: const <Widget>[
           Icon(Icons.home, size: 30),
-          Icon(Icons.calendar_today, size: 30),
+          Icon(Icons.list_alt, size: 30),
           Icon(Icons.person, size: 30),
+          // Icon(Icons.settings, size: 30),
         ],
         color: const Color.fromARGB(255, 215, 189, 219),
         buttonBackgroundColor: const Color.fromARGB(255, 138, 170, 225),

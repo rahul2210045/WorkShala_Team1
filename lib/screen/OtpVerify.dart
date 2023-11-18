@@ -14,14 +14,14 @@ class _OtpVerifyState extends State<OtpVerify> {
   TextEditingController emailotp = TextEditingController();
   TextEditingController otp = TextEditingController();
 
-  Future<String?> verifyOtp(String email, String enteredOtp) async {
+  Future<void> verifyOtp(
+    String email,
+    String enteredOtp,
+  ) async {
     try {
       final response = await http.post(
         Uri.parse('https://workshala-7v7q.onrender.com/verifyOtp'),
-        body: {
-          'email': email,
-          'otp': enteredOtp,
-        },
+        body: {'email': email, 'otp': enteredOtp},
       );
 
       if (response.statusCode == 404 && response.body.contains('otp expired')) {
@@ -29,22 +29,25 @@ class _OtpVerifyState extends State<OtpVerify> {
         print('OTP has expired. Please request a new OTP.');
         // You can implement a mechanism to request a new OTP here
       } else if (response.statusCode == 200) {
+        final Map<String, dynamic> data = jsonDecode(response.body);
         // OTP verification successful, handle accordingly
         print('OTP verification successful');
-        String resetpassword = response.body;
-        print('Otp token code: $resetpassword');
-        return resetpassword;
+        print('Otp token code: ${data}');
+        print('***Token*** ${data['resetPasswordToken']}');
+        Navigator.push(
+            context,
+            MaterialPageRoute(
+                builder: (context) =>
+                    NewPassword(token: data['resetPasswordToken'])));
       } else {
         // Handle other cases or display an error message to the user
         print('OTP verification failed. Status code: ${response.statusCode}');
         print('Error message: ${response.body}');
-        return null;
       }
     } catch (e) {
       // Handle any exceptions that might occur during the HTTP request
       print('Error during OTP verification: $e');
       // You might want to show a generic error message to the user
-      return null;
     }
   }
 
@@ -64,16 +67,7 @@ class _OtpVerifyState extends State<OtpVerify> {
           ElevatedButton(
             onPressed: () async {
               // Call the verifyOtp function with the entered email and OTP
-              String? tokencode = await verifyOtp(emailotp.text, otp.text);
-              if (tokencode != null) {
-                // Navigate to the NewPassword screen and pass the tokencode
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => NewPassword(tokencode: tokencode),
-                  ),
-                );
-              }
+              await verifyOtp(emailotp.text, otp.text);
             },
             child: Text('Verify OTP'),
           ),
