@@ -187,13 +187,13 @@ class _RegisterState extends State<Register> {
               padding: const EdgeInsets.symmetric(vertical: 16),
             ),
             child: const Text(
-              "Sign up",
+              "Sign in",
               style: TextStyle(fontSize: 18, color: Colors.white),
             ),
           ),
         ),
         Row(
-          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.end,
           children: [
             TextButton(
                 onPressed: () {

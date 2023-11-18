@@ -47,7 +47,7 @@ class jobDisDetail extends StatelessWidget {
                 26.0,
                 26.0,
                 context,
-                 Home()),
+                Home()),
             const SizedBox(
               width: 115,
             ),

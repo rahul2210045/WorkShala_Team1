@@ -18,16 +18,14 @@ class _SettingsPageState extends State<SettingsPage> {
     return Scaffold(
       appBar: AppBar(
         title: const Row(
-          children: [
-            CircleAvatar(
-              // Add your user's profile image here
-              backgroundImage: NetworkImage(
-                  'https://example.com/path-to-your-profile-image.jpg'),
+            // children: [
+            //   CircleAvatar(
+            //       // Add your user's profile image here
+            //       backgroundImage: AssetImage('assests/images/profiel.png')),
+            //   SizedBox(width: 16),
+            //   Text("User Name"), // Replace with the user's name
+            // ],
             ),
-            SizedBox(width: 16),
-            Text("User Name"), // Replace with the user's name
-          ],
-        ),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
