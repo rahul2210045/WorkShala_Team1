@@ -179,7 +179,7 @@ class CrustomDetail extends StatelessWidget {
                               ),
                             ),
                             SizedBox(
-                              width: 195.0,
+                              width: 170,
                             ),
                             Container(
                                 child: GestureDetector(
