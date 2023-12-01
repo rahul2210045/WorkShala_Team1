@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class FilterPage extends StatefulWidget {
   @override
@@ -19,7 +20,7 @@ class _FilterPageState extends State<FilterPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Filter'),
+        title: const Text('Filter'),
         actions: [
           TextButton(
             onPressed: () {
@@ -30,12 +31,12 @@ class _FilterPageState extends State<FilterPage> {
                 selectedType = '';
               });
             },
-            child: Text('Clear Filter'),
+            child: const Text('Clear Filter'),
           ),
         ],
       ),
       body: Container(
-        padding: EdgeInsets.all(16),
+        padding: const EdgeInsets.all(16),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -60,7 +61,7 @@ class _FilterPageState extends State<FilterPage> {
 
             // Add more filter options as needed
 
-            SizedBox(height: 16),
+            const SizedBox(height: 16),
 
             // Apply Button
             ElevatedButton(
@@ -72,11 +73,12 @@ class _FilterPageState extends State<FilterPage> {
                 print('Type: $selectedType');
                 // Add more filters as needed
               },
-              child: Text('Apply'),
+              child: const Text('Apply'),
             ),
           ],
         ),
       ),
+
     );
   }
 
@@ -110,9 +112,3 @@ class _FilterPageState extends State<FilterPage> {
     );
   }
 }
-
-// void main() {
-//   runApp(MaterialApp(
-//     home: FilterPage(),
-//   ));
-// }
