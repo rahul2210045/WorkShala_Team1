@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:intershipapp/loadingpage.dart';
 
 class FilterScreenPage extends StatefulWidget {
   const FilterScreenPage({Key? key}) : super(key: key);
@@ -76,13 +78,12 @@ class _FilterScreenPageState extends State<FilterScreenPage> {
                   selectedLocation = '';
                   // selectedType = '';
 
-                  
                   selectedOptions.forEach((key, value) {
                     selectedOptions[key] = '';
                   });
                 });
               },
-              child: Text(
+              child: const Text(
                 'Clear Filter',
                 textAlign: TextAlign.center,
                 style: TextStyle(
@@ -99,11 +100,11 @@ class _FilterScreenPageState extends State<FilterScreenPage> {
           // Left Side: Navigation Options
           Container(
             width: MediaQuery.of(context).size.width / 2.3,
-            padding: EdgeInsets.all(16),
-            color: Color.fromARGB(
+            padding: const EdgeInsets.all(16),
+            color: const Color.fromARGB(
                 255, 243, 229, 245), // Change the color as needed
             child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 buildNavigationOption('Salary'),
@@ -119,7 +120,7 @@ class _FilterScreenPageState extends State<FilterScreenPage> {
           // Right Side: Dynamic Checkboxes
           Container(
             width: MediaQuery.of(context).size.width / 2,
-            padding: EdgeInsets.all(16),
+            padding: const EdgeInsets.all(16),
             // color: Colors.blue, // Change the color as needed
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -128,28 +129,81 @@ class _FilterScreenPageState extends State<FilterScreenPage> {
                 // Dynamic Checkboxes
                 buildDynamicCheckboxes(),
 
-                SizedBox(height: 16),
+                const SizedBox(height: 16),
 
                 // Apply Button
-                ElevatedButton(
-                  onPressed: () {
-                    // Implement logic to apply filters
-                    print('Applied Filters:');
-                    print('Gender: $selectedGender');
-                    print('Location: $selectedLocation');
-                    print('Type: $selectedType');
-                    selectedOptions.forEach((key, value) {
-                      print('$key: $value');
-                    });
-                    // Add more filters as needed
-                  },
-                  child: Text('Apply'),
-                ),
+                // ElevatedButton(
+                //   style: ElevatedButton.styleFrom(
+                //     primary: const Color.fromRGBO(
+                //         148, 108, 195, 1), // Background color
+                //   ),
+                //   onPressed: () {
+                //     // Implement logic to apply filters
+                //     // print('Applied Filters:');
+                //     // print('Gender: $selectedGender');
+                //     // print('Location: $selectedLocation');
+                //     // print('Type: $selectedType');
+                //     selectedOptions.forEach((key, value) {
+                //       // print('$key: $value');
+                //     });
+                //     // Add more filters as needed
+                //   },
+                //   child: const Text(
+                //     'Apply',
+                //     style: TextStyle(color: Colors.white),
+                //   ),
+                // ),
               ],
             ),
           ),
         ],
       ),
+      bottomNavigationBar: BottomNavigationBar(
+          items: [
+            BottomNavigationBarItem(
+              icon: Icon(Icons.home),
+              label: "HOME",
+              backgroundColor: Color.fromRGBO(148, 108, 195, 1),
+            ),
+            BottomNavigationBarItem(
+              icon: ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  primary: Color.fromRGBO(148, 108, 195, 1), // Background color
+                ),
+                onPressed: () {
+                  selectedOptions.forEach((key, value) {
+                    // print('$key: $value');
+                  });
+                  // Add more filters as needed
+                },
+                child: const Text(
+                  'Apply',
+                  style: TextStyle(color: Colors.white),
+                ),
+              ),
+              label: "",
+              backgroundColor: Color.fromRGBO(148, 108, 195, 1),
+            ),
+          ],
+          // currentIndex: 0,
+          // selectedItemColor: Colors.white,
+
+          onTap: (index) {
+            switch (index) {
+              case 0:
+                // Navigator.push(context,
+                //     MaterialPageRoute(builder: (context) => FlutterApp()));
+                break;
+              case 1:
+
+                // Navigator.push(
+                //     context, MaterialPageRoute(builder: (context) => about()));
+
+                break;
+              default:
+                break;
+            }
+          }),
     );
   }
 
@@ -163,12 +217,12 @@ class _FilterScreenPageState extends State<FilterScreenPage> {
         });
       },
       child: Padding(
-        padding: EdgeInsets.all(8),
+        padding: const EdgeInsets.all(8),
         child: Text(
           title,
           style: TextStyle(
             color: title == selectedNavigationOption
-                ? Color(0xFF946CC3)
+                ? const Color(0xFF946CC3)
                 : Colors.black,
           ),
         ),
@@ -217,37 +271,37 @@ class _FilterScreenPageState extends State<FilterScreenPage> {
     bool value,
     void Function(bool?) onChanged,
   ) {
-    return Row(
-      children: [
-        StatefulBuilder(
-          builder: (context, setState) {
-            return Checkbox(
-              value: value,
-              onChanged: (newValue) {
-                setState(() {
-                  onChanged(newValue);
-                });
-              },
-            );
-          },
-        ),
-        InkWell(
-          onTap: () {
-            onChanged(!value);
-          },
-          child: Text(
+    return InkWell(
+      onTap: () {
+        onChanged(!value); // Toggle the value
+      },
+      child: Row(
+        children: [
+          StatefulBuilder(
+            builder: (context, setState) {
+              return Checkbox(
+                value: value,
+                onChanged: (newValue) {
+                  setState(() {
+                    onChanged(newValue);
+                  });
+                },
+              );
+            },
+          ),
+          Text(
             option,
             style: TextStyle(
-              color: value ? Color(0xFF946CC3) : Colors.black,
+              color: value ? const Color(0xFF946CC3) : Colors.black,
             ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 
   void main() {
-    runApp(MaterialApp(
+    runApp(const MaterialApp(
       home: FilterScreenPage(),
     ));
   }

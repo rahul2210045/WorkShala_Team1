@@ -100,7 +100,10 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
                   ),
                   const Spacer(),
                   IconButton(
-                    icon: const Icon(Icons.notifications),
+                    icon: const Icon(
+                      Icons.notifications,
+                      color: Colors.red,
+                    ),
                     onPressed: () {
                       // Handle notification button press
                     },

@@ -21,6 +21,7 @@ class loadingPage extends StatefulWidget {
 }
 
 class _loadingPageState extends State<loadingPage> {
+  List items=[];
   @override
   Widget build(BuildContext context) {
     // final screenHeight = MediaQuery.of(context).size.height;
@@ -151,6 +152,7 @@ class bottomDrawer extends StatelessWidget {
                                     width: 8,
                                   ),
                                   SelectableBox(
+                                      
                                       image: 'assets/crypto (1).png',
                                       height: 105.0,
                                       width: 120.0,
@@ -215,7 +217,7 @@ class bottomDrawer extends StatelessWidget {
                                       image: 'assets/content.png',
                                       height: 105.0,
                                       width: 120.0,
-                                      text: 'Conten writting'),
+                                      text: 'Content writeing'),
                                 ],
                               ))),
                       const SizedBox(
