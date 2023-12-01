@@ -15,7 +15,7 @@ class CourseBox extends StatefulWidget {
   final String moneyName;
 
   final bool isOnline;
-  final VoidCallback onFavIconPressed;
+  // final VoidCallback onFavIconPressed;
 
   CourseBox({
     required this.companyLogo,
@@ -24,7 +24,7 @@ class CourseBox extends StatefulWidget {
     required this.placeName,
     required this.moneyName,
     required this.isOnline,
-    required this.onFavIconPressed,
+    // required this.onFavIconPressed,
   });
 
   @override
@@ -198,6 +198,8 @@ class CustomDetail extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final screenHeight = MediaQuery.of(context).size.height;
+    final screenWidth = MediaQuery.of(context).size.width;
     return FutureBuilder<List<dynamic>?>(
         future: fetchData(),
         builder: (context, snapshot) {
@@ -340,9 +342,9 @@ class CustomDetail extends StatelessWidget {
                                     fontWeight: FontWeight.w700),
                               ),
                             ),
-                            SizedBox(
-                              width: 195.0,
-                            ),
+                            // SizedBox(
+                            //   width: 140,
+                            // ),
                             Container(
                                 child: GestureDetector(
                               onTap: () {

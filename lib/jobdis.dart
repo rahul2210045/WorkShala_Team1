@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:intershipapp/models/companyData.dart';
 import 'package:intershipapp/screen/Home.dart';
+import 'package:intershipapp/services/companystatus.dart';
 import 'package:intershipapp/uploadScreen.dart';
 import 'package:intershipapp/utilities.dart';
 // import 'package:workshala/loadingpage.dart';
@@ -27,6 +29,7 @@ class jobDisDetail extends StatelessWidget {
   const jobDisDetail({super.key});
   @override
   Widget build(BuildContext context) {
+    // CompanyServices companyServices = CompanyServices();
     final screenHeight = MediaQuery.of(context).size.height;
     final screenWidth = MediaQuery.of(context).size.width;
     return Center(
