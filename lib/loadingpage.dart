@@ -156,12 +156,12 @@ class bottomDrawer extends StatelessWidget {
                                       image: 'assets/crypto (1).png',
                                       height: 105.0,
                                       width: 120.0,
-                                      text: 'Crypto'),
+                                      text: 'java'),
                                   SelectableBox(
                                       image: 'assets/bank.png',
                                       height: 105.0,
                                       width: 120.0,
-                                      text: 'Banking'),
+                                      text: 'flutter'),
                                 ],
                               ))),
                       const SizedBox(
@@ -181,7 +181,7 @@ class bottomDrawer extends StatelessWidget {
                                       image: 'assets/programming2.png',
                                       height: 105.0,
                                       width: 120.0,
-                                      text: 'Programming'),
+                                      text: 'css'),
                                   // const SizedBox(
                                   //   width: 0,
                                   // ),
@@ -189,7 +189,7 @@ class bottomDrawer extends StatelessWidget {
                                       image: 'assets/food.png',
                                       height: 105.0,
                                       width: 120.0,
-                                      text: 'Food & restaurent'),
+                                      text: 'html'),
                                 ],
                               ))),
                       const SizedBox(
@@ -209,7 +209,7 @@ class bottomDrawer extends StatelessWidget {
                                       image: 'assets/human.png',
                                       height: 105.0,
                                       width: 120.0,
-                                      text: 'Human Reasorce'),
+                                      text: 'machine learning'),
                                   // const SizedBox(
                                   //   width: 20,
                                   // ),
@@ -217,7 +217,7 @@ class bottomDrawer extends StatelessWidget {
                                       image: 'assets/content.png',
                                       height: 105.0,
                                       width: 120.0,
-                                      text: 'Conten writting'),
+                                      text: 'java script'),
                                 ],
                               ))),
                       const SizedBox(
