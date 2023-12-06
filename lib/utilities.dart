@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+import 'package:shared_preferences/shared_preferences.dart';
 Widget returnButton(image, color, height, width, context, page) {
   return GestureDetector(
     onTap: () {
@@ -253,15 +253,24 @@ class SelectableBox extends StatefulWidget {
 
 class _SelectableBoxState extends State<SelectableBox> {
   bool isSelected = false;
+  final List<String> myStringList = ['String 1', 'String 2', 'String 3'];
+
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {
-        setState(() {
-          isSelected = !isSelected;
-        });
-      },
+      onTap: () 
+        // setState(() {
+        //   isSelected = !isSelected;
+        // },
+        // );
+        async {
+           SharedPreferences prefs = await SharedPreferences.getInstance();
+
+              // Save list as a string
+              prefs.setStringList('myKey', myStringList);
+        }
+      ,
       child: Padding(
         padding: const EdgeInsets.fromLTRB(12, 0, 12, 0),
         child: Container(
