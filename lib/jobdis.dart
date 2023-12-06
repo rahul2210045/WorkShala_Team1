@@ -112,7 +112,7 @@ class jobDisDetail extends StatelessWidget {
                 ],
               ),
               SizedBox(
-                  height: screenHeight * 0.24,
+                  height: screenHeight * 0.29,
                   child: TabBarView(children: [
                     Container(
                         child: Padding(
