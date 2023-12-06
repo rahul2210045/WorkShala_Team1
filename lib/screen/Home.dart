@@ -2,7 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
+import 'package:intershipapp/models/courses.dart';
 import 'dart:convert';
+import 'package:shared_preferences/shared_preferences.dart';
+
 import 'package:intershipapp/jobdis.dart';
 import 'package:intershipapp/screen/FilterpageScreen.dart';
 // import:'package:flutter/src/rendering/box.dart':
@@ -40,8 +43,120 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
     setState(() {});
   }
 
-  //
-  Future<List<dynamic>?> fetchData() async {
+  // Future<void> retrieveListFromSharedPreferences() async {
+  //   SharedPreferences prefs = await SharedPreferences.getInstance();
+
+  //   // Retrieve list as a string
+  //   List<String>? retrievedList = prefs.getStringList('myKey');
+
+  //   if (retrievedList != null) {
+  //     //   // print('Retrieved List:');
+  //     retrievedList.forEach((element) {
+  //       //     // print(element);
+  //       Future<List<dynamic>?> fetchData() async {
+  //         final response = await http
+  //             .get(Uri.parse('https://course2.onrender.com/recommend/$element'));
+
+  //         if (response.statusCode == 200) {
+  //           final Map<String, dynamic> decodedData = json.decode(response.body);
+
+  //           if (decodedData.containsKey("courses")) {
+  //             return decodedData["courses"];
+  //           } else {
+  //             throw Exception('Invalid data format - missing "companies" key');
+  //           }
+  //         } else {
+  //           throw Exception('Failed to load data');
+  //         }
+  //       }
+  //     });
+  //     // Use the retrieved list in your application logic
+  //     // For example, assign it to a variable or perform operations on it
+  //     // myListVariable = retrievedList;
+  //     } else {
+  //       print('No data found.');
+  //     }
+  //   }
+
+//   Future<void> retrieveListFromSharedPreferences() async {
+//   SharedPreferences prefs = await SharedPreferences.getInstance();
+
+//   // Retrieve list as a string
+//   List<String>? retrievedList = prefs.getStringList('myKey');
+
+//   if (retrievedList != null) {
+//     // List to store fetched data
+//     List<List<dynamic>?> fetchedDataList = [];
+
+//     // Loop through each element in the retrievedList
+//     for (String element in retrievedList) {
+//       try {
+//         final response = await http.get(Uri.parse('https://course2.onrender.com/recommend/$element'));
+
+//         if (response.statusCode == 200) {
+//           final Map<String, dynamic> decodedData = json.decode(response.body);
+
+//           if (decodedData.containsKey("courses")) {
+//             fetchedDataList.add(decodedData["courses"]);
+//           } else {
+//             throw Exception('Invalid data format - missing "courses" key');
+//           }
+//         } else {
+//           throw Exception('Failed to load data');
+//         }
+//       } catch (error) {
+//         print('Error fetching data for $element: $error');
+//         // You might want to handle errors here for individual elements
+//         // or decide on a strategy for continuing despite errors
+//       }
+//     }
+
+//     // Use the fetched data list in your application logic
+//     // For example, process fetchedDataList or assign it to a variable
+//     processFetchedData(fetchedDataList);
+//   } else {
+//     print('No data found.');
+//   }
+// }
+
+  Future<List<List<dynamic>?>?> retrieveDataForElements() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+
+    List<String>? retrievedList = prefs.getStringList('myKey');
+    if (retrievedList != null) {
+      List<List<dynamic>?> fetchedDataList = [];
+
+      for (String element in retrievedList) {
+        try {
+          final response = await http.get(
+              Uri.parse('https://course2.onrender.com/recommend/$element'));
+
+          if (response.statusCode == 200) {
+            final Map<String, dynamic> decodedData = json.decode(response.body);
+
+            if (decodedData.containsKey("courses")) {
+              fetchedDataList.add(decodedData["courses"]);
+            } else {
+              throw Exception('Invalid data format - missing "courses" key');
+            }
+          } else {
+            throw Exception('Failed to load data');
+          }
+        } catch (error) {
+          print('Error fetching data for $element: $error');
+          // Handle errors if needed
+        }
+      }
+
+      return fetchedDataList;
+    } else {
+      print('No data found.');
+      return null;
+    }
+  }
+
+  // //
+  Future<List<dynamic>?> fetchDataa() async {
     final response = await http
         .get(Uri.parse('https://workshala-7v7q.onrender.com/companyData'));
 
@@ -74,6 +189,19 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
                 Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
               Row(
                 children: [
+//                   SharedPreferences prefs = await SharedPreferences.getInstance();
+
+// // Retrieve list as a string
+// List<String>? retrievedList = prefs.getStringList('myKey');
+
+// if (retrievedList != null) {
+//   print('Retrieved List:');
+//   retrievedList.forEach((element) {
+//     print(element);
+//   });
+// } else {
+//   print('No data found.');
+// }
                   Container(
                     width: 70,
                     height: 70,
@@ -158,32 +286,38 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
                     )),
               ])),
               const SizedBox(height: 8.0),
+
               SizedBox(
-                height: screenHeight * 0.278, // Adjust the height as needed
+                height: screenHeight * 0.318, // Adjust the height as needed
                 // child: SingleChildScrollView(
                 // scrollDirection: Axis.horizontal,
-                child: FutureBuilder<List<dynamic>?>(
-                  future: fetchData(),
+                child: FutureBuilder<List<List<dynamic>?>?>(
+                  future: retrieveDataForElements(),
                   builder: (context, snapshot) {
                     if (snapshot.connectionState == ConnectionState.waiting) {
                       return Center(child: CircularProgressIndicator());
                     } else if (snapshot.hasError) {
                       return Center(child: Text('Error: ${snapshot.error}'));
                     } else {
-                      List<dynamic>? companyData = snapshot.data;
+                      List<List<dynamic>?>? fetchedDataList = snapshot.data;
+
+                      if (fetchedDataList == null || fetchedDataList.isEmpty) {
+                        return Center(child: Text('No data available.'));
+                      }
 
                       return ListView.builder(
                         scrollDirection: Axis.horizontal,
-                        itemCount: companyData?.length ?? 0,
+                        itemCount: fetchedDataList.length,
                         itemBuilder: (context, index) {
-                          if (companyData == null) {
-                            return Container();
-                          }
+                          // if (fetchedDataList == null) {
+                          //   return Container();
+                          // }
+                          List<dynamic>? companyData = fetchedDataList[index];
                           return Container(
                             padding: const EdgeInsets.all(10.0),
                             margin: const EdgeInsets.all(9),
                             // height: screenHeight * 0.3,
-                            width: screenWidth * 0.92,
+                            width: screenWidth * 0.99,
                             decoration: BoxDecoration(
                               border: Border.all(color: Color(0xFF946CC3)),
                               borderRadius: BorderRadius.circular(14),
@@ -205,12 +339,12 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
                                             borderRadius:
                                                 BorderRadius.circular(9),
                                           ),
-                                          child: Image.network(
-                                            companyData[index]['img'],
-                                            width: screenWidth * 0.125,
-                                            height: screenHeight * 0.064,
-                                            scale: 8.0,
-                                          ),
+                                          // child: Image.network(
+                                          //   companyData[index]['img'],
+                                          //   width: screenWidth * 0.125,
+                                          //   height: screenHeight * 0.064,
+                                          //   scale: 8.0,
+                                          // ),
                                         ),
                                         SizedBox(width: screenWidth * 0.019),
                                         Container(
@@ -219,7 +353,7 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
                                                 CrossAxisAlignment.start,
                                             children: [
                                               Text(
-                                                'Company name: ${companyData[index]['title']}',
+                                                'Courses: ${companyData?[index]['courses']}',
                                                 style: const TextStyle(
                                                   fontWeight: FontWeight.w700,
                                                   fontSize: 16,
@@ -227,7 +361,7 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
                                                 ),
                                               ),
                                               Text(
-                                                'Company Type: ${companyData[index]['companyType']}',
+                                                ' Level: ${companyData?[index][' Level']}',
                                                 style: const TextStyle(
                                                   fontWeight: FontWeight.w500,
                                                   fontSize: 12,
@@ -260,16 +394,16 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
                                 ),
                                 const SizedBox(height: 10.0),
                                 Divider(),
+                                // Text(
+                                //   '   Description: ${companyData?[index]['Description']}',
+                                //   style: const TextStyle(
+                                //     fontSize: 16,
+                                //     fontWeight: FontWeight.w600,
+                                //     color: Color(0xD6595961),
+                                //   ),
+                                // ),
                                 Text(
-                                  '   Location: ${companyData[index]['location']}',
-                                  style: const TextStyle(
-                                    fontSize: 16,
-                                    fontWeight: FontWeight.w600,
-                                    color: Color(0xD6595961),
-                                  ),
-                                ),
-                                Text(
-                                  '   Industry: ${companyData[index]['industry']}',
+                                  '   Skills Covered: ${companyData?[index]['Skills Covered']}',
                                   style: const TextStyle(
                                     fontWeight: FontWeight.w700,
                                     fontSize: 12,
@@ -329,6 +463,7 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
                   },
                 ),
               ),
+
               // ),
               Row(
                 children: [
@@ -385,7 +520,7 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
                 height: screenHeight * 0.85, // Adjust the height as needed
                 // child: SingleChildScrollView(
                 child: FutureBuilder<List<dynamic>?>(
-                  future: fetchData(),
+                  future: fetchDataa(),
                   builder: (context, snapshot) {
                     if (snapshot.connectionState == ConnectionState.waiting) {
                       return Center(child: CircularProgressIndicator());

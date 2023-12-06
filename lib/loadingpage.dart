@@ -3,6 +3,7 @@
 import 'dart:convert';
 // import 'dart:html';
 import 'package:http/http.dart' as http;
+import 'package:shared_preferences/shared_preferences.dart';
 
 import 'package:flutter/material.dart';
 import 'package:intershipapp/jobdis.dart';
@@ -21,6 +22,7 @@ class loadingPage extends StatefulWidget {
 }
 
 class _loadingPageState extends State<loadingPage> {
+  final List<String> myStringList = ['String 1', 'String 2', 'String 3'];
   @override
   Widget build(BuildContext context) {
     // final screenHeight = MediaQuery.of(context).size.height;
