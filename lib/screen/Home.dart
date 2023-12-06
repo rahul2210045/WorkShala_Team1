@@ -239,7 +239,12 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
                 ],
               ),
               const SizedBox(height: 16.0),
-              buildtextfiled(context, searchbar, "search", false, () {}),
+              buildtextfiled(context, searchbar, "search", false, () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => FilterScreenPage()),
+                );
+              }),
               const SizedBox(height: 16.0),
               Container(
                 child: GestureDetector(
