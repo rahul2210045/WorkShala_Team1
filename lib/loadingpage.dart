@@ -67,10 +67,12 @@ class bottomDrawer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final screenHeight = MediaQuery.of(context).size.height;
+    final screenWidth = MediaQuery.of(context).size.width;
     return Center(
         child: Column(mainAxisAlignment: MainAxisAlignment.start, children: [
-      const SizedBox(
-        height: 25,
+      SizedBox(
+        height: screenHeight * 0.035,
       ),
       Container(
           decoration: BoxDecoration(
@@ -82,13 +84,13 @@ class bottomDrawer extends StatelessWidget {
           child: Column(children: [
             Container(
               padding: const EdgeInsets.fromLTRB(0, 5, 0, 0),
-              height: 20,
+              height: screenHeight * 0.028,
               child: const Row(
                 mainAxisAlignment: MainAxisAlignment.center,
               ),
             ),
-            const SizedBox(
-              height: 15,
+            SizedBox(
+              height: screenHeight * 0.02,
             ),
             Container(
                 child: Row(
@@ -134,11 +136,11 @@ class bottomDrawer extends StatelessWidget {
                 ),
               ),
             ),
-            const SizedBox(
-              height: 20,
+            SizedBox(
+              height: screenHeight * 0.0283,
             ),
             SizedBox(
-                height: 464,
+                height: screenHeight * 0.63,
                 child: SingleChildScrollView(
                   child: Column(
                     children: [
@@ -164,8 +166,8 @@ class bottomDrawer extends StatelessWidget {
                                       text: 'flutter'),
                                 ],
                               ))),
-                      const SizedBox(
-                        height: 20,
+                      SizedBox(
+                        height: screenHeight * 0.028,
                       ),
                       Container(
                           child: const Padding(
@@ -192,8 +194,8 @@ class bottomDrawer extends StatelessWidget {
                                       text: 'html'),
                                 ],
                               ))),
-                      const SizedBox(
-                        height: 20,
+                      SizedBox(
+                        height: screenHeight * 0.0285,
                       ),
                       Container(
                           child: const Padding(
@@ -220,8 +222,8 @@ class bottomDrawer extends StatelessWidget {
                                       text: 'java script'),
                                 ],
                               ))),
-                      const SizedBox(
-                        height: 20,
+                       SizedBox(
+                        height: screenHeight*0.0285 ,
                       ),
                       Container(
                           child: const Padding(
@@ -255,7 +257,9 @@ class bottomDrawer extends StatelessWidget {
               height: 7,
             ),
           ])),
-      const SizedBox(height: 20),
+       SizedBox(
+                        height: screenHeight*0.0285 ,
+                      ),
       Container(
           child: Padding(
               padding: const EdgeInsets.fromLTRB(15, 0, 15, 0),
