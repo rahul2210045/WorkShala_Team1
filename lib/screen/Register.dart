@@ -11,6 +11,7 @@ import 'package:intershipapp/secureStorage.dart';
 import 'package:intershipapp/widgets/CustomTextButton.dart';
 import 'package:intershipapp/widgets/Customtext.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class Register extends StatefulWidget {
   const Register({super.key});
@@ -20,11 +21,154 @@ class Register extends StatefulWidget {
 }
 
 class _RegisterState extends State<Register> {
-  var emailtext = TextEditingController();
-  var passwords = TextEditingController();
+  // final emailtext = TextEditingController();
+  // final passwords = TextEditingController();
   bool rememberme = false;
+  // late SharedPreferences prefs;
   final _formKey = GlobalKey<FormState>();
+  // final SecureStorage _secureStorage = SecureStorage();
+
+  bool? isChecked = false;
+  final emailController = new TextEditingController();
+  final passwordController = new TextEditingController();
+
+  late SharedPreferences prefs;
   final SecureStorage _secureStorage = SecureStorage();
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    initSharedPref();
+  }
+
+  void initSharedPref() async {
+    prefs = await SharedPreferences.getInstance();
+  }
+
+  // bool _isValidPassword(String password) {
+  //   // Use a regex pattern for password validation
+  //   // This example requires at least 6 characters, including an uppercase letter, a lowercase letter, and a number.
+  //   RegExp regex = RegExp(r'^(?=.[a-z])(?=.[A-Z])(?=.*\d).{6,}$');
+  //   return regex.hasMatch(password);
+  // }
+
+  Future<void> login(String email, String password) async {
+    try {
+      Map<String, String> loginData = {
+        'email': email,
+        'password': password,
+      };
+
+      final response = await http.post(
+        Uri.parse('https://workshala-7v7q.onrender.com/login'),
+        headers: {'Content-Type': 'application/json'},
+        body: jsonEncode(loginData),
+      );
+
+      print(response.statusCode);
+
+      if (response.statusCode == 200) {
+        dynamic setCookieHeader = response.headers['set-cookie'];
+
+        List<String>? cookies;
+
+        print('Response headers: ${response.headers}');
+        print('Cookies from response: ${response.headers['set-cookie']}');
+
+        if (setCookieHeader is String) {
+          cookies = [setCookieHeader];
+        } else if (setCookieHeader is List<String>) {
+          cookies = setCookieHeader;
+        } else {
+          cookies = [];
+        }
+
+        print('Response Headers: $setCookieHeader');
+
+        String accessToken = '';
+
+        if (cookies.isNotEmpty) {
+          accessToken = cookies
+              .map((cookie) => cookie.split(';').first)
+              .firstWhere((value) => value.startsWith('accessToken='),
+                  orElse: () => '');
+        }
+        if (accessToken.isNotEmpty) {
+  accessToken = accessToken.replaceFirst('accessToken=', '');
+}
+
+print('Extracted accessToken: $accessToken');
+
+        print('Access Token from Cookie: $accessToken');
+
+        if (accessToken.isNotEmpty) {
+          prefs.setString('token', accessToken);
+          await _secureStorage.setToken(accessToken);
+          print('Token stored in prefs: $accessToken');
+        } else {
+          // Handle the case where the token is empty
+          print('Token is empty');
+        }
+
+        final Map<String, dynamic> responseData = json.decode(response.body);
+        final message = responseData['message'];
+        final emailid = responseData['email'];
+        print('User Emailisssssss: $emailid');
+        print('Message from APIssss: $message');
+        final user = responseData['user'];
+
+        // await _secureStorage.setToken(responseData['accessToken']);
+        // final email = user['email'];
+        // final name = user['name'];
+
+        // -----------------------------------------------------------------------
+        print('Message from API: $message');
+
+        print('User Email: $email');
+        // print('User Name: $name');
+
+        prefs.setString('userEmail', email);
+        // prefs.setString('userName', name);
+
+        // Now navigate to the next screen
+        // Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => categories()));
+        Navigator.pushReplacement(
+            context, MaterialPageRoute(builder: (context) => MainScreen()));
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text(message),
+            duration: const Duration(seconds: 3),
+          ),
+        );
+      } else {
+        final Map<String, dynamic> responseData = json.decode(response.body);
+        final message = responseData['message'];
+
+        print('Failed with status code: ${response.statusCode}');
+        print('Response body: $message');
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text(message),
+            duration: const Duration(seconds: 3),
+          ),
+        );
+        // showSnackBar('Login failed. Please check your credentials.');
+      }
+    } catch (e) {
+      print('Error: $e');
+      showSnackBar('An unexpected error occurred.');
+    }
+  }
+
+  void showSnackBar(String message) {
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        content: Text(message),
+        duration: const Duration(seconds: 3),
+      ),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -89,13 +233,14 @@ class _RegisterState extends State<Register> {
       // crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
         const Padding(padding: EdgeInsets.only(top: 50)),
-        buildtextfiled(context, emailtext, "Email", false, () {}, (value) {
+        buildtextfiled(context, emailController, "Email", false, () {},
+            (value) {
           if (value!.isEmpty) {
             return 'Please enter your email';
           }
           return null;
         }),
-        buildtextfiled(context, passwords, "Password", true, () {
+        buildtextfiled(context, passwordController, "Password", true, () {
           setState(() {
             rememberme = true;
           });
@@ -130,52 +275,53 @@ class _RegisterState extends State<Register> {
           margin: const EdgeInsets.all(15),
           child: ElevatedButton(
             onPressed: () async {
-              if (_formKey.currentState?.validate() ?? false) {
-                String email = emailtext.text;
-                String password = passwords.text;
+              login(emailController.text, passwordController.text);
+              // if (_formKey.currentState?.validate() ?? false) {
+              //   String email = emailtext.text;
+              //   String password = passwords.text;
 
-                try {
-                  // Make the HTTP request to the login API endpoint
-                  http.Response response = await http.post(
-                    Uri.parse('https://workshala-7v7q.onrender.com/login'),
-                    headers: {'Content-Type': 'application/json'},
-                    body: jsonEncode({'email': email, 'password': password}),
-                  );
+              //   try {
+              //     // Make the HTTP request to the login API endpoint
+              //     http.Response response = await http.post(
+              //       Uri.parse('https://workshala-7v7q.onrender.com/login'),
+              //       headers: {'Content-Type': 'application/json'},
+              //       body: jsonEncode({'email': email, 'password': password}),
+              //     );
 
-                  if (response.statusCode == 200) {
-                    // Login successful
-                    final Map<String, dynamic> data = jsonDecode(response.body);
-                    await _secureStorage.setToken(data['accessToken']);
+              //     if (response.statusCode == 200) {
+              //       // Login successful
+              //       final Map<String, dynamic> data = jsonDecode(response.body);
+              //       await _secureStorage.setToken(data['accessToken']);
 
-                    print("login successfull");
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => const MainScreen()));
-                  } else {
-                    // Login failed, show error message
-                    print(
-                        'Login failed with status code: ${response.statusCode}');
-                    print('Response body: ${response.body}');
-                    ScaffoldMessenger.of(context).showSnackBar(
-                      const SnackBar(
-                        content: Text(
-                            'Login failed. Please check your credentials.'),
-                        duration: Duration(seconds: 3),
-                      ),
-                    );
-                  }
-                } catch (e) {
-                  // Handle other exceptions
-                  print('Error during login: $e');
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    const SnackBar(
-                      content: Text('An error occurred. Please try again.'),
-                      duration: Duration(seconds: 3),
-                    ),
-                  );
-                }
-              }
+              //       print("login successfull");
+              //       Navigator.push(
+              //           context,
+              //           MaterialPageRoute(
+              //               builder: (context) => const MainScreen()));
+              //     } else {
+              //       // Login failed, show error message
+              //       print(
+              //           'Login failed with status code: ${response.statusCode}');
+              //       print('Response body: ${response.body}');
+              //       ScaffoldMessenger.of(context).showSnackBar(
+              //         const SnackBar(
+              //           content: Text(
+              //               'Login failed. Please check your credentials.'),
+              //           duration: Duration(seconds: 3),
+              //         ),
+              //       );
+              //     }
+              //   } catch (e) {
+              //     // Handle other exceptions
+              //     print('Error during login: $e');
+              //     ScaffoldMessenger.of(context).showSnackBar(
+              //       const SnackBar(
+              //         content: Text('An error occurred. Please try again.'),
+              //         duration: Duration(seconds: 3),
+              //       ),
+              //     );
+              //   }
+              // }
             },
             style: ElevatedButton.styleFrom(
               // shape: const StadiumBorder(),

@@ -32,13 +32,14 @@ class _MainScreenState extends State<MainScreen> {
   Future<void> fetchProfileData() async {
     try {
       String? accessToken = await _secureStorage.getToken();
-
+      print("accessToken ${accessToken}");
       http.Response response = await http.get(
         Uri.parse('https://workshala-7v7q.onrender.com/profile'),
         headers: {
           'Content-Type': 'application/json',
           'Authorization':
-              'Bearer $accessToken', // Include the token in the headers
+              'Bearer $accessToken', // Include the token in the headers,
+          'Cookie': 'accessToken=$accessToken'
         },
       );
 
