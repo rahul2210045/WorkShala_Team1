@@ -296,7 +296,7 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
               const SizedBox(height: 8.0),
 
               SizedBox(
-                height: screenHeight * 0.318, // Adjust the height as needed
+                height: screenHeight * 0.28, // Adjust the height as needed
                 // child: SingleChildScrollView(
                 // scrollDirection: Axis.horizontal,
                 child: FutureBuilder<List<List<dynamic>?>?>(
@@ -356,29 +356,33 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
                                         ),
                                         SizedBox(width: screenWidth * 0.019),
                                         Container(
-                                          child: Column(
-                                            crossAxisAlignment:
-                                                CrossAxisAlignment.start,
-                                            children: [
-                                              Text(
-                                                'Courses: ${companyData?[index]['courses']}',
-                                                style: const TextStyle(
-                                                  fontWeight: FontWeight.w700,
-                                                  fontSize: 16,
-                                                  color: Colors.black,
+                                          width: screenWidth * 0.6,
+                                          child: SingleChildScrollView(
+                                            scrollDirection: Axis.horizontal,
+                                            child: Column(
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.start,
+                                              children: [
+                                                Text(
+                                                  'Courses: ${companyData?[index]['courses']}',
+                                                  style: const TextStyle(
+                                                    fontWeight: FontWeight.w700,
+                                                    fontSize: 16,
+                                                    color: Colors.black,
+                                                  ),
                                                 ),
-                                              ),
-                                              Text(
-                                                ' Level: ${companyData?[index][' Level']}',
-                                                style: const TextStyle(
-                                                  fontWeight: FontWeight.w500,
-                                                  fontSize: 12,
-                                                  color: Colors.black,
+                                                Text(
+                                                  ' Level: ${companyData?[index][' Level']}',
+                                                  style: const TextStyle(
+                                                    fontWeight: FontWeight.w500,
+                                                    fontSize: 12,
+                                                    color: Colors.black,
+                                                  ),
                                                 ),
-                                              ),
-                                            ],
+                                              ],
+                                            ),
                                           ),
-                                        ),
+                                        )
                                       ],
                                     ),
                                     GestureDetector(
@@ -410,14 +414,22 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
                                 //     color: Color(0xD6595961),
                                 //   ),
                                 // ),
-                                Text(
-                                  '   Skills Covered: ${companyData?[index]['Skills Covered']}',
-                                  style: const TextStyle(
-                                    fontWeight: FontWeight.w700,
-                                    fontSize: 12,
-                                    color: Color(0xFF246BFD),
-                                  ),
-                                ),
+                                Container(
+                                    height: screenHeight * 0.08,
+                                    child: SingleChildScrollView(
+                                        child: Column(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            children: [
+                                          Text(
+                                            '   Skills Covered: ${companyData?[index]['Skills Covered']}',
+                                            style: const TextStyle(
+                                              fontWeight: FontWeight.w700,
+                                              fontSize: 12,
+                                              color: Color(0xFF246BFD),
+                                            ),
+                                          ),
+                                        ]))),
                                 const SizedBox(height: 10.0),
                                 Row(
                                   children: [
@@ -528,6 +540,8 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
                 height: screenHeight * 0.85, // Adjust the height as needed
                 // child: SingleChildScrollView(
                 child: FutureBuilder<List<dynamic>?>(
+
+                  
                   future: fetchDataa(),
                   builder: (context, snapshot) {
                     if (snapshot.connectionState == ConnectionState.waiting) {
@@ -578,29 +592,36 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
                                         ),
                                         SizedBox(width: screenWidth * 0.019),
                                         Container(
-                                          child: Column(
-                                            crossAxisAlignment:
-                                                CrossAxisAlignment.start,
-                                            children: [
-                                              Text(
-                                                'Company name: ${companyData[index]['title']}',
-                                                style: const TextStyle(
-                                                  fontWeight: FontWeight.w700,
-                                                  fontSize: 16,
-                                                  color: Colors.black,
+                                            width: screenWidth * 0.55,
+                                            child: SingleChildScrollView(
+                                              scrollDirection: Axis.horizontal,
+                                              child: Container(
+                                                child: Column(
+                                                  crossAxisAlignment:
+                                                      CrossAxisAlignment.start,
+                                                  children: [
+                                                    Text(
+                                                      'Company name: ${companyData[index]['title']}',
+                                                      style: const TextStyle(
+                                                        fontWeight:
+                                                            FontWeight.w700,
+                                                        fontSize: 16,
+                                                        color: Colors.black,
+                                                      ),
+                                                    ),
+                                                    Text(
+                                                      'Company Type: ${companyData[index]['companyType']}',
+                                                      style: const TextStyle(
+                                                        fontWeight:
+                                                            FontWeight.w500,
+                                                        fontSize: 12,
+                                                        color: Colors.black,
+                                                      ),
+                                                    ),
+                                                  ],
                                                 ),
                                               ),
-                                              Text(
-                                                'Company Type: ${companyData[index]['companyType']}',
-                                                style: const TextStyle(
-                                                  fontWeight: FontWeight.w500,
-                                                  fontSize: 12,
-                                                  color: Colors.black,
-                                                ),
-                                              ),
-                                            ],
-                                          ),
-                                        ),
+                                            ))
                                       ],
                                     ),
                                     GestureDetector(
