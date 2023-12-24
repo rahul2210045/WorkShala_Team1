@@ -155,7 +155,6 @@ class bottomDrawer extends StatelessWidget {
                                     width: 8,
                                   ),
                                   SelectableBox(
-                                      
                                       image: 'assets/crypto (1).png',
                                       height: 105.0,
                                       width: 120.0,

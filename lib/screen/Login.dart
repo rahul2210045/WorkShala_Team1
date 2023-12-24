@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:intershipapp/loadingpage.dart';
 import 'package:intershipapp/screen/Register.dart';
+import 'package:intershipapp/screen/emailverify.dart';
 import 'package:intershipapp/secureStorage.dart';
 import 'package:intershipapp/widgets/Customtext.dart';
 
@@ -112,7 +113,7 @@ class _LoginState extends State<Login> {
                   Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => const loadingPage()));
+                          builder: (context) => const emailverify()));
                 }
               },
               style: ElevatedButton.styleFrom(

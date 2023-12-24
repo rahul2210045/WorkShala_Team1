@@ -42,4 +42,11 @@ class SecureStorage {
     // Return null if the JSON string was null
     return null;
   }
+  Future<void> saveUserData(Map<String, dynamic> userData) async {
+    // Implementation to save userData securely
+    // For example, you might use a package like flutter_secure_storage
+
+    // Replace the following line with your actual implementation
+    print('Saving user data: $userData');
+  }
 }
