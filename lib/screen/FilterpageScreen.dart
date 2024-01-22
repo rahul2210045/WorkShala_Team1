@@ -168,7 +168,7 @@ class _FilterScreenPageState extends State<FilterScreenPage> {
             BottomNavigationBarItem(
               icon: ElevatedButton(
                 style: ElevatedButton.styleFrom(
-                  primary: Color.fromRGBO(148, 108, 195, 1), // Background color
+                  backgroundColor: Color.fromRGBO(148, 108, 195, 1), // Background color
                 ),
                 onPressed: () {
                   selectedOptions.forEach((key, value) {
